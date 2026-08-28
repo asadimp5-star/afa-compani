@@ -47,5 +47,9 @@ class homeController extends Controller
     {
         return view('admin.site-content.contact-us.contact-us');
     }
+    public function show()
+    {
+        return view('admin.admin-profile');
+    }
 
 }

@@ -95,6 +95,9 @@ Route::prefix('admin')->group(function(){
         Route::get('/editee/{contactUs}',[contactController::class,'edit'])->name('admin.content.contact-us.edit');
         Route::post('/updatee/{contactUs}',[contactController::class,'update'])->name('admin.content.contact-us.update');
     });
+    Route::prefix('/settings')->group(function(){
+        Route::get('/profile',[homeController::class,'show'])->name('admin.settings.show');
+    });
     
 });
 

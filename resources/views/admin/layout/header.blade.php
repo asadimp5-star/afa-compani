@@ -34,7 +34,7 @@
                                     <a class="nav-link dropdown-toggle shabnam @yield('seting')" href="#" data-bs-toggle="dropdown" aria-expanded="false">تنظیمات</a>
                                 <ul class="dropdown-menu"> 
                                     <li>
-                                        <a class="dropdown-item shabnam" href="#">ویرایش پروفایل</a>
+                                        <a class="dropdown-item shabnam" href="{{ route('admin.settings.show') }}">ویرایش پروفایل</a>
                                     </li> 
                                     <li>
                                         <a class="dropdown-item shabnam" href="#">خروج</a>
