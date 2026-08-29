@@ -9,32 +9,7 @@
 
     <title>Document</title>
 </head>
-<style>
-    .p1{
-    background-image: linear-gradient(180deg, rgba(16, 12, 8, 0.4) 0%, rgba(16, 12, 8, 0.4) 100%), url('{{ asset("storage/gallery-img/4aced277-4211-4ef5-a450-791fbfaeb7ed-1787945972.jpg") }}');
-          background-position: center;
-          background-repeat: no-repeat;
-          background-size: cover;
-          height: 50vh;
-          width: 100%;
-  }
-  .p2{
-    background-image: linear-gradient(180deg, rgba(16, 12, 8, 0.4) 0%, rgba(16, 12, 8, 0.4) 100%), url('{{ asset("storage/about-Img/38483ec0-7697-4dfd-ad01-0b216c7ea72d-1787651118.png") }}');
-          background-position: center;
-          background-repeat: no-repeat;
-          background-size: cover;
-          height: 50vh;
-          width: 100%;
-  }
-  .p3{
-    background-image: linear-gradient(180deg, rgba(16, 12, 8, 0.4) 0%, rgba(16, 12, 8, 0.4) 100%), url('{{ asset("storage/contact-Img/55e4dfa8-6e45-4e57-b257-8af4de1fee9f-1787765570.png") }}');
-          background-position: center;
-          background-repeat: no-repeat;
-          background-size: cover;
-          height: 50vh;
-          width: 100%;
-  }
-</style>
+
 <body>
 <header>
         <nav class="navbar navbar-expand-md navbar-dark fixed-top bg-dark">
@@ -75,7 +50,7 @@
 <div class="carousel-inner">
  <div class="carousel-item">
     <div style="width: 100%; height: 50vh;">
-       <img aria-hidden="true"  src="{{ asset('storage/about-Img/38483ec0-7697-4dfd-ad01-0b216c7ea72d-1787651118.png') }}" class="d-block h-100 w-100"  role="img" style="object-fit: cover; position: absolute;"  alt="#"> 
+       <img aria-hidden="true"  src="{{ asset('storage/about-Img/38483ec0-7697-4dfd-ad01-0b216c7ea72d-1787651118.png') }}" class="d-block h-100 w-100 "  role="img" style="object-fit: cover; position: absolute;"  alt="#"> 
       <!-- <rect width="100%" height="100%" fill="var(--bs-secondary-color)"></rect>   -->
     </div>
     
@@ -106,7 +81,7 @@
  </div>
  <div class="carousel-item">
  <div style="width: 100%; height: 50vh;">
-      <img aria-hidden="true" src="{{ asset('storage/postsImg/4b5dd754-3c0b-42c9-ae4b-c1aa0ad5755b-1786477486.jpg') }}" class="d-block h-100 w-100"    role="img"  alt="#"> 
+      <img aria-hidden="true" src="{{ asset('storage/postsImg/3c3af98b-59ea-4578-a0a0-bffe3c37bd29-1786380521.jpg') }}" class="d-block h-100 w-100"    role="img"  alt="#"> 
        
       <!-- <rect width="100%" height="100%" fill="var(--bs-secondary-color)"></rect>   -->
     </div> 
@@ -131,42 +106,44 @@
 
 
 
-    <div class="p-4 p-md-5 mb-4  rounded text-body-emphasis bg-body-secondary"> 
-<div class="col-lg-6 px-0">
- <h1 class="display-4 fst-italic">Title of a longer featured blog post</h1>
- <p class="lead my-3">Multiple lines of text that form the lede, informing new readers quickly and efficiently about what’s most interesting in this post’s contents.</p>
- <p class="lead mb-0"><a href="#" class="text-body-emphasis fw-bold">Continue reading...</a></p>
+<div class="p-4 p-md-5 mb-4  container-fluid rounded text-center  bg-body-secondary"> 
+  <style>
+  .p1{
+    background-image: linear-gradient(180deg, rgba(16, 12, 8, 0.4) 0%, rgba(16, 12, 8, 0.4) 100%), url('{{ asset("storage/postsImg/3974da88-b238-4f9b-805a-854dd31fb06a-1786380270.jpg") }}');
+          background-position: center;
+          background-repeat: no-repeat;
+          background-size: cover;
+          height: 40vh;
+          width: 100%;
+  }
+  </style>   
+<div class="px-0 col-12 p1 align-content-center text-info">
+  <h1 class="display-4 fst-italic">Title of a longer featured blog post</h1>
+        <p class="lead my-3">Multiple lines of text that form the lede, informing new readers quickly and efficiently about what’s most interesting in this post’s contents.</p>
+        <p class="lead mb-0"><a href="#" class="text-decoration-none fw-bold">Continue reading...</a></p>
+ 
  </div> 
-    </div>
+</div>
 
 
 
-    <div class="container marketing">
+<div class="container marketing">
  <!-- Three columns of text below the carousel --> 
-<div class="row">
+<div class="row text-center">
  <div class="col-lg-4">
- <svg aria-label="Placeholder" class="bd-placeholder-img rounded-circle" height="140" preserveAspectRatio="xMidYMid slice" role="img" width="140" xmlns="http://www.w3.org/2000/svg">
-<title>Placeholder</title>
-<rect width="100%" height="100%" fill="var(--bs-secondary-color)"></rect>
-</svg>
+  <img src="{{ asset('storage/icons/299320.png') }}" class="w-50 h-50" alt="">
  <h2 class="fw-normal">Heading</h2>
  <p>Some representative placeholder content for the three columns of text below the carousel. This is the first column.</p>
  <p><a class="btn btn-secondary" href="#">View details »</a></p>
  </div><!-- /.col-lg-4 -->
  <div class="col-lg-4">
- <svg aria-label="Placeholder" class="bd-placeholder-img rounded-circle" height="140" preserveAspectRatio="xMidYMid slice" role="img" width="140" xmlns="http://www.w3.org/2000/svg">
-<title>Placeholder</title>
-<rect width="100%" height="100%" fill="var(--bs-secondary-color)"></rect>
-</svg> 
+ <img src="{{ asset('storage/icons/images.jfif') }}" class="w-50 h-50" alt="">
 <h2 class="fw-normal">Heading</h2> 
 <p>Another exciting bit of representative placeholder content. This time, we've moved on to the second column.</p> 
 <p><a class="btn btn-secondary" href="#">View details »</a></p> 
 </div><!-- /.col-lg-4 -->
  <div class="col-lg-4">
- <svg aria-label="Placeholder" class="bd-placeholder-img rounded-circle" height="140" preserveAspectRatio="xMidYMid slice" role="img" width="140" xmlns="http://www.w3.org/2000/svg">
-<title>Placeholder</title>
-<rect width="100%" height="100%" fill="var(--bs-secondary-color)"></rect>
-</svg>
+ <img src="{{ asset('storage/icons/images.png') }}" class="w-50 h-50" alt="">
  <h2 class="fw-normal">Heading</h2>
  <p>And lastly this, the third column of representative placeholder content.</p> 
 <p><a class="btn btn-secondary" href="#">View details »</a></p>
@@ -181,10 +158,7 @@
 <p class="lead">Some great placeholder content for the first featurette here. Imagine some exciting prose here.</p>
  </div>
  <div class="col-md-5"> 
-<svg aria-label="Placeholder: 500x500" class="bd-placeholder-img bd-placeholder-img-lg featurette-image img-fluid mx-auto" height="500" preserveAspectRatio="xMidYMid slice" role="img" width="500" xmlns="http://www.w3.org/2000/svg">
-<title>Placeholder</title>
-<rect width="100%" height="100%" fill="var(--bs-secondary-bg)"></rect>
-<text x="50%" y="50%" fill="var(--bs-secondary-color)" dy=".3em">500x500</text></svg>
+<img aria-hidden="true"  src="{{ asset('storage/postsImg/be765f60-4141-4ec3-a419-4c2dbd8e7d64-1786475459.jpg') }}" class="d-block h-100 w-100 "  role="img" style="object-fit: cover;"  alt="#"> 
  </div>
  </div>
  <hr class="featurette-divider">
@@ -196,26 +170,19 @@
  <p class="lead">Another featurette? Of course. More placeholder content here to give you an idea of how this layout would work with some actual real-world content in place.</p> 
 </div>
  <div class="col-md-5 order-md-1"> 
-<svg aria-label="Placeholder: 500x500" class="bd-placeholder-img bd-placeholder-img-lg featurette-image img-fluid mx-auto" height="500" preserveAspectRatio="xMidYMid slice" role="img" width="500" xmlns="http://www.w3.org/2000/svg">
-<title>Placeholder</title>
-<rect width="100%" height="100%" fill="var(--bs-secondary-bg)"></rect>
-<text x="50%" y="50%" fill="var(--bs-secondary-color)" dy=".3em">500x500</text>
-</svg>
+<img aria-hidden="true"  src="{{ asset('storage/postsImg/$2y$12$MfjYHHhghbRLl36RTKv8nOqdQJLQdFyG4b5KwTw1dLid3A0RyOoYG.jpg') }}" class="d-block h-100 w-100 "  role="img" style="object-fit: cover;"  alt="#">
  </div>
  </div> 
 <hr class="featurette-divider">
  <div class="row featurette"> 
-<div class="col-md-7">
+<div class="col-md-10 text-center">
  <h2 class="featurette-heading fw-normal lh-1">And lastly, this one. 
 <span class="text-body-secondary">Checkmate.</span>
 </h2> 
 <p class="lead">And yes, this is the last block of representative placeholder content. Again, not really intended to be actually read, simply here to give you a better view of what this would look like with some actual content. Your content.</p>
  </div>
  <div class="col-md-5">
-<svg aria-label="Placeholder: 500x500" class="bd-placeholder-img bd-placeholder-img-lg featurette-image img-fluid mx-auto" height="500" preserveAspectRatio="xMidYMid slice" role="img" width="500" xmlns="http://www.w3.org/2000/svg">
-<title>Placeholder</title>
-<rect width="100%" height="100%" fill="var(--bs-secondary-bg)"></rect>
-<text x="50%" y="50%" fill="var(--bs-secondary-color)" dy=".3em">500x500</text></svg>
+
  </div>
  </div>
  <hr class="featurette-divider"> 
