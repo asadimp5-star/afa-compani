@@ -100,6 +100,9 @@ Route::prefix('admin')->group(function(){
     });
     
 });
+Route::prefix('/')->group(function(){
+    Route::get('home',[homeController::class,'home'])->name('index.home');
+});
 
 
 Route::middleware([

@@ -52,4 +52,11 @@ class homeController extends Controller
         return view('admin.admin-profile');
     }
 
+    //front client
+
+    public function home()
+    {
+        return view('front-client.home');
+    }
+
 }
