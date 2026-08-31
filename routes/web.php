@@ -104,6 +104,7 @@ Route::prefix('admin')->group(function(){
 Route::get('home',[homeController::class,'home'])->name('index.home');
 Route::get('about-us',[homeController::class,'about'])->name('index.aboutUs');
 Route::get('contact-us',[homeController::class,'contact'])->name('index.cuntactUs');
+Route::get('gallary',[homeController::class,'galarey'])->name('index.galarey');
 
 
 

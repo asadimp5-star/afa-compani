@@ -66,5 +66,9 @@ class homeController extends Controller
     {
         return view('front-client.contacts');
     }
+    public function galarey()
+    {
+        return view('front-client.gallary');
+    }
 
 }

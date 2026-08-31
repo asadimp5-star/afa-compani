@@ -18,7 +18,7 @@
  <a class="nav-link @yield('pos')" href="#">مجله فرتاک</a>
  </li>
  <li class="nav-item">
- <a class="nav-link @yield('gallar')" href="#">گالری</a>
+ <a class="nav-link @yield('gallar')" href="{{ route('index.galarey') }}">گالری</a>
  </li>
   <li class="nav-item">
  <a class="nav-link @yield('abouts')" href="{{ route('index.aboutUs') }}">درباره ما </a>
