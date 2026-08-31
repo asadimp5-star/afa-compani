@@ -58,5 +58,13 @@ class homeController extends Controller
     {
         return view('front-client.home');
     }
+    public function about()
+    {
+        return view('front-client.abouts');
+    }
+    public function contact()
+    {
+        return view('front-client.contacts');
+    }
 
 }

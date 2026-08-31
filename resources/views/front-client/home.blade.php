@@ -1,46 +1,13 @@
-<!DOCTYPE html>
-<html lang="fa">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="{{ asset('assets/css/bootstrap.min.css') }}">
-    <link rel="stylesheet" href="{{ asset('assets/main.css') }}">
-    <link rel="icon" type="image/png" sizes="32x32" href="{{ asset('assets/company-image/photo_2017-08-08_18-19-421.jpg') }}">
+@extends('front-client.layout.masterPage')
 
-    <title>Document</title>
-</head>
+@section('title','خانه')
 
-<body>
-<header>
-        <nav class="navbar navbar-expand-md navbar-dark fixed-top bg-dark">
- <div class="container-fluid"> 
-<a class="navbar-brand" href="#">Carousel</a>
- <button class="navbar-toggler collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#navbarCollapse" aria-controls="navbarCollapse" aria-expanded="false" aria-label="Toggle navigation"> 
-<span class="navbar-toggler-icon"></span>
- </button>
- <div class="navbar-collapse collapse" id="navbarCollapse">
- <ul class="navbar-nav me-auto mb-2 mb-md-0"> 
-<li class="nav-item"> 
-<a class="nav-link active" aria-current="page" href="#">Home</a>
- </li>
- <li class="nav-item">
- <a class="nav-link" href="#">Link</a>
- </li>
- <li class="nav-item"> 
-<a class="nav-link disabled" aria-disabled="true">Disabled</a>
- </li> 
-</ul> 
-<form class="d-flex" role="search">
- <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search">
- <button class="btn btn-outline-success" type="submit">Search</button>
- </form>
- </div>
- </div> 
-</nav>
+@section('hom','active')
 
-</header>
-<main>
-    <section class="mt-5">
+
+@section('content')
+
+<section class="mt-5">
         <div id="myCarousel" class="carousel slide mb-6" data-bs-ride="carousel">
  <div class="carousel-indicators mt-5">
  <button type="button" data-bs-target="#myCarousel" data-bs-slide-to="0" class="" aria-label="Slide 1"></button>
@@ -102,7 +69,7 @@
 <span class="carousel-control-next-icon" aria-hidden="true"></span> 
 <span class="visually-hidden">Next</span> </button>
     </div>
-    </section>
+</section>
 
 
 
@@ -130,19 +97,25 @@
 <div class="container marketing">
  <!-- Three columns of text below the carousel --> 
 <div class="row text-center">
- <div class="col-lg-4">
+ <div class="col-lg-3">
   <img src="{{ asset('storage/icons/299320.png') }}" class="w-50 h-50" alt="">
  <h2 class="fw-normal">Heading</h2>
  <p>Some representative placeholder content for the three columns of text below the carousel. This is the first column.</p>
  <p><a class="btn btn-secondary" href="#">View details »</a></p>
+ </div>
+ <div class="col-lg-3">
+  <img src="{{ asset('storage/icons/floor-scrubber.jpg') }}" class="w-50 h-50" alt="">
+ <h2 class="fw-normal">Heading</h2>
+ <p>Some representative placeholder content for the three columns of text below the carousel. This is the first column.</p>
+ <p><a class="btn btn-secondary" href="#">View details »</a></p>
  </div><!-- /.col-lg-4 -->
- <div class="col-lg-4">
+ <div class="col-lg-3">
  <img src="{{ asset('storage/icons/images.jfif') }}" class="w-50 h-50" alt="">
 <h2 class="fw-normal">Heading</h2> 
 <p>Another exciting bit of representative placeholder content. This time, we've moved on to the second column.</p> 
 <p><a class="btn btn-secondary" href="#">View details »</a></p> 
 </div><!-- /.col-lg-4 -->
- <div class="col-lg-4">
+ <div class="col-lg-3">
  <img src="{{ asset('storage/icons/images.png') }}" class="w-50 h-50" alt="">
  <h2 class="fw-normal">Heading</h2>
  <p>And lastly this, the third column of representative placeholder content.</p> 
@@ -174,6 +147,24 @@
  </div>
  </div> 
 <hr class="featurette-divider">
+<section class="p-5">
+  <h4 class="shabnam d-block text-center mb-3">افتخارات و گواهی نامه ها</h4>
+</section>
+<section class="d-flex justify-content-center">
+
+<div class="w3-content w3-section" style="max-width:20rem">
+  <img class="mySlides" src="{{ asset('storage/glories/Ofogh Fartak Alborz International Co-ISO9001-QM5925151.jpg') }}" style="width:100%">
+  <img class="mySlides" src="{{ asset('storage/glories/EIQM ISO LOGO NEW - IMS.jpg') }}" style="width:100%">
+  <img class="mySlides" src="{{ asset('storage/glories/Ofogh Fartak Alborz International Co-ISO14001-QM5925152.jpg') }}" style="width:100%">
+  <img class="mySlides" src="{{ asset('storage/glories/EIQM ISO LOGO NEW iso 14001-2015.jpg') }}" style="width:100%">
+  <img class="mySlides" src="{{ asset('storage/glories/Ofogh Fartak Alborz International Co-ISO45001-QM5925153.jpg') }}" style="width:100%">
+  <img class="mySlides" src="{{ asset('storage/glories/EIQM ISO LOGO NEW iso 45001-2018.jpg') }}" style="width:100%">
+
+</div>
+
+</section>
+
+<hr class="featurette-divider">
  <div class="row featurette"> 
 <div class="col-md-10 text-center">
  <h2 class="featurette-heading fw-normal lh-1">And lastly, this one. 
@@ -187,18 +178,17 @@
  </div>
  <hr class="featurette-divider"> 
 
-    </div>
+</div>
   <!-- /END THE FEATURETTES -->
-</main>
+
+
+@endsection
+
+
+
 
     
         
-<footer class="container">
- <p class="float-end"><a href="#">Back to top</a></p>
- <p>© 2017–2025 Company, Inc. · <a href="#">Privacy</a> · <a href="#">Terms</a></p> 
-</footer>
 
-    <script src="{{ asset('assets/js/bootstrap.bundle.min.js') }}"></script>
-    <script src="{{ asset('assets/app.js') }}"></script>
-</body>
-</html>
+
+ 

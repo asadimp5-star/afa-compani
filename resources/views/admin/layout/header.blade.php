@@ -55,7 +55,7 @@
             <section>
                     <a href="{{ route('/admin') }}" class="text-decoration-none">
                    
-                      <img  src="{{ asset('assets/company-image/photo_2017-08-08_18-19-421.jpg') }}" alt="image logo" width="120" height="80">     
+                      <img  src="{{ asset('assets/company-image/photo_2017-08-08_18-19-421.jpg') }}" class="img-thumbnail" alt="image logo" width="90" height="60">     
                         
                     </a>
 
