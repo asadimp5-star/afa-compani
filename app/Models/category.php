@@ -10,6 +10,12 @@ class category extends Model
 
     protected $fillable = ['title','product_code','slug','description','imags','product_type','status'];
 
+
+    public function getRouteKeyName()
+    {
+        return 'slug';
+    }
+
     public function comment(){
         return $this->hasMany(comment::class,'cat_Id','id');
     }

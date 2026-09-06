@@ -12,10 +12,13 @@
  <div class="navbar-collapse collapse" id="navbarCollapse">
  <ul class="navbar-nav me-auto mb-2 mb-md-0"> 
 <li class="nav-item"> 
-<a class="nav-link @yield('hom')" aria-current="page" href="#">محصولات</a>
+<a class="nav-link @yield('hom')" aria-current="page" href="{{ route('index.home') }}">خانه</a>
+ </li>
+<li class="nav-item"> 
+<a class="nav-link @yield('proud')" aria-current="page" href="{{ route('category.home') }}">محصولات</a>
  </li>
  <li class="nav-item">
- <a class="nav-link @yield('pos')" href="#">مجله فرتاک</a>
+ <a class="nav-link @yield('pos')" href="{{ route('index.postse') }}">مجله فرتاک</a>
  </li>
  <li class="nav-item">
  <a class="nav-link @yield('gallar')" href="{{ route('index.galarey') }}">گالری</a>

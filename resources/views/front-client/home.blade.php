@@ -6,8 +6,13 @@
 
 
 @section('content')
+<section class="bg-body">
+  @foreach ($home as $item )
 
-<section class="mt-5">
+
+
+<section class="d-flex rounded-2 justify-content-center mt-5">
+  <section class="mt-5 col-12 ">
         <div id="myCarousel" class="carousel slide mb-6" data-bs-ride="carousel">
  <div class="carousel-indicators mt-5">
  <button type="button" data-bs-target="#myCarousel" data-bs-slide-to="0" class="" aria-label="Slide 1"></button>
@@ -15,51 +20,57 @@
  <button type="button" data-bs-target="#myCarousel" data-bs-slide-to="2" aria-label="Slide 3" class=""></button> 
 </div> 
 <div class="carousel-inner">
- <div class="carousel-item">
+  @if ($item->Fimg1)
+    <div class="carousel-item">
     <div style="width: 100%; height: 50vh;">
-       <img aria-hidden="true"  src="{{ asset('storage/about-Img/38483ec0-7697-4dfd-ad01-0b216c7ea72d-1787651118.png') }}" class="d-block h-100 w-100 "  role="img" style="object-fit: cover; position: absolute;"  alt="#"> 
+       <img aria-hidden="true"  src="{{ asset('storage/first_page/'. $item->Fimg1) }}" class="d-block h-100 w-100 "  role="img" style="object-fit: cover; position: absolute;"  alt="#"> 
       <!-- <rect width="100%" height="100%" fill="var(--bs-secondary-color)"></rect>   -->
     </div>
-    
- 
-    
- 
+   
 <div class="container">
  <div class="carousel-caption text-start">
- <h1>Example headline.</h1>
- <p class="opacity-75">Some representative placeholder content for the first slide of the carousel.</p>
- <p><a class="btn btn-lg btn-primary" href="#">Sign up today</a></p>
+ <h1 class="vaziri mobilePic">با ما در ارتباط باشید</h1>
+ <p class="opacity-75 yekan fs-3 mobilePic">از اینکه نظرات،پیشنهادات و استعلامات خود را با ما در میان میگذارید ممنونیم.</p>
+ <p><a class="btn btn-lg btn-primary yekan" href="{{ route('index.cuntactUs') }}">تماس باما</a></p>
  </div>
  </div> 
-</div> 
-<div class="carousel-item active"> 
+</div>
+  @endif
+  
+  @if ($item->Fimg2)
+    <div class="carousel-item active"> 
 <div style="width: 100%; height: 50vh;">
-      <img aria-hidden="true" src="{{ asset('storage/contact-Img/1181f4e9-4738-46ac-9b82-b2f5efb7aeca-1787763362.png') }}" class="d-block h-100 w-100"  role="img"   alt="#"> 
+      <img aria-hidden="true" src="{{ asset('storage/first_page/'. $item->Fimg2) }}" class="d-block h-100 w-100"  role="img"   alt="#"> 
        
       <!-- <rect width="100%" height="100%" fill="var(--bs-secondary-color)"></rect>   -->
     </div>
 <div class="container">
  <div class="carousel-caption">
- <h1>Another example headline.</h1> 
-<p>Some representative placeholder content for the second slide of the carousel.</p> 
-<p><a class="btn btn-lg btn-primary" href="#">Learn more</a></p>
+ <h1 class="vaziri mobilePic">آگاهی ارزشمندترین ثروت است</h1> 
+<p class="yekan fs-3 mobilePic">با خواندن مقالات به روز ما که توسط کارشناسان نگارش شده است، به روز شوید و آگاهی خود را افزایش دهید</p> 
+<p><a class="btn btn-lg btn-primary yekan" href="{{ route('index.postse') }}">مجله فرتاک</a></p>
  </div>
  </div>
  </div>
- <div class="carousel-item">
+  @endif
+
+  @if ($item->Fimg3)
+    <div class="carousel-item">
  <div style="width: 100%; height: 50vh;">
-      <img aria-hidden="true" src="{{ asset('storage/postsImg/3c3af98b-59ea-4578-a0a0-bffe3c37bd29-1786380521.jpg') }}" class="d-block h-100 w-100"    role="img"  alt="#"> 
+      <img aria-hidden="true" src="{{ asset('storage/first_page/'. $item->Fimg3) }}" class="d-block h-100 w-100"    role="img"  alt="#"> 
        
       <!-- <rect width="100%" height="100%" fill="var(--bs-secondary-color)"></rect>   -->
     </div> 
 <div class="container"> 
 <div class="carousel-caption text-end">
- <h1>One more for good measure.</h1> 
-<p>Some representative placeholder content for the third slide of this carousel.</p> 
-<p><a class="btn btn-lg btn-primary" href="#">Browse gallery</a></p>
+ <h1 class="vaziri mobilePic">از گالری دیدن کنید</h1> 
+<p class="yekan fs-3 mobilePic">قبل از خرید هر چیزی ،حتی محصولات ما ،تحقیق کنید و نمونه کار را ببینید</p> 
+<p><a class="btn btn-lg btn-primary yekan" href="{{ route('index.galarey') }}">ورود به گالری</a></p>
  </div> 
 </div>
 </div>
+  @endif
+ 
 </div> 
 <button class="carousel-control-prev" type="button" data-bs-target="#myCarousel" data-bs-slide="prev"> 
 <span class="carousel-control-prev-icon" aria-hidden="true"></span>
@@ -70,13 +81,15 @@
 <span class="visually-hidden">Next</span> </button>
     </div>
 </section>
+</section>
 
 
 
-<div class="p-4 p-md-5 mb-4  container-fluid rounded text-center  bg-body-secondary"> 
+@if ($item->images0)
+  <div class="p-4 p-md-5 mb-4  container-fluid rounded text-center  bg-body"> 
   <style>
   .p1{
-    background-image: linear-gradient(180deg, rgba(16, 12, 8, 0.4) 0%, rgba(16, 12, 8, 0.4) 100%), url('{{ asset("storage/postsImg/3974da88-b238-4f9b-805a-854dd31fb06a-1786380270.jpg") }}');
+    background-image: linear-gradient(180deg, rgba(16, 12, 8, 0.4) 0%, rgba(16, 12, 8, 0.4) 100%), url('{{ asset("storage/first_page/". $item->images0) }}');
           background-position: center;
           background-repeat: no-repeat;
           background-size: cover;
@@ -84,13 +97,15 @@
           width: 100%;
   }
   </style>   
-<div class="px-0 col-12 p1 align-content-center text-info">
-  <h1 class="display-4 fst-italic">Title of a longer featured blog post</h1>
-        <p class="lead my-3">Multiple lines of text that form the lede, informing new readers quickly and efficiently about what’s most interesting in this post’s contents.</p>
-        <p class="lead mb-0"><a href="#" class="text-decoration-none fw-bold">Continue reading...</a></p>
+<div class="px-0 col-12 p1 align-content-center rounded-5">
+  <!-- <h1 class="display-4 fst-italic">Title of a longer featured blog post</h1> -->
+        <p class="lead my-3 vaziri text-warning fs-2">{{ $item->baner }}</p>
+        <!-- <p class="lead mb-0"><a href="#" class="text-decoration-none fw-bold">Continue reading...</a></p> -->
  
  </div> 
 </div>
+@endif
+
 
 
 
@@ -99,52 +114,58 @@
 <div class="row text-center">
  <div class="col-lg-3">
   <img src="{{ asset('storage/icons/299320.png') }}" class="w-50 h-50" alt="">
- <h2 class="fw-normal">Heading</h2>
- <p>Some representative placeholder content for the three columns of text below the carousel. This is the first column.</p>
- <p><a class="btn btn-secondary" href="#">View details »</a></p>
+ <h4 class="fw-normal vaziri">شامپو کارواش</h4>
+ <p>شامپو کارواش  در مجموعه ما،از مواد اولیه دست اول با فرمولاسیون روز دنیا و زیر نظر متخصصین کنترول کیفیت تولید شده </p>
+ <p><a class="btn btn-secondary" href="{{ route('category.carwash') }}">دیدن محصولات »</a></p>
  </div>
  <div class="col-lg-3">
   <img src="{{ asset('storage/icons/floor-scrubber.jpg') }}" class="w-50 h-50" alt="">
- <h2 class="fw-normal">Heading</h2>
- <p>Some representative placeholder content for the three columns of text below the carousel. This is the first column.</p>
- <p><a class="btn btn-secondary" href="#">View details »</a></p>
+ <h4 class="fw-normal vaziri">کفشوی مکانیزه</h4>
+ <p>کفشوی تولیدی در این مجموعه دارای Ph خنثی بوده و علاوه بر تمیزی بالا، به ادوات اسکرابر هیچگونه صدمه ای نمیزند</p>
+ <p><a class="btn btn-secondary" href="{{ route('category.Sfloor') }}">دیدن محصولات »</a></p>
  </div><!-- /.col-lg-4 -->
  <div class="col-lg-3">
  <img src="{{ asset('storage/icons/images.jfif') }}" class="w-50 h-50" alt="">
-<h2 class="fw-normal">Heading</h2> 
-<p>Another exciting bit of representative placeholder content. This time, we've moved on to the second column.</p> 
-<p><a class="btn btn-secondary" href="#">View details »</a></p> 
+<h4 class="fw-normal vaziri">کفشوی دستی</h4> 
+<p>کفشوی دستی با فرمولی نوین! بدون بو و غیر اسیدی که کف را بسیار تمیز میکند و هیچ ردی از طی نمی اندازد</p> 
+<p><a class="btn btn-secondary" href="{{ route('category.Mfloor') }}">دیدن محصولات »</a></p> 
 </div><!-- /.col-lg-4 -->
  <div class="col-lg-3">
  <img src="{{ asset('storage/icons/images.png') }}" class="w-50 h-50" alt="">
- <h2 class="fw-normal">Heading</h2>
- <p>And lastly this, the third column of representative placeholder content.</p> 
-<p><a class="btn btn-secondary" href="#">View details »</a></p>
+ <h4 class="fw-normal vaziri">واکس تایر</h4>
+ <p>واکس تایر با کیفیت بالا که استفاده از آن باعث افزایش طول عمر تایر میگردد که بسیار ارازان قیمت و مقرون به صرفه است</p> 
+<p><a class="btn btn-secondary" href="{{ route('category.waxTire') }}">دیدن محصولات »</a></p>
  </div><!-- /.col-lg-4 --> 
 </div><!-- /.row --> <!-- START THE FEATURETTES -->
  <hr class="featurette-divider"> 
 <div class="row featurette">
  <div class="col-md-7">
- <h2 class="featurette-heading fw-normal lh-1">First featurette heading.
- <span class="text-body-secondary">It’ll blow your mind.</span>
+ <!-- <h2 class="featurette-heading fw-normal lh-1">First featurette heading. -->
+ <!-- <span class="text-body-secondary">It’ll blow your mind.</span> -->
 </h2> 
-<p class="lead">Some great placeholder content for the first featurette here. Imagine some exciting prose here.</p>
+<p class="lead shabnam">{{ $item->description }}</p>
  </div>
- <div class="col-md-5"> 
-<img aria-hidden="true"  src="{{ asset('storage/postsImg/be765f60-4141-4ec3-a419-4c2dbd8e7d64-1786475459.jpg') }}" class="d-block h-100 w-100 "  role="img" style="object-fit: cover;"  alt="#"> 
+ @if ($item->images)
+    <div class="col-md-5"> 
+<img aria-hidden="true"  src="{{ asset('storage/first_page/'. $item->images) }}" class="d-block h-100 w-100 "  role="img" style="object-fit: cover;"  alt="#"> 
  </div>
+ @endif
+ 
  </div>
  <hr class="featurette-divider">
  <div class="row featurette"> 
 <div class="col-md-7 order-md-2"> 
-<h2 class="featurette-heading fw-normal lh-1">Oh yeah, it’s that good. 
-<span class="text-body-secondary">See for yourself.</span>
+<!-- <h2 class="featurette-heading fw-normal lh-1">Oh yeah, it’s that good.  -->
+<!-- <span class="text-body-secondary">See for yourself.</span> -->
 </h2>
- <p class="lead">Another featurette? Of course. More placeholder content here to give you an idea of how this layout would work with some actual real-world content in place.</p> 
+ <p class="lead shabnam">{{ $item->description1 }}</p> 
 </div>
- <div class="col-md-5 order-md-1"> 
-<img aria-hidden="true"  src="{{ asset('storage/postsImg/$2y$12$MfjYHHhghbRLl36RTKv8nOqdQJLQdFyG4b5KwTw1dLid3A0RyOoYG.jpg') }}" class="d-block h-100 w-100 "  role="img" style="object-fit: cover;"  alt="#">
+@if ($item->images1)
+<div class="col-md-5 order-md-1"> 
+<img aria-hidden="true"  src="{{ asset('storage/first_page/'. $item->images1) }}" class="d-block h-100 w-100 "  role="img" style="object-fit: cover;"  alt="#">
  </div>
+@endif
+ 
  </div> 
 <hr class="featurette-divider">
 <section class="p-5">
@@ -159,18 +180,20 @@
   <img class="mySlides" src="{{ asset('storage/glories/EIQM ISO LOGO NEW iso 14001-2015.jpg') }}" style="width:100%">
   <img class="mySlides" src="{{ asset('storage/glories/Ofogh Fartak Alborz International Co-ISO45001-QM5925153.jpg') }}" style="width:100%">
   <img class="mySlides" src="{{ asset('storage/glories/EIQM ISO LOGO NEW iso 45001-2018.jpg') }}" style="width:100%">
-
+<br>
+<br>
 </div>
+
 
 </section>
 
 <hr class="featurette-divider">
  <div class="row featurette"> 
 <div class="col-md-10 text-center">
- <h2 class="featurette-heading fw-normal lh-1">And lastly, this one. 
-<span class="text-body-secondary">Checkmate.</span>
+ <!-- <h2 class="featurette-heading fw-normal lh-1">And lastly, this one.  -->
+<!-- <span class="text-body-secondary">Checkmate.</span> -->
 </h2> 
-<p class="lead">And yes, this is the last block of representative placeholder content. Again, not really intended to be actually read, simply here to give you a better view of what this would look like with some actual content. Your content.</p>
+<p class="lead shabnam">{{ $item->description2 }}</p>
  </div>
  <div class="col-md-5">
 
@@ -180,6 +203,9 @@
 
 </div>
   <!-- /END THE FEATURETTES -->
+
+@endforeach
+</section>
 
 
 @endsection

@@ -104,7 +104,24 @@ Route::prefix('admin')->group(function(){
 Route::get('home',[homeController::class,'home'])->name('index.home');
 Route::get('about-us',[homeController::class,'about'])->name('index.aboutUs');
 Route::get('contact-us',[homeController::class,'contact'])->name('index.cuntactUs');
+Route::post('contact-us1',[homeController::class,'contact1'])->name('index.cuntactUs1');
 Route::get('gallary',[homeController::class,'galarey'])->name('index.galarey');
+Route::get('posts',[homeController::class,'postse'])->name('index.postse');
+Route::get('post-page/{item}',[homeController::class,'showPost'])->name('index.post');
+
+Route::prefix('/category')->group(function(){
+
+Route::get('/home',[homeController::class,'homes'])->name('category.home');
+Route::get('/carwash',[homeController::class,'carwash'])->name('category.carwash');
+Route::get('/wax-tire',[homeController::class,'waxTire'])->name('category.waxTire');
+Route::get('/M-floor',[homeController::class,'Mfloor'])->name('category.Mfloor');
+Route::get('/S-floor',[homeController::class,'Sfloor'])->name('category.Sfloor');
+Route::get('/show-product/{item}',[homeController::class,'showProd'])->name('category.showProduct');
+Route::post('/commentt',[homeController::class,'commentt'])->name('category.commentt');
+
+
+
+});
 
 
 

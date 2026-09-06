@@ -4,6 +4,8 @@
 
 <main>
 
+    
+
     @yield('content')
 
 

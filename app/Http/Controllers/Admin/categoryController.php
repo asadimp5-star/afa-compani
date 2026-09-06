@@ -117,11 +117,11 @@ class categoryController extends Controller
         return view('admin.category.wax',compact('waxT'));
     }
     public function floor(category $category){
-        $floo = category::where('product_type','=',2)->orderByDesc('created_at')->paginate(3);
+        $floo = category::where('product_type','=',3)->orderByDesc('created_at')->paginate(3);
         return view('admin.category.floor-wash',compact('floo'));
     }
     public function Mfloor(category $category){
-        $Mfloo = category::where('product_type','=', 3)->orderByDesc('created_at')->paginate(3);
+        $Mfloo = category::where('product_type','=', 2)->orderByDesc('created_at')->paginate(3);
         return view('admin.category.maual-floor',compact('Mfloo'));
     }
 }

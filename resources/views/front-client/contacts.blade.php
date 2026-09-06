@@ -12,43 +12,45 @@
     <div class="p-md-5 container-fluid rounded text-center  bg-body-secondary"> 
   <style>
   .p1{
-    background-image: linear-gradient(180deg, rgba(16, 12, 8, 0.4) 0%, rgba(16, 12, 8, 0.4) 100%), url('{{ asset("storage/postsImg/3974da88-b238-4f9b-805a-854dd31fb06a-1786380270.jpg") }}');
+    background-image: linear-gradient(180deg, rgba(16, 12, 8, 0.4) 0%, rgba(16, 12, 8, 0.4) 100%), url('{{ asset("assets/company-image/content-image/pexels-alex-andrews-821754.jpg") }}');
           background-position: center;
-          background-repeat: no-repeat;
+          background-repeat: repeat-x;
           background-size: cover;
           height: 40vh;
           width: 100%;
   }
   </style>   
-<div class="px-0 col-12 p1 rounded-2 align-content-center text-info">
-  <h1 class="display-4 fst-italic yekan">تماس باما</h1>
-        <p class="lead my-3">Multiple lines of text that form the lede, informing new readers quickly and efficiently about what’s most interesting in this post’s contents.</p>
+<div class="px-0 col-12 p1 rounded-2 align-content-center text-warning">
+  <h1 class="display-4 fst-italic vaziri">تماس باما</h1>
+        <!-- <p class="lead my-3">Multiple lines of text that form the lede, informing new readers quickly and efficiently about what’s most interesting in this post’s contents.</p> -->
  </div> 
     </div>
 </section>
 </section>
 
+      
 
 
 <section class="container-fluid">
-
+    @foreach ($contact as $item)
+    
   <div class="text-center d-flex justify-content-center mb-3">
     <div class="col-md-4 mt-2 ">
         <label for="co_adress">آدرس شرکت:</label>
-    <h4 class="shabnam fw-bold">کرج،....</h4>
+    <h4 class="shabnam fw-bold">{{ $item->co_adress }}</h4>
     </div>
   </div>
   <div class="m-5 text-center d-flex justify-content-center">
         <div class="mb-3  col-8">
         <label for="factory_adress">آدرس کارگاه:</label>
-        <h4 class="sahel">نظرآباد،...</h4>
+        <h4 class="sahel">{{ $item->factory_adress }}</h4>
         </div>
     </div>
     
     <div class="d-flex justify-content-center">
 
         <div class="col-lg-3 col-md-6 col-sm-8">
-          <img src="{{ asset('storage/about-Img/38483ec0-7697-4dfd-ad01-0b216c7ea72d-1787651118.png') }}" class="bd-placeholder-img card-img-top" height="100%" role="img" width="50%" alt="#">
+          <img src="{{ asset('storage/contact-Img/'. $item->img) }}" class="bd-placeholder-img card-img-top" height="100%" role="img" width="50%" alt="#">
 
         </div>
     
@@ -57,7 +59,7 @@
 
     <div class="m-5 d-flex justify-content-center">
     <div class="mb-3 col-8">
-    <p class="sahel">ادامه توضیحات درباره شرکت</p>
+    <p class="sahel">{{ $item->description }}</p>
     </div>
     </div>
 
@@ -65,7 +67,7 @@
 
     <div class="d-flex justify-content-center">
         <div class="col-lg-4 col-md-6 col-sm-8">
-           <img src="{{ asset('storage/about-Img/522692b7-dba5-4703-a521-6c0e635ba29d-1787650982.png') }}" class="bd-placeholder-img card-img-top " height="100%" role="img" width="50%" alt="#"> 
+           <img src="{{ asset('storage/contact-Img/'. $item->img1) }}" class="bd-placeholder-img card-img-top " height="100%" role="img" width="50%" alt="#"> 
 
         </div>
     </div>
@@ -74,30 +76,41 @@
     <div class="m-5 d-flex col-lg-4 col-md-5 col-sm-8   justify-content-center">
         <div class="mb-1">
         <label for="phone">تلفن :</label>
-        <h4 class="sahel">09121111</h4>
+        <h4 class="sahel">{{ $item->phone }}</h4>
         </div>
     </div>
     <div class="m-5 d-flex  col-lg-4 col-md-5 col-sm-8 justify-content-center">
         <div class="mb-1 ">
         <label for="phone1">تلفن :</label>
-        <h4 class="sahel">0263280022</h4>
+        <h4 class="sahel">{{ $item->phone1 }}</h4>
         </div>
     </div>
     <div class="m-5 d-flex col-lg-4 col-md-5 col-sm-8 justify-content-center">
         <div class="mb-1">
         <label for="email">ایمیل :</label>
-        <h4 class="sahel">a@t.com</h4>
+        <h4 class="sahel">{{ $item->email }}</h4>
         </div>
     </div>
 
-  </section>  
+  </section> 
+    @endforeach
+
     </section>
   
   <hr>
+    @if (session('success'))
+      <section class="container-fluid d-flex justify-content-center">
+        <div class="alert alert-success col-6 text-center m-1" role="alert">
+         <h6 class="yekan">{{session('success')}}</h6>
+          
+        </div>
+      </section>
 
+    @endif
+     
   <section class="d-flex justify-content-center ">
     <section class="bg-warning  rounded-2">
-    <form class="row yekan  justify-content-center" action="#" method="post">
+    <form class="row yekan  justify-content-center" action="{{ route('index.cuntactUs1') }}" method="post">
       @csrf
 
       <section class="d-flex row justify-content-center">

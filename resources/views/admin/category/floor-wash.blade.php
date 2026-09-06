@@ -48,7 +48,7 @@
       <td>{{ $loop->iteration }}</td>
       <td>{{substr($item->title,0,10).'...'}}</td>
       <td>{{ $item->product_code }}</td>
-      <td>{{ $item->description }}</td>
+      <td>{{ substr($item->description,0,20) }}</td>
       <td>{{ $item->created_at }}</td>
       <td>{{ ($item->status== 1 ? 'فعال' : 'غیر فعال')  }}</td>
       <td>

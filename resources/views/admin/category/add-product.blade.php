@@ -52,8 +52,8 @@
       <option value="">نوع کالا را انتخاب کنید</option>
       <option value="0" {{ old('product_type')=='0'?'selected':'' }}>شامپو کارواش</option>
       <option value="1" {{ old('product_type')=='1'?'selected':'' }}>واکس تایر</option>
-      <option value="2" {{ old('product_type')=='2'?'selected':'' }}>مایع کف شوی مکانیزه</option>
-      <option value="3" {{ old('product_type')=='3'?'selected':'' }}>مایع کف شوی دستی</option>
+      <option value="3" {{ old('product_type')=='3'?'selected':'' }}>مایع کف شوی مکانیزه</option>
+      <option value="2" {{ old('product_type')=='2'?'selected':'' }}>مایع کف شوی دستی</option>
     </select>
     @error('product_type')
        <div class="alert alert-danger mt-1">{{ $message }}</div>

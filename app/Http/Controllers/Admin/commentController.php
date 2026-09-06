@@ -56,7 +56,7 @@ class commentController extends Controller
     public function update(Request $request, comment $item)
     {
         $validated = $request->validate([
-        'reply' => 'string|max:255',
+        'reply' => 'nullable|string|max:255',
     ]);
         $item->update($validated);
         

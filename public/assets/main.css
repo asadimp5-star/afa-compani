@@ -74,4 +74,10 @@
 .mySlides {display:none;}
 
 
-
+.mobilePic{
+  text-align: center;
+  color: aliceblue;
+  background-color: rgba(49, 49, 49, 0.486);
+  width: 60%;
+  border-radius: 2rem;
+}
