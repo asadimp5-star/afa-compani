@@ -22,22 +22,28 @@
 
     <section class="m-5">
     
-<section class="d-flex">
+<section class="d-flex justify-content-between p-4 col-lg-7 col-md-9 col-sm-11 row">
     
-  <div class="col-md-4">
+  <div class="col-md-4 mt-2">
     <label  class="form-label">نام</label>
     <h4>{{ $user->First_name }}</h4>
   </div>
-  <div class="col-md-4">
+  <div class="col-md-4 mt-2">
     <label  class="form-label">نام خانوادگی</label>
     <h4>{{ $user->Last_name }}</h4>
   </div>
   
-  <div class="col-md-4">
+  <div class="col-md-4 mt-2">
     <label class="form-label">آدرس ایمیل</label>
     <p>{{ $user->email }}</p>
   </div>
   
+  <div class="mt-2">
+
+     <a href="{{ route('admin.users.member-email' , $user->id  ) }}" class="btn btn-info sahel">تغییر آدرس ایمیل</a>
+  
+
+  </div>
  
 
 </section>

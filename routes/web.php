@@ -9,13 +9,13 @@ use App\Http\Controllers\Admin\galleryController;
 use App\Http\Controllers\admin\homeController;
 use App\Http\Controllers\Admin\messageController;
 use App\Http\Controllers\Admin\postController;
-
-
-
+use App\Http\Controllers\Auth\authenticContriller;
 use App\Http\Controllers\userController;
+use App\Http\Middleware\Admin;
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
 
-Route::prefix('admin')->group(function(){
+Route::prefix('admin')->middleware(['Admin'])->group(function(){
     Route::get('/',[homeController::class,'index'])->name('/admin');
     Route::post('/status/{comment}',[commentController::class,'status'])->name('admin.comment.status');
     Route::delete('/delete/{comment}',[commentController::class,'destroy'])->name('admin.comment.destroy');
@@ -32,6 +32,9 @@ Route::prefix('admin')->group(function(){
         Route::get('/create',[postController::class,'create'])->name('admin.posts.create');
         Route::post('/add',[postController::class,'store'])->name('admin.posts.store');
         Route::get('/edit-post/{post}',[postController::class,'edit'])->name('admin.posts.edite');
+        Route::get('/edit-Upost/{Upost}',[postController::class,'userEdit'])->name('admin.posts.userEdit');
+        Route::delete('/deletee/{Upost}',[postController::class,'Udestroy'])->name('admin.posts.deletee');
+
         Route::put('/update/{post}',[postController::class,'update'])->name('admin.posts.update');
         
     });
@@ -43,6 +46,22 @@ Route::prefix('admin')->group(function(){
         Route::post('/add',[userController::class,'store'])->name('admin.users.store');
         Route::get('/show/{user}',[userController::class,'show'])->name('admin.users.show');
         Route::get('/observe/{pos}',[userController::class,'edit'])->name('admin.users.edit');
+        Route::get('/user-dashboard',[userController::class,'showUser'])->name('admin.users.user-dashboard');
+        Route::post('loging-out',[authenticContriller::class,'logOute'])->name('logOute');
+        Route::get('/user-aouth',[userController::class,'aouth'])->name('admin.users.user-aouth');
+        Route::get('member-profile',[userController::class,'memberProfile'])->name('admin.users.member-profile');
+        Route::get('/User-pass-edit/{user}',[userController::class,'showUserPass'])->name('admin.users.user-pass');
+        Route::put('/User-pass-update/{user}',[userController::class,'userPass'])->name('admin.users.user-passs');
+        Route::get('/User-email-edit/{user}',[userController::class,'useremail'])->name('admin.users.user-email');
+        Route::put('/User-email-update/{user}',[userController::class,'UserEmailCheng'])->name('admin.users.user-emaile');
+        Route::get('/member-pass-edit/{user}',[userController::class,'memberPass'])->name('admin.users.member-pass');
+        Route::put('/member-email-update/{user}',[userController::class,'memberEmailCheng'])->name('admin.users.member-emaile');
+        Route::get('/member-email-edit/{user}',[userController::class,'memberEmail'])->name('admin.users.member-email');
+
+
+
+        
+
     });
 
     Route::prefix('category')->group(function(){
@@ -108,6 +127,14 @@ Route::post('contact-us1',[homeController::class,'contact1'])->name('index.cunta
 Route::get('gallary',[homeController::class,'galarey'])->name('index.galarey');
 Route::get('posts',[homeController::class,'postse'])->name('index.postse');
 Route::get('post-page/{item}',[homeController::class,'showPost'])->name('index.post');
+Route::middleware('Guest')->group(function(){
+    Route::get('/sign-in',[authenticContriller::class,'loging'])->name('index.sign-in');
+
+});
+Route::post('/signin',[authenticContriller::class,'getIn'])->name('getIn');
+
+
+
 
 Route::prefix('/category')->group(function(){
 
@@ -119,9 +146,8 @@ Route::get('/S-floor',[homeController::class,'Sfloor'])->name('category.Sfloor')
 Route::get('/show-product/{item}',[homeController::class,'showProd'])->name('category.showProduct');
 Route::post('/commentt',[homeController::class,'commentt'])->name('category.commentt');
 
-
-
 });
+
 
 
 

@@ -54,7 +54,7 @@ class homeController extends Controller
     }
     public function show()
     {
-        return view('admin.admin-profile');
+        return view('admin.admin-profile.admin-profile');
     }
 
     //front client

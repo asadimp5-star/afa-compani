@@ -10,6 +10,7 @@
     
   </x-slot>
 </x-manual.page-curent>
+
 @endsection
 
 @section('content')

@@ -5,6 +5,7 @@ namespace App\Http\Controllers\Admin;
 use App\Http\Controllers\Controller;
 use App\Http\Requests\postRequest;
 use App\Models\post;
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Storage;
 use  Illuminate\Support\Str;
 
@@ -71,13 +72,13 @@ class postController extends Controller
         $data['images1']=$this->handleUpload($request,'images1',null,null);
 
         $data['slug']=Str::slug($data['title'],'-',null);
-        $data['user_Id']= 2;
+        $data['user_Id']= Auth::id();
 
 
         post::create($data);
 
         
-        return redirect()->route('admin.posts.post')->with('success','مقاله با موفقیت ایجاد شد');
+        return back()->with('success','مقاله با موفقیت ایجاد شد');
 
     }
 
@@ -95,7 +96,13 @@ class postController extends Controller
     public function edit(post $post)
     {
         // $show =post::find($post);
+        dd('hi');
         return view('admin.posts.edit-post',compact('post'));       
+    }
+    public function userEdit(post $Upost){
+        
+        return view('admin.members.single-member.edit-poste',compact('Upost'));       
+
     }
 
     /**
@@ -113,7 +120,7 @@ class postController extends Controller
         
         
        $post->update($data);
-       return redirect()->route('admin.posts.post')->with('success','مقاله با موفقیت ویرایش شد');
+       return back()->with('success','مقاله با موفقیت ویرایش شد');
     }
 
     /**
@@ -123,6 +130,11 @@ class postController extends Controller
     {
         $post->delete();
         return redirect()->route('admin.posts.post')->with('success','پست با موفقیت حذف شد');
+    }
+     public function Udestroy(post $Upost)
+    {
+        $Upost->delete();
+        return redirect()->route('admin.users.user-dashboard')->with('success','پست با موفقیت حذف شد');
     }
     public function status($id){
 

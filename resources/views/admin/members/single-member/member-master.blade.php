@@ -1,6 +1,16 @@
-
-
-<header class="container-fluid bg-body-secondary rounded-5 col-8">
+<!DOCTYPE html>
+<html lang="fa" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="{{ asset('assets/css/bootstrap.min.css') }}">
+    <link rel="stylesheet" href="{{ asset('assets/main.css') }}">
+    <link rel="icon" type="image/png" sizes="32x32" href="{{ asset('assets/company-image/photo_2017-08-08_18-19-421.jpg') }}">
+    <title>@yield('title')</title>
+</head>
+@livewireStyles
+<body class="bg-body-tertiary">
+    <header class="container-fluid bg-body-secondary rounded-5 col-8">
       
     
         <section class="pt-2">
@@ -12,40 +22,30 @@
             <section class="col-7 col-md-9">
             <nav class="navbar navbar-expand-xl navbar-dark rounded-5 bg-info col-sm-9 col-md-10" aria-label="Sixth navbar example">
                 <div class="container-fluid">
-                                        <a class="navbar-brand shabnam @yield('hom')" href="{{ route('/admin') }}">صفحه اصلی</a>
+                                        <a class="navbar-brand shabnam active" href="{{ route('admin.users.user-dashboard') }}">صفحه اصلی</a>
                                         <button class="navbar-toggler collapsed" type="button" data-bs-toggle="collapse"         data-bs-target="#navbarsExample06" aria-controls="navbarsExample06" aria-expanded="false" aria-label="Toggle navigation">
                             <span class="navbar-toggler-icon"></span>
                         </button>
                         <div class="navbar-collapse collapse" id="navbarsExample06">
                             <ul class="navbar-nav me-auto mb-2 mb-xl-0">
                                 <li class="nav-item"> 
-                                    <a class="nav-link shabnam @yield('pos')" aria-current="page" href="{{ route('admin.posts.post') }}">مقالات</a>
+                                    <a class="nav-link shabnam @yield('index')" aria-current="page" href="{{ route('admin.users.user-dashboard') }}">خانه</a>
+                                </li>
+
+                                <!-- <li class="nav-item"> 
+                                    <a class="nav-link shabnam @yield('pose')" aria-current="page" href="#">مقالات</a>
+                                </li> -->
+                                
+                                <li class="nav-item ">
+                                    <a class="nav-link shabnam @yield('profi')" href="{{ route('admin.users.member-profile') }}">ویرایش پروفایل</a>
                                 </li>
                                 <li class="nav-item ">
-                                    <a class="nav-link shabnam @yield('membe')" href="{{ route('admin.users.user') }}">اعضای شرکت</a>
-                                </li>
-                                <li class="nav-item ">
-                                    <a class="nav-link shabnam @yield('produc')" href="{{ route('admin.category.index') }}">مدیریت کالا</a>
-                                </li>
-                                <li class="nav-item ">
-                                    <a class="nav-link shabnam @yield('conten')" href="{{ route('admin.content.index') }}">مدیریت محتوی</a>
-                                </li>
-                                <li class="nav-item dropdown "> 
-                                    <a class="nav-link dropdown-toggle shabnam @yield('seting')" href="#" data-bs-toggle="dropdown" aria-expanded="false">تنظیمات</a>
-                                <ul class="dropdown-menu"> 
-                                    <li>
-                                        <a class="dropdown-item shabnam" href="{{ route('admin.settings.show') }}">ویرایش پروفایل</a>
-                                    </li> 
-                                    <li>
-                                        <form action="{{ route('logOute') }}" method="post">
+                                    <form action="{{ route('logOute') }}" method="post">
                                             @csrf
-                                            <button type="submit" class="dropdown-item shabnam">خروج</a>
-                                        </form>
-                                        
-                                    </li>
-                                    
-                                </ul>
-                                </li> 
+                                            <button type="submit" class="nav-link shabnam text-danger">خروج</a>
+                                    </form>
+                                </li>
+                                
                             </ul>
 
                         </div>
@@ -57,7 +57,7 @@
 
             </section>
             <section>
-                    <a href="{{ route('/admin') }}" class="text-decoration-none">
+                    <a href="{{ route('admin.users.user-dashboard') }}" class="text-decoration-none">
                    
                       <img  src="{{ asset('assets/company-image/photo_2017-08-08_18-19-421.jpg') }}" class="img-thumbnail" alt="image logo" width="90" height="60">     
                         
@@ -72,18 +72,15 @@
         <section class="mt-1 container-fluid">
             <div class="card bg-body-secondary rounded-0 border-end-0 border-start-0">
                 <div class="card-body container-fluid">
-                    <div class="d-flex justify-content-between">
+                        
+                <div class="d-flex justify-content-between">
                         
                         @yield('curent-page')
                         <h4 class="vaziri">سلام {{ Auth::User()->First_name }}</h4>
 
 
                     </div>
-                        
                     
-               
-                   
-
                 </div>
             </div>
         </section>
@@ -96,13 +93,27 @@
             </div>
         </section>
     </section>
+    <main>
+        <section class="justify-content-center">
+        <x-manual.alert>
+
+        </x-manual.alert>
 
 
+        </section>
 
-    <!-- @section('curent-page')
-<x-manual.page-curent>
-  <x-slot>
-    <li class="breadcrumb-item p-1 active" aria-current="page">لیست کالاها</li>
-  </x-slot>
-</x-manual.page-curent>
-@endsection -->
+        @yield('content')
+    </main>
+    <section class="container-fluid border-top mt-5 ">
+        <footer class="footer contTopHead">
+            <p>  · Company, Inc . Ofogh Fartak Alborz © 2017–2025.</p>
+            <p>
+                <a href="#">Back to top</a>
+            </p>
+        </footer>
+</section>
+  <script src="{{ asset('assets/app.js') }}"></script>
+    <script src="{{ asset('assets/js/bootstrap.bundle.min.js') }}"></script>
+    @livewireStyles
+</body>
+</html>
