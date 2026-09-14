@@ -1,6 +1,7 @@
 @extends('front-client.layout.masterPage')
 
-@section('title','محصولات')
+@section('title',app()->getLocale() == 'fa' ? 'محصولات' : 'Products')
+
 
 @section('proud','active')
 
@@ -22,7 +23,7 @@
   }
   </style>   
 <div class="px-0 col-12 p6 rounded-2 align-content-center text-warning">
-  <h1 class="display-4 fst-italic vaziri">محصولات</h1>
+  <h1 class="display-4 fst-italic vaziri">{{ __('content.products') }}</h1>
         <!-- <p class="lead my-3">Multiple lines of text that form the lede, informing new readers quickly and efficiently about what’s most interesting in this post’s contents.</p> -->
  </div> 
 </div>
@@ -75,7 +76,7 @@
           <a href="{{ route('category.carwash') }}">
             <div class="card card-cover h-100 overflow-hidden rounded-4 shadow-lg p1"> 
             <div class="d-flex flex-column h-100 p-5 pb-3 text-white text-shadow-1"> 
-              <h3 class="pt-5 mt-5 mb-4 display-6 lh-1 fw-bold sahel">شامپو کارواش</h3>
+              <h3 class="pt-5 mt-5 mb-4 display-6 lh-1 fw-bold sahel">{{ __('content.craWash') }}</h3>
             </div> 
           </div>
           </a>
@@ -90,7 +91,7 @@
           <a href="{{ route('category.waxTire') }}">
             <div class="card card-cover h-100 overflow-hidden rounded-4 shadow-lg proimg1 p2"> 
             <div class="d-flex flex-column h-100 p-5 pb-3 text-white text-shadow-1"> 
-              <h3 class="pt-5 mt-5 mb-4 display-6 lh-1 fw-bold sahel">واکس تایر</h3>
+              <h3 class="pt-5 mt-5 mb-4 display-6 lh-1 fw-bold sahel">{{ __('content.tireWax') }}</h3>
             </div> 
           </div>
           </a>
@@ -112,7 +113,7 @@
           <a href="{{ route('category.Sfloor') }}">
             <div class="card card-cover h-100 overflow-hidden rounded-4 shadow-lg proimg1 p3"> 
             <div class="d-flex flex-column h-100 p-5 pb-3 text-white text-shadow-1"> 
-              <h3 class="pt-5 mt-5 mb-4 display-6 lh-1 fw-bold sahel">کفشوی مکانیزه</h3>
+              <h3 class="pt-5 mt-5 mb-4 display-6 lh-1 fw-bold sahel">{{ __('content.scraber-li') }}</h3>
             </div> 
           </div>
           </a>
@@ -127,7 +128,7 @@
           <a href="{{ route('category.Mfloor') }}">
             <div class="card card-cover h-100 overflow-hidden rounded-4 shadow-lg proimg1 p5"> 
             <div class="d-flex flex-column h-100 p-5 pb-3 text-white text-shadow-1"> 
-              <h3 class="pt-5 mt-5 mb-4 display-6 lh-1 fw-bold sahel">کفشوی دستی</h3>
+              <h3 class="pt-5 mt-5 mb-4 display-6 lh-1 fw-bold sahel">{{ __('content.floore-li') }}</h3>
             </div> 
           </div>
           </a>

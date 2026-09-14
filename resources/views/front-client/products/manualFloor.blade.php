@@ -1,6 +1,8 @@
 @extends('front-client.layout.masterPage')
 
 @section('title','محصولات')
+@section('title',app()->getLocale() == 'fa' ? 'مایع زمین شوی دستی' : 'Hand-held Floor Cleaner')
+
 
 @section('proud','active')
 
@@ -22,7 +24,7 @@
   }
   </style>   
 <div class="px-0 col-12 p1 rounded-2 align-content-center text-warning">
-  <h1 class="display-4 fst-italic vaziri">کفشوی دستی</h1>
+  <h1 class="display-4 fst-italic vaziri">{{ __('content.floore-li') }}</h1>
         <!-- <p class="lead my-3">Multiple lines of text that form the lede, informing new readers quickly and efficiently about what’s most interesting in this post’s contents.</p> -->
  </div> 
 </div>
@@ -46,7 +48,7 @@
     <h6 class="yekan fs-5">{{$item->title}}</h6> 
 
 <p class="card-text yekan">{{ substr($item->description,0,60).'...' }}</p> 
-  <a href="{{ route('category.showProduct',$item->slug) }}" class="btn btn-outline-info mt-1">مشاهده بیشتر...</a>
+  <a href="{{ route('category.showProduct',$item->slug) }}" class="btn btn-outline-info mt-1">{{ __('content.see-details') }} ...</a>
 
  </div> 
 </div>
@@ -63,6 +65,6 @@
 
 </section>
 
-<a class="btn btn-warning m-5  " href="{{ route('category.home') }}">بازگشت</a>
+<a class="btn btn-warning m-5  " href="{{ route('category.home') }}">{{ __('content.return') }}</a>
 @endsection
 

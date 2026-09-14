@@ -8,4 +8,10 @@
     <title>@yield('title')</title>
 </head>
 
-<body class="bg-body-secondary">
+@if (app()->getLocale() == 'en')
+    <body class="bg-body-secondary EnBody">
+@else
+    <body class="bg-body-secondary">
+    
+@endif
+

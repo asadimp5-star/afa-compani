@@ -1,6 +1,6 @@
 @extends('front-client.layout.masterPage')
 
-@section('title','محصولات')
+@section('title',app()->getLocale() == 'fa' ? 'محصولات' : 'Products')
 
 @section('proud','active')
 
@@ -20,7 +20,7 @@
   }
   </style>   
 <div class="px-0 col-12 p6 rounded-2 align-content-center text-warning">
-  <h1 class="display-4 fst-italic vaziri">محصولات</h1>
+  <h1 class="display-4 fst-italic vaziri">{{ __('content.products') }}</h1>
         <!-- <p class="lead my-3">Multiple lines of text that form the lede, informing new readers quickly and efficiently about what’s most interesting in this post’s contents.</p> -->
  </div> 
 </div>
@@ -60,15 +60,15 @@
             <section class="d-flex p-1 col-lg-7 col-md-8 col-sm-10">
                 <div class="card-body "> 
                     <h3 class="shabnam fw-bold">{{ $item->title }}</h3> 
-                    <label for="">کد محصول</label>
+                    <label for="">{{ __('content.product code') }}</label>
                     <h3 class="shabnam fw-bold">{{ $item->product_code }}</h3> 
 
-                    <h5>ویژگی ها</h5>
+                    <h5>{{ __('content.Features') }}</h5>
 
                     <p class="card-text">{{ $item->description }}</p> 
                    
                    
-                    <a href="{{ route('index.cuntactUs') }}" class="btn btn-outline-info mt-1">برای خرید تماس بگیرید</a>
+                    <a href="{{ route('index.cuntactUs') }}" class="btn btn-outline-info mt-1">{{ __('content.Call to purchase') }}</a>
                     
                   
 
@@ -78,7 +78,7 @@
         <section>
           <section class="m-5">
     <hr>
-    <h2 class="shabnam text-center">نظرات</h2>
+    <h2 class="shabnam text-center">{{ __('content.comments') }}</h2>
     <hr>
     <section>
   @forelse($item->comment as $comShow)
@@ -86,20 +86,20 @@
 
     
     <div class="col-md-4">
-    <label  class="form-label shabnam">نام</label>
+    <label  class="form-label shabnam">{{ __('content.full name') }}</label>
     <h4 class="shabnam">{{ $comShow->name }}</h4>
     </div>
     <div class="col-md-4">
-    <label  class="form-label shabnam">عنوان</label>
+    <label  class="form-label shabnam">{{ __('content.title') }}</label>
     <h4 class="shabnam">{{ $comShow->title }}</h4>
     </div>
   
     <div class="mb-3 col-8 mt-5 shabnam">
-    <label class="form-label ">نظر</label>
+    <label class="form-label ">{{ __('content.comment') }}</label>
     <p class="form-control ">{{ $comShow->description }}</p>
     </div>
     <div class="mb-3 col-8 shabnam">
-    <label  class="form-label">پاسخ</label>
+    <label  class="form-label">{{ __('content.response') }}</label>
     <p class="form-control" >{{ $comShow->reply }}</p>
     </div>
     <hr>
@@ -107,7 +107,7 @@
 
   @empty
          <div>
-            <h5 colspan="3">نظری وجود ندارد</h5>
+            <h5 colspan="3">{{ __('content.There are no comments') }}</h5>
          </div>
                 
    
@@ -142,7 +142,7 @@
 
       <section class="d-flex row justify-content-center">
         <div class="col-md-4  p-1">
-        <label for="title"  class="form-label d-block invalid">عنوان*</label>
+        <label for="title"  class="form-label d-block invalid">{{ __('content.title') }}*</label>
         <input type="text" class="form-control" id="title" name="title" value="{{ old('title') }}" required>
         @error('title')
           <div class="alert alert-danger mt-1">{{ $message }}</div>
@@ -152,7 +152,7 @@
     
         </div>
         <div class="col-md-4  p-1">
-        <label for="name"  class="form-label d-block invalid">نام و نام خانوادگی*</label>
+        <label for="name"  class="form-label d-block invalid">{{ __('content.full name') }}*</label>
         <input type="text" class="form-control" id="name" name="name" value="{{ old('name') }}" required>
         @error('name')
         <div class="alert alert-danger mt-1">{{ $message }}</div>
@@ -165,8 +165,8 @@
 
  
   <div class="mb-3 col-8 ">
-    <label for="description" class="form-label">توضیحات</label>
-    <textarea class="form-control" name="description" placeholder="پیام خود را اینجا وارد کنید"></textarea>
+    <label for="description" class="form-label">{{__('content.explaine')}}</label>
+    <textarea class="form-control" name="description" placeholder="{{ __('content.Enter your message here') }}"></textarea>
     @error('description')
        <div class="alert alert-danger mt-1">{{ $message }}</div>
     @enderror
@@ -175,13 +175,13 @@
   
   
   <div class="col-8 mt-3 ">
-    <button class="btn btn-primary" type="submit">ارسال پیام</button>
+    <button class="btn btn-primary" type="submit">{{ __('content.send') }}</button>
   </div>
  
 </form>
     </section>
   </section>
-    <a class="btn btn-warning" href="{{ url()->previous() }}">بازگشت</a>
+    <a class="btn btn-warning" href="{{ url()->previous() }}">{{ __('content.return') }}</a>
 
     </section>
 </section>

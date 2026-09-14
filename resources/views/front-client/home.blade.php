@@ -1,6 +1,6 @@
 @extends('front-client.layout.masterPage')
 
-@section('title','خانه')
+@section('title',app()->getLocale() == 'fa' ? 'خانه' : 'Home')
 
 @section('hom','active')
 
@@ -29,9 +29,9 @@
    
 <div class="container">
  <div class="carousel-caption text-start">
- <h1 class="vaziri mobilePic">با ما در ارتباط باشید</h1>
- <p class="opacity-75 yekan fs-3 mobilePic">از اینکه نظرات،پیشنهادات و استعلامات خود را با ما در میان میگذارید ممنونیم.</p>
- <p><a class="btn btn-lg btn-primary yekan" href="{{ route('index.cuntactUs') }}">تماس باما</a></p>
+ <h1 class="vaziri mobilePic">{{ __('content.first-float') }}</h1>
+ <p class="opacity-75 yekan fs-3 mobilePic">{{ __('content.first-float1') }}</p>
+ <p><a class="btn btn-lg btn-primary yekan" href="{{ route('index.cuntactUs') }}">{{ __('content.contact') }}</a></p>
  </div>
  </div> 
 </div>
@@ -46,9 +46,9 @@
     </div>
 <div class="container">
  <div class="carousel-caption">
- <h1 class="vaziri mobilePic">آگاهی ارزشمندترین ثروت است</h1> 
-<p class="yekan fs-3 mobilePic">با خواندن مقالات به روز ما که توسط کارشناسان نگارش شده است، به روز شوید و آگاهی خود را افزایش دهید</p> 
-<p><a class="btn btn-lg btn-primary yekan" href="{{ route('index.postse') }}">مجله فرتاک</a></p>
+ <h1 class="vaziri mobilePic">{{ __('content.sec-float') }}</h1> 
+<p class="yekan fs-3 mobilePic">{{ __('content.sec-float2') }}</p> 
+<p><a class="btn btn-lg btn-primary yekan" href="{{ route('index.postse') }}">{{ __('content.magazin') }}</a></p>
  </div>
  </div>
  </div>
@@ -63,9 +63,9 @@
     </div> 
 <div class="container"> 
 <div class="carousel-caption text-end">
- <h1 class="vaziri mobilePic">از گالری دیدن کنید</h1> 
-<p class="yekan fs-3 mobilePic">قبل از خرید هر چیزی ،حتی محصولات ما ،تحقیق کنید و نمونه کار را ببینید</p> 
-<p><a class="btn btn-lg btn-primary yekan" href="{{ route('index.galarey') }}">ورود به گالری</a></p>
+ <h1 class="vaziri mobilePic">{{ __('content.thirt-float') }}</h1> 
+<p class="yekan fs-3 mobilePic">{{ __('content.thirt-float1') }}</p> 
+<p><a class="btn btn-lg btn-primary yekan" href="{{ route('index.galarey') }}">{{ __('content.enter-gallary') }}</a></p>
  </div> 
 </div>
 </div>
@@ -114,27 +114,27 @@
 <div class="row text-center">
  <div class="col-lg-3">
   <img src="{{ asset('storage/icons/299320.png') }}" class="w-50 h-50" alt="">
- <h4 class="fw-normal vaziri">شامپو کارواش</h4>
- <p>شامپو کارواش  در مجموعه ما،از مواد اولیه دست اول با فرمولاسیون روز دنیا و زیر نظر متخصصین کنترول کیفیت تولید شده </p>
- <p><a class="btn btn-secondary" href="{{ route('category.carwash') }}">دیدن محصولات »</a></p>
+ <h4 class="fw-normal vaziri">{{ __('content.craWash') }}</h4>
+ <p>{{ __('content.carWash-expl') }}</p>
+ <p><a class="btn btn-secondary" href="{{ route('category.carwash') }}">{{ __('content.see-details') }}  »</a></p>
  </div>
  <div class="col-lg-3">
   <img src="{{ asset('storage/icons/floor-scrubber.jpg') }}" class="w-50 h-50" alt="">
- <h4 class="fw-normal vaziri">کفشوی مکانیزه</h4>
- <p>کفشوی تولیدی در این مجموعه دارای Ph خنثی بوده و علاوه بر تمیزی بالا، به ادوات اسکرابر هیچگونه صدمه ای نمیزند</p>
- <p><a class="btn btn-secondary" href="{{ route('category.Sfloor') }}">دیدن محصولات »</a></p>
+ <h4 class="fw-normal vaziri">{{ __('content.scraber-li') }}</h4>
+ <p>{{ __('content.scraber-expl') }}</p>
+ <p><a class="btn btn-secondary" href="{{ route('category.Sfloor') }}"> {{ __('content.see-details') }} »</a></p>
  </div><!-- /.col-lg-4 -->
  <div class="col-lg-3">
  <img src="{{ asset('storage/icons/images.jfif') }}" class="w-50 h-50" alt="">
-<h4 class="fw-normal vaziri">کفشوی دستی</h4> 
-<p>کفشوی دستی با فرمولی نوین! بدون بو و غیر اسیدی که کف را بسیار تمیز میکند و هیچ ردی از طی نمی اندازد</p> 
-<p><a class="btn btn-secondary" href="{{ route('category.Mfloor') }}">دیدن محصولات »</a></p> 
+<h4 class="fw-normal vaziri">{{ __('content.floore-li') }}</h4> 
+<p>{{ __('content.floot-expl') }}</p> 
+<p><a class="btn btn-secondary" href="{{ route('category.Mfloor') }}"> {{ __('content.see-details') }} »</a></p> 
 </div><!-- /.col-lg-4 -->
  <div class="col-lg-3">
  <img src="{{ asset('storage/icons/images.png') }}" class="w-50 h-50" alt="">
- <h4 class="fw-normal vaziri">واکس تایر</h4>
- <p>واکس تایر با کیفیت بالا که استفاده از آن باعث افزایش طول عمر تایر میگردد که بسیار ارازان قیمت و مقرون به صرفه است</p> 
-<p><a class="btn btn-secondary" href="{{ route('category.waxTire') }}">دیدن محصولات »</a></p>
+ <h4 class="fw-normal vaziri">{{ __('content.tireWax') }}</h4>
+ <p>{{ __('content.tireWax-expl') }}</p> 
+<p><a class="btn btn-secondary" href="{{ route('category.waxTire') }}"> {{ __('content.see-details') }} »</a></p>
  </div><!-- /.col-lg-4 --> 
 </div><!-- /.row --> <!-- START THE FEATURETTES -->
  <hr class="featurette-divider"> 
@@ -169,7 +169,7 @@
  </div> 
 <hr class="featurette-divider">
 <section class="p-5">
-  <h4 class="shabnam d-block text-center mb-3">افتخارات و گواهی نامه ها</h4>
+  <h4 class="shabnam d-block text-center mb-3">{{ __('content.Certificates') }}</h4>
 </section>
 <section class="d-flex justify-content-center">
 

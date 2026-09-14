@@ -1,6 +1,7 @@
 @extends('front-client.layout.masterPage')
 
-@section('title','درباره ما')
+@section('title',app()->getLocale() == 'fa' ? 'درباره ما' : 'About us')
+
 
 @section('abouts','active')
 
@@ -20,7 +21,7 @@
   }
   </style>   
 <div class="px-0 col-12 p1 rounded-2 align-content-center text-warning">
-  <h1 class="display-4 fst-italic vaziri">درباره ما</h1>
+  <h1 class="display-4 fst-italic vaziri">{{ __('content.about') }}</h1>
         <!-- <p class="lead my-3">Multiple lines of text that form the lede, informing new readers quickly and efficiently about what’s most interesting in this post’s contents.</p> -->
  </div> 
 </div>

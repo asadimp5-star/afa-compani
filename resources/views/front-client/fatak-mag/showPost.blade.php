@@ -1,6 +1,8 @@
 @extends('front-client.layout.masterPage')
 
-@section('title','مجله فرتاک ')
+@section('title',app()->getLocale() == 'fa' ? 'مجله فرتاک' : 'Fartak Magazine')
+
+
 
 @section('pos','active')
 
@@ -21,7 +23,7 @@
   }
   </style>   
 <div class="px-0 col-12 p1 rounded-2 align-content-center text-warning">
-  <h1 class="display-4 fst-italic yekan">مجله فرتاک</h1>
+  <h1 class="display-4 fst-italic yekan">{{ __('content.magazin') }}</h1>
         <!-- <p class="lead my-3">Multiple lines of text that form the lede, informing new readers quickly and efficiently about what’s most interesting in this post’s contents.</p> -->
  </div> 
     </div>
@@ -85,7 +87,7 @@
   
 
   <div class="col-4 mt-1 d-flex justify-content-center">
-    <a class="btn btn-warning" href="{{ route('index.postse') }}">بازگشت</a>
+    <a class="btn btn-warning" href="{{ route('index.postse') }}">{{ __('content.return') }}</a>
   </div>
 
     </section>

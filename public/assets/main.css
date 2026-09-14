@@ -90,4 +90,9 @@
   align-items: center;
   
 }
+.EnBody{
+    direction: ltr;
+    font-family: 'Times New Roman', Times, serif;  
+    
+}
 

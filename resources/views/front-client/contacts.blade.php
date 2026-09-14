@@ -1,6 +1,7 @@
 @extends('front-client.layout.masterPage')
 
-@section('title','تماس باما')
+@section('title',app()->getLocale() == 'fa' ? 'تماس باما' : 'Contact us')
+
 
 @section('contacts','active')
 
@@ -21,7 +22,7 @@
   }
   </style>   
 <div class="px-0 col-12 p1 rounded-2 align-content-center text-warning">
-  <h1 class="display-4 fst-italic vaziri">تماس باما</h1>
+  <h1 class="display-4 fst-italic vaziri">{{ __('content.contact') }}</h1>
         <!-- <p class="lead my-3">Multiple lines of text that form the lede, informing new readers quickly and efficiently about what’s most interesting in this post’s contents.</p> -->
  </div> 
     </div>
@@ -44,13 +45,13 @@
     
   <div class="text-center d-flex justify-content-center mb-3">
     <div class="col-md-4 mt-2 ">
-        <label for="co_adress">آدرس شرکت:</label>
+        <label for="co_adress">{{ __('content.company address') }} :</label>
     <h4 class="shabnam fw-bold">{{ $item->co_adress }}</h4>
     </div>
   </div>
   <div class="m-5 text-center d-flex justify-content-center">
         <div class="mb-3  col-8">
-        <label for="factory_adress">آدرس کارگاه:</label>
+        <label for="factory_adress">{{ __('content.factory address') }} :</label>
         <h4 class="sahel">{{ $item->factory_adress }}</h4>
         </div>
     </div>
@@ -83,19 +84,19 @@
       <section class="row  d-flex">
     <div class="m-5 d-flex col-lg-4 col-md-5 col-sm-8   justify-content-center">
         <div class="mb-1">
-        <label for="phone">تلفن :</label>
+        <label for="phone">{{ __('content.telephone') }} :</label>
         <h4 class="sahel">{{ $item->phone }}</h4>
         </div>
     </div>
     <div class="m-5 d-flex  col-lg-4 col-md-5 col-sm-8 justify-content-center">
         <div class="mb-1 ">
-        <label for="phone1">تلفن :</label>
+        <label for="phone1">{{ __('content.telephone') }} :</label>
         <h4 class="sahel">{{ $item->phone1 }}</h4>
         </div>
     </div>
     <div class="m-5 d-flex col-lg-4 col-md-5 col-sm-8 justify-content-center">
         <div class="mb-1">
-        <label for="email">ایمیل :</label>
+        <label for="email">{{ __('content.email') }} :</label>
         <h4 class="sahel">{{ $item->email }}</h4>
         </div>
     </div>
@@ -123,7 +124,7 @@
 
       <section class="d-flex row justify-content-center">
         <div class="col-md-4  p-1">
-        <label for="title"  class="form-label d-block invalid">عنوان*</label>
+        <label for="title"  class="form-label d-block invalid">{{ __('content.title') }}*</label>
         <input type="text" class="form-control" id="title" name="title" value="{{ old('title') }}" required>
         @error('title')
           <div class="alert alert-danger mt-1">{{ $message }}</div>
@@ -131,7 +132,7 @@
     
         </div>
         <div class="col-md-4  p-1">
-        <label for="full_name"  class="form-label d-block invalid">نام و نام خانوادگی*</label>
+        <label for="full_name"  class="form-label d-block invalid">{{ __('content.full name') }}*</label>
         <input type="text" class="form-control" id="full_name" name="full_name" value="{{ old('full_name') }}" required>
         @error('full_name')
         <div class="alert alert-danger mt-1">{{ $message }}</div>
@@ -144,7 +145,7 @@
   
   <section class="d-flex row justify-content-center">
     <div class="col-md-4 p-1">
-    <label for="phone"  class="form-label d-block invalid">تلفن</label>
+    <label for="phone"  class="form-label d-block invalid">{{ __('content.telephone') }}</label>
     <input type="text" class="form-control" id="phone" name="phone" value="{{ old('phone') }}" >
     @error('phone')
        <div class="alert alert-danger mt-1">{{ $message }}</div>
@@ -153,7 +154,7 @@
   </div>
 
    <div class="col-md-4 p-1">
-    <label for="email"  class="form-label d-block invalid">ایمیل</label>
+    <label for="email"  class="form-label d-block invalid">{{ __('content.email') }}</label>
     <input type="text" class="form-control" id="email" name="email" value="{{ old('email') }}" >
     @error('email')
        <div class="alert alert-danger mt-1">{{ $message }}</div>
@@ -166,8 +167,8 @@
 
  
   <div class="mb-3 col-8 ">
-    <label for="description" class="form-label">توضیحات</label>
-    <textarea class="form-control" name="description" placeholder="پیام خود را اینجا وارد کنید"></textarea>
+    <label for="description" class="form-label">{{ __('content.explaine') }}</label>
+    <textarea class="form-control" name="description" placeholder="{{ __('content.Enter your message here') }}"></textarea>
     @error('description')
        <div class="alert alert-danger mt-1">{{ $message }}</div>
     @enderror
@@ -176,7 +177,7 @@
   
   
   <div class="col-8 mt-3 ">
-    <button class="btn btn-primary" type="submit">ارسال پیام</button>
+    <button class="btn btn-primary" type="submit">{{ __('content.send') }}</button>
   </div>
  
 </form>

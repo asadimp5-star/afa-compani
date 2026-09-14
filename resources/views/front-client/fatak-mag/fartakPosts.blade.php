@@ -1,6 +1,8 @@
 @extends('front-client.layout.masterPage')
 
-@section('title','مجله فرتاک ')
+
+@section('title',app()->getLocale() == 'fa' ? 'مجله فرتاک' : 'Fartak Magazine')
+
 
 @section('pos','active')
 
@@ -21,7 +23,7 @@
   }
   </style>   
 <div class="px-0 col-12 p1 rounded-2 align-content-center text-warning">
-  <h1 class="display-4 fst-italic yekan">مجله فرتاک</h1>
+  <h1 class="display-4 fst-italic yekan">{{ __('content.magazin') }}</h1>
         <!-- <p class="lead my-3">Multiple lines of text that form the lede, informing new readers quickly and efficiently about what’s most interesting in this post’s contents.</p> -->
  </div> 
     </div>
@@ -37,7 +39,7 @@
   <!-- <caption>List of users</caption> -->
   <thead>
     <tr>
-      <th scope="col" class="text-center vaziri fs-4">آرشیو مقالات</th>
+      <th scope="col" class="text-center vaziri fs-4">{{ __('content.post archive') }}</th>
    
     </tr>
   </thead>
@@ -67,7 +69,7 @@
 
                     <p class="card-text">{{substr($item->description,0,100).'...'}}</p> 
 
-                    <a href="{{ route('index.post',$item->slug) }}" class="btn btn-outline-info mt-1">بیشتر بخوانید...</a>
+                    <a href="{{ route('index.post',['item' =>$item->slug]) }}" class="btn btn-outline-info mt-1"> {{ __('content.read more') }}...</a>
 
 
                 </div> 

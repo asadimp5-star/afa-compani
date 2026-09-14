@@ -85,9 +85,9 @@ class homeController extends Controller
         $poste = post::orderByDesc('id')->paginate(5);
         return view('front-client.fatak-mag.fartakPosts',compact('poste'));
     }
-    public function showPost(post $item)
+    public function showPost($locale, post $item)
     {
-        // $sowP = post::all($item);
+        
         
         return view('front-client.fatak-mag.showPost',compact('item'));
     }
@@ -131,7 +131,7 @@ class homeController extends Controller
         return view('front-client.products.machineFloor',compact('catshow'));
     }
 
-    public function showProd(category $item)
+    public function showProd($locale ,category $item)
     {
         // $showComm = comment::orderByDesc('id')->get();
         return view('front-client.products.show-product',compact('item'));
