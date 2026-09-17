@@ -122,7 +122,11 @@ Route::prefix('admin')->middleware(['Admin'])->group(function(){
 });
 
 
+ Route::middleware('Guest')->group(function(){
+    Route::post('/signin',[authenticContriller::class,'getIn'])->name('getIn');
 
+
+});
 
 
 Route::prefix('{locale}')->where(['locale'=>'fa|en'])->group(function(){
@@ -138,7 +142,6 @@ Route::prefix('{locale}')->where(['locale'=>'fa|en'])->group(function(){
         Route::get('/sign-in',[authenticContriller::class,'loging'])->name('index.sign-in');
 
 });
-    Route::post('/signin',[authenticContriller::class,'getIn'])->name('getIn');
 
 
 

@@ -17,7 +17,7 @@ class postController extends Controller
     public function index()
     {
         
-        $posts = post::orderBy('id' , 'desc')->paginate(3);
+        $posts = post::with('translations')->orderBy('id' , 'desc')->paginate(3);
 
         return view('admin.posts.post' , compact('posts'));
     }
@@ -31,7 +31,7 @@ class postController extends Controller
     }
 
 
-    private function handleUpload($request,$field,$deleteField,$oldImage,$folred='postImg'){
+    private function handleUpload($request,$field,$deleteField,$oldImage,$folred='postsImg'){
 
         if($request->hasFile($field)){
             if($oldImage){
@@ -63,21 +63,26 @@ class postController extends Controller
      */
     public function store(postRequest $request)
     {
+     
         $data =$request->validated();
-
         
 
-        $data['images0']=$this->handleUpload($request,'images0',null,null);
-        $data['images']=$this->handleUpload($request,'images',null,null);
-        $data['images1']=$this->handleUpload($request,'images1',null,null);
-
-        $data['slug']=Str::slug($data['title'],'-',null);
-        $data['user_Id']= Auth::id();
-
-
-        post::create($data);
-
+       $post= post::create([
+        'images0'=>$this->handleUpload($request,'images0',null,null),
+        'images'=>$this->handleUpload($request,'images',null,null),
+        'images1'=>$this->handleUpload($request,'images1',null,null),
         
+        'user_Id'=> Auth::id(),
+       ]); 
+       foreach(['fa','en'] as $locale){
+            if(! empty($data[$locale]['title'])){
+                $post->translateOrNew($locale)->fill($data[$locale]);
+            }
+       }
+       
+       $post->save();
+       
+
         return back()->with('success','مقاله با موفقیت ایجاد شد');
 
     }
@@ -96,7 +101,8 @@ class postController extends Controller
     public function edit(post $post)
     {
         // $show =post::find($post);
-        dd('hi');
+        
+
         return view('admin.posts.edit-post',compact('post'));       
     }
     public function userEdit(post $Upost){
@@ -112,14 +118,21 @@ class postController extends Controller
     {
         
         $data = $request->validated();
-        $data['images0'] = $this->handleUpload($request,'images0','delete_img0',$post->images0);
-        $data['images'] = $this->handleUpload($request,'images','delete_img',$post->images);
-        $data['images1'] = $this->handleUpload($request,'images1','delete_img1',$post->images1);
-        $data['slug']=Str::slug($data['title'],'-',null);
-        
-        
-        
-       $post->update($data);
+
+
+        $post->images0 = $this->handleUpload($request,'images0','delete_img0',$post->images0);
+        $post->images = $this->handleUpload($request,'images','delete_img',$post->images);
+        $post->images1 = $this->handleUpload($request,'images1','delete_img1',$post->images1);
+        $post->save();
+
+        foreach(['fa','en'] as $locale){
+            if(! empty($data[$locale]['title'])){
+                $post->translateOrNew($locale)->fill($data[$locale]);
+            }
+        }
+       $post->save(); 
+    
+
        return back()->with('success','مقاله با موفقیت ویرایش شد');
     }
 

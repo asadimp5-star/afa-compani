@@ -2,22 +2,24 @@
 
 namespace App\Models;
 
+use Astrotomic\Translatable\Translatable;
 use Illuminate\Database\Eloquent\Model;
+use App\Models\User;
 
 class post extends Model
 {
+
     
-    protected $table='posts';
 
-    protected $fillable = ['title','images0','description','images','description1','images1','description2','slug','status','user_Id'];
+    use Translatable;
+    public $table='posts';
+    public $translatedAttributes = ['title' , 'slug' , 'description' , 'description1' , 'description2'];
 
-    #[Override]
-    public function getRouteKeyName()
-    {
-        return 'slug';
-    }
+    public $fillable = ['images0','images','images1','user_Id'];
 
-    public function user(){
+    
+
+     public function user(){
        return $this->belongsTo(user::class,'user_Id','id');
     }
 }

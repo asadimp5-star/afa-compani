@@ -13,14 +13,14 @@ return new class extends Migration
     {
         Schema::create('posts', function (Blueprint $table) {
             $table->id();
-            $table->string('title');
+          
             $table->string('images0')->nullable();
-            $table->string('description')->nullable();
+        
             $table->string('images')->nullable();
-            $table->string('description1')->nullable();
+          
             $table->string('images1')->nullable();
-            $table->string('description2')->nullable();
-            $table->string('slug')->unique()->nullable();
+            
+           
             $table->rememberToken();
             $table->tinyInteger('status')->default(0)->comment('inactive=0,avctive=1');
             $table->foreignId('user_Id')->constrained('users')->cascadeOnDelete()->cascadeOnUpdate()->nullable();

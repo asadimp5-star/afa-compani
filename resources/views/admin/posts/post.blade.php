@@ -51,8 +51,8 @@
     @forelse($posts as $post)
     <tr>
       <td>{{ $loop->iteration }}</td>
-      <td>{{substr($post->title,0,10).'...'}}</td>
-      <td>{{ substr($post->description,0,20).'...' }}</td>
+      <td>{{substr($post->translate('fa')->title,0,10).'...'}}</td>
+      <td>{{ substr($post->translate('fa')->description,0,20).'...' }}</td>
       <td>{{ $post->user->Last_name }}</td>
       <td>{{ $post->created_at }}</td>
       <td>{{ ($post->status== 1 ? 'فعال' : 'غیر فعال')  }}</td>
@@ -71,7 +71,7 @@
                                 <button type="submit" onclick="return confirm('مطمئنی؟')" class="btn btn-outline-danger m-1">حذف</button>
                                 </form>
                                 
-                                <a href="{{ route('admin.posts.edite',$post->slug) }}" class="btn btn-outline-primary m-1">مشاهده و ویرایش</a>
+                                <a href="{{ route('admin.posts.edite',$post->id) }}" class="btn btn-outline-primary m-1">مشاهده و ویرایش</a>
                                 
                               </section>
                               
