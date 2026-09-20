@@ -13,13 +13,10 @@ return new class extends Migration
     {
         Schema::create('categories', function (Blueprint $table) {
             $table->id();
-            $table->string('title');
-            $table->string('product_code');
-            $table->string('slug')->nullable()->unique();
-            $table->string('description');
             $table->string('imags')->nullable();
+            $table->string('product_code')->nullable();
             $table->rememberToken();
-            $table->tinyInteger('product_type')->comment('carWash=0,tire=1,floor=2,floorMachin=3');
+            $table->tinyInteger('product_type')->comment('carWash=0,tire=1,floor=2,floorMachin=3')->nullable();
             $table->tinyInteger('status')->default(0)->comment('inactive=0,avctive=1');
             $table->foreignId('current_team_id')->nullable();
             $table->string('profile_photo_path', 2048)->nullable();

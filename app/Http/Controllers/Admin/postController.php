@@ -98,14 +98,14 @@ class postController extends Controller
     /**
      * Show the form for editing the specified resource.
      */
-    public function edit(post $post)
+    public function edit($locale,post $post)
     {
         // $show =post::find($post);
         
 
         return view('admin.posts.edit-post',compact('post'));       
     }
-    public function userEdit(post $Upost){
+    public function userEdit($locale,post $Upost){
         
         return view('admin.members.single-member.edit-poste',compact('Upost'));       
 
@@ -114,7 +114,7 @@ class postController extends Controller
     /**
      * Update the specified resource in storage.
      */
-    public function update(postRequest $request,post $post)
+    public function update($locale,postRequest $request,post $post)
     {
         
         $data = $request->validated();
@@ -139,17 +139,17 @@ class postController extends Controller
     /**
      * Remove the specified resource from storage.
      */
-    public function destroy(post $post)
+    public function destroy($locale,post $post)
     {
         $post->delete();
         return redirect()->route('admin.posts.post')->with('success','پست با موفقیت حذف شد');
     }
-     public function Udestroy(post $Upost)
+     public function Udestroy($locale,post $Upost)
     {
         $Upost->delete();
         return redirect()->route('admin.users.user-dashboard')->with('success','پست با موفقیت حذف شد');
     }
-    public function status($id){
+    public function status($locale,$id){
 
         $item = post::findOrFail($id);
        

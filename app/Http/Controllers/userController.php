@@ -46,7 +46,7 @@ class userController extends Controller
     /**
      * Display the specified resource.
      */
-    public function show(user $user)
+    public function show($locale,user $user)
     {
 
 
@@ -56,7 +56,7 @@ class userController extends Controller
     /**
      * Show the form for editing the specified resource.
      */
-    public function edit(post $pos)
+    public function edit($locale,post $pos)
     {
         return view('admin.members.observe',compact('pos'));
     }
@@ -72,14 +72,14 @@ class userController extends Controller
     /**
      * Remove the specified resource from storage.
      */
-    public function destroy(user $user)
+    public function destroy($locale,user $user)
     {
         $user->delete();
         return redirect()->route('admin.users.user')->with('success','حذف با موفقیت انجام شد');
         
     }
 
-    public function status(user $user)
+    public function status($locale,user $user)
     {
         $user->status = ($user->status == 1 ? 0 : 1);
         $user->save();
@@ -103,15 +103,15 @@ class userController extends Controller
     {
         return view('admin.members.single-member.member-profile');
     }
-    public function showUserPass(User $user)
+    public function showUserPass($locale,User $user)
     {
         return view('admin.admin-profile.cheng-pass',compact('user'));
     }
-    public function memberPass(User $user)
+    public function memberPass($locale,User $user)
     {
         return view('admin.members.single-member.cheng-pass',compact('user'));
     }
-    public function userPass(UpdatePasswordRequest $request, User $user)
+    public function userPass($locale,UpdatePasswordRequest $request, User $user)
     {
        
         $data = $request->validated();
@@ -121,11 +121,11 @@ class userController extends Controller
         return to_route('index.cuntactUs')->with('successe','رمز با موفقیت تغییر کرد');
 
     }
-    public function useremail(User $user)
+    public function useremail($locale,User $user)
     {
         return view('admin.admin-profile.chenge-email',compact('user'));
     }
-    public function UserEmailCheng(UpdateEmailRequest $request , User $user)
+    public function UserEmailCheng($locale,UpdateEmailRequest $request , User $user)
     {
         $data = $request->validated();
         
@@ -137,11 +137,11 @@ class userController extends Controller
 
 
     }
-    public function memberEmail(User $user)
+    public function memberEmail($locale,User $user)
     {
         return view('admin.members.chenge-email',compact('user'));
     }
-    public function memberEmailCheng(UpdateEmailRequest $request , User $user)
+    public function memberEmailCheng($locale,UpdateEmailRequest $request , User $user)
     {
         $data = $request->validated();
         $user ->update($data);

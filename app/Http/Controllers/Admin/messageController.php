@@ -11,7 +11,7 @@ class messageController extends Controller
     /**
      * Display a listing of the resource.
      */
-    public function index(message $item)
+    public function index($locale,message $item)
     {
         $messages = message::find($item);
         return view('admin.message-show',compact('messages'));
@@ -60,7 +60,7 @@ class messageController extends Controller
     /**
      * Remove the specified resource from storage.
      */
-    public function destroy(message $item)
+    public function destroy($locale,message $item)
     {
         $item->delete();
         

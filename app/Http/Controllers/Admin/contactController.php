@@ -78,7 +78,7 @@ class contactController extends Controller
     /**
      * Show the form for editing the specified resource.
      */
-    public function edit(contact $contactUs)
+    public function edit($locale,contact $contactUs)
     {
         return view('admin.site-content.contact-us.contact-us-edit',compact('contactUs'));
     }
@@ -86,7 +86,7 @@ class contactController extends Controller
     /**
      * Update the specified resource in storage.
      */
-    public function update(contactRequest $request, contact $contactUs)
+    public function update($locale,contactRequest $request, contact $contactUs)
     {
         $data = $request->validated();
         $data['img'] = $this->ImgUploadHandle($request,'img',$contactUs->img,'delete_imge0');

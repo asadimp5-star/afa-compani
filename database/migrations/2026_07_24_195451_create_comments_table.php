@@ -19,7 +19,7 @@ return new class extends Migration
             $table->string('reply')->nullable();
             $table->rememberToken();
             $table->tinyInteger('status')->default(0)->comment('inactive=0,avctive=1');
-            $table->foreignId('cat_Id')->constrained('categories')->cascadeOnDelete()->cascadeOnUpdate();
+            $table->foreignId('cat_id')->constrained('categories')->cascadeOnDelete()->cascadeOnUpdate();
             $table->foreignId('current_team_id')->nullable();
             $table->string('profile_photo_path', 2048)->nullable();
             $table->timestamps();

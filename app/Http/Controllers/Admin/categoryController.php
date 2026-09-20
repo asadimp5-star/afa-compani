@@ -52,23 +52,32 @@ class categoryController extends Controller
         return $oldImage;
     }
 
-    /**
+    /** 
      * Store a newly created resource in storage.
      */
     public function store(categoryRequest $request)
     {
         $data = $request->validated();
-        $data['imags']= $this->handleUpload($request,'imags',null,null);
-        $data['slug']= Str::slug($data['title'],'-',null);
 
-        category::create($data);    
+        $category = Category::create([
+             'imags'=> $this->handleUpload($request,'imags',null,null),
+        ]);
+         foreach(['fa','en'] as $locale){
+            if(! empty($data[$locale]['title'])){
+                $category->translateOrNew($locale)->fill($data[$locale]);
+            }
+        }
+
+        $category->save();
+
+       
         return redirect()->route('admin.category.index')->with('success','کالای جدید اضافه شد');
     }
 
     /**
      * Display the specified resource.
      */
-    public function status(category $item)
+    public function status($locale,category $item)
     {   
         $item->status = $item->status == 1 ? 0 : 1;
         $item->save();
@@ -78,7 +87,7 @@ class categoryController extends Controller
     /**
      * Show the form for editing the specified resource.
      */
-    public function edit(category $item)
+    public function edit($locale,category $item)
     {
         return view('admin.category.edit-prod',compact('item'));
     }
@@ -86,13 +95,19 @@ class categoryController extends Controller
     /**
      * Update the specified resource in storage.
      */
-    public function update(categoryRequest $request, category $item)
+    public function update($locale,categoryRequest $request, category $item)
     {
         
         $data = $request->validated();
-        $data['imags'] = $this->handleUpload($request,'imags','delete_imge',$item->imags);
-        $data['slug']=Str::slug($data['title'],'-',null);
-        $item->update($data);
+        $$item->imags = $this->handleUpload($request,'imags','delete_imge',$item->imags);
+        $item->save();
+
+        foreach(['fa','en'] as $locale){
+            if(! empty($data[$locale]['title'])){
+                $item->translateOrNew($locale)->fill($data[$locale]);
+            }
+        }
+       $item->save();
         
         return back()->with('success','کالا با موفقیت ویرایش شد');
     }
@@ -100,7 +115,7 @@ class categoryController extends Controller
     /**
      * Remove the specified resource from storage.
      */
-    public function destroy(category $item)
+    public function destroy($locale,category $item)
     {
         $item->delete();
         return back()->with('success','کالا با موفقیت حذف شد');

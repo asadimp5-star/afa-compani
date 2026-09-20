@@ -25,16 +25,36 @@
     <section>
     <form class="row g-3 yekan" action="{{ route('admin.category.store') }}" method="post" enctype="multipart/form-data">
       @csrf
+
+      <ul class="nav nav-tabs mb-3" id="langTab" role="tablist">
+        <li class="nav-item">
+          <a href="#fa" class="nav-link active" data-bs-toggle="tab">فارسی</a>
+        </li>
+        <li class="nav-item">
+          <a href="#en" class="nav-link" data-bs-toggle="tab">English</a>
+        </li>
+       </ul>
+       <div class="tab-content">
+
+       <div class="tab-pane fade show active" id="fa">
+
+        <div class="col-md-4">
+    <label for="fa_title" class="form-label">عنوان</label>
+    <input type="text" class="form-control" id="fa_title" name="fa[title]" value="{{ old('fa.title') }}" >
+    @error('fa.title')
+       <div class="alert alert-danger mt-1">{{ $message }}</div>
+    @enderror
+  </div>
   <div class="col-md-4">
-    <label for="title" class="form-label">عنوان</label>
-    <input type="text" class="form-control" id="title" name="title" required>
-    @error('title')
+    <label for="fa_slug" class="form-label">اسلاگ</label>
+    <input type="text" class="form-control" id="fa_slug" name="fa[slug]" value="{{ old('fa.slug') }}" >
+    @error('fa.slug')
        <div class="alert alert-danger mt-1">{{ $message }}</div>
     @enderror
   </div>
   <div class="col-md-4">
     <label for="product_code" class="form-label">کد محصول</label>
-    <input type="text" class="form-control" id="product_code" name="product_code" required>
+    <input type="text" class="form-control" id="product_code" name="product_code" >
     @error('product_code')
        <div class="alert alert-danger mt-1">{{ $message }}</div>
     @enderror
@@ -46,8 +66,8 @@
        <div class="alert alert-danger mt-1">{{ $message }}</div>
     @enderror
 </div>
-<section class="d-flex">
-  <div class="col-md-2">
+<section class="d-flex mt-4">
+  <div class="col-md-2 mt-4">
     <select class="form-select" name="product_type" required aria-label="select example">
       <option value="">نوع کالا را انتخاب کنید</option>
       <option value="0" {{ old('product_type')=='0'?'selected':'' }}>شامپو کارواش</option>
@@ -62,25 +82,62 @@
 
 </section>
 
-  <div class="mb-3">
-    <label for="description" class="form-label">توضیحات</label>
-    <textarea class="form-control" id="description" name="description" placeholder="توضیحات درباره کالا را اینجا وارد کنید" required></textarea>
-    @error('description')
+  <div class="mb-3 mt-5">
+    <label for="fa_description" class="form-label">توضیحات</label>
+    <textarea class="form-control" id="fa_description" name="fa[description]" placeholder="توضیحات درباره کالا را اینجا وارد کنید"></textarea>
+    @error('fa.description')
        <div class="alert alert-danger mt-1">{{ $message }}</div>
     @enderror
   </div>
+  
+
+
+       </div>
+
+       <div class="tab-pane fade" id="en">
+
+       <div class="col-md-4">
+    <label for="en_title" class="form-label">title</label>
+    <input type="text" class="form-control" id="en_title" name="en[title]" value="{{ old('en.title') }}" >
+    @error('en.title')
+       <div class="alert alert-danger mt-1">{{ $message }}</div>
+    @enderror
+  </div>
+  <div class="col-md-4">
+    <label for="en_slug" class="form-label">اسلاگ</label>
+    <input type="text" class="form-control" id="en_slug" name="en[slug]" value="{{ old('en.slug') }}" >
+    @error('en.slug')
+       <div class="alert alert-danger mt-1">{{ $message }}</div>
+    @enderror
+  </div>
+
+  <div class="mb-3">
+    <label for="en_description" class="form-label">توضیحات</label>
+    <textarea class="form-control" id="en_description" name="en[description]" placeholder="توضیحات درباره کالا را اینجا وارد کنید"></textarea>
+    @error('en.description')
+       <div class="alert alert-danger mt-1">{{ $message }}</div>
+    @enderror
+  </div>
+
+
+       </div>
+
+
+
+
+       </div>
   
   
   
   <div class="col-12">
     <button class="btn btn-primary" type="submit">ثبت کالا</button>
   </div>
-  <div class="col-12">
-    <a class="btn btn-warning" href="{{ route('admin.category.index') }}">بازگشت</a>
-  </div>
+ 
 </form>
     </section>
-
+<div class="col-12">
+    <a class="btn btn-warning" href="{{ route('admin.category.index') }}">بازگشت</a>
+  </div>
 </section>
 
 

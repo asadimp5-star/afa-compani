@@ -29,8 +29,8 @@
    
 <div class="container">
  <div class="carousel-caption text-start">
- <h1 class="vaziri mobilePic">{{ __('content.first-float') }}</h1>
- <p class="opacity-75 yekan fs-3 mobilePic">{{ __('content.first-float1') }}</p>
+ <h1 class="vaziri mobilePic fs-4">{{ __('content.first-float') }}</h1>
+ <p class="opacity-75 yekan fs-5 mobilePic">{{ __('content.first-float1') }}</p>
  <p><a class="btn btn-lg btn-primary yekan" href="{{ route('index.cuntactUs') }}">{{ __('content.contact') }}</a></p>
  </div>
  </div> 
@@ -46,8 +46,8 @@
     </div>
 <div class="container">
  <div class="carousel-caption">
- <h1 class="vaziri mobilePic">{{ __('content.sec-float') }}</h1> 
-<p class="yekan fs-3 mobilePic">{{ __('content.sec-float2') }}</p> 
+ <h1 class="vaziri mobilePic fs-4">{{ __('content.sec-float') }}</h1> 
+<p class="yekan fs-5 mobilePic">{{ __('content.sec-float2') }}</p> 
 <p><a class="btn btn-lg btn-primary yekan" href="{{ route('index.postse') }}">{{ __('content.magazin') }}</a></p>
  </div>
  </div>
@@ -63,8 +63,8 @@
     </div> 
 <div class="container"> 
 <div class="carousel-caption text-end">
- <h1 class="vaziri mobilePic">{{ __('content.thirt-float') }}</h1> 
-<p class="yekan fs-3 mobilePic">{{ __('content.thirt-float1') }}</p> 
+ <h1 class="vaziri mobilePic fs-4">{{ __('content.thirt-float') }}</h1> 
+<p class="yekan fs-5 mobilePic">{{ __('content.thirt-float1') }}</p> 
 <p><a class="btn btn-lg btn-primary yekan" href="{{ route('index.galarey') }}">{{ __('content.enter-gallary') }}</a></p>
  </div> 
 </div>

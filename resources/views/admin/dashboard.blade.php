@@ -52,7 +52,8 @@
                             <td>{{substr($comment->reply,0 ,15).'...' }}</td>
                             <td>{{ ($comment->status == 1) ? 'فعال': 'غیرفعال' }}</td>
                             <td>{{ $comment->created_at }}</td>
-                            <td>{{ $comment->category->title }}</td>
+                           
+                            
                             <td>
                               <section class="d-flex">
 

@@ -11,7 +11,7 @@ class post extends Model
 
     
 
-    use Translatable;
+    use Translatable; 
     public $table='posts';
     public $translatedAttributes = ['title' , 'slug' , 'description' , 'description1' , 'description2'];
 

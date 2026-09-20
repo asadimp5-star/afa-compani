@@ -76,7 +76,7 @@ class firstPageController extends Controller
     /**
      * Show the form for editing the specified resource.
      */
-    public function edit(firstPage $first)
+    public function edit($locale,firstPage $first)
     {
 
         return view('admin.site-content.first-page.edit-first-page',compact('first'));
@@ -88,7 +88,7 @@ class firstPageController extends Controller
     /**
      * Update the specified resource in storage.
      */
-    public function update(first_pageRequest $request , firstPage $first)
+    public function update($locale,first_pageRequest $request , firstPage $first)
     {
         $data = $request->validated();
         

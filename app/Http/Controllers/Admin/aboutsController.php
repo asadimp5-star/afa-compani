@@ -79,7 +79,7 @@ class aboutsController extends Controller
     /**
      * Show the form for editing the specified resource.
      */
-    public function edit(about $abouts)
+    public function edit($locale,about $abouts)
     {
 
         return view('admin.site-content.about-us.edit-aboutus',compact('abouts'));
@@ -88,7 +88,7 @@ class aboutsController extends Controller
     /**
      * Update the specified resource in storage.
      */
-    public function update(aboutRequest $request, about $abouts)
+    public function update($locale,aboutRequest $request, about $abouts)
     {
         
         $data = $request->validated();

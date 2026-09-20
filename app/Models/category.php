@@ -2,13 +2,24 @@
 
 namespace App\Models;
 
+use Astrotomic\Translatable\Translatable;
 use Illuminate\Database\Eloquent\Model;
 
-class category extends Model
+class Category extends Model
 {
+    use Translatable; 
+
     protected $table='categories';
 
-    protected $fillable = ['title','product_code','slug','description','imags','product_type','status'];
+    public $translatedAttributes = ['title' , 'slug' , 'description'];
+
+
+    protected $fillable = ['product_code','imags','product_type','status'];
+
+    protected $translationModel = CategoriesTranslation::class;
+
+    
+
 
 
     public function getRouteKeyName()

@@ -43,7 +43,7 @@ class commentController extends Controller
     /**
      * Show the form for editing the specified resource.
      */
-    public function edit(comment $comment)
+    public function edit($locale,comment $comment)
     {
         $show =comment::find($comment);
        
@@ -53,7 +53,7 @@ class commentController extends Controller
     /**
      * Update the specified resource in storage.
      */
-    public function update(Request $request, comment $item)
+    public function update($locale,Request $request, comment $item)
     {
         $validated = $request->validate([
         'reply' => 'nullable|string|max:255',
@@ -66,14 +66,14 @@ class commentController extends Controller
     /**
      * Remove the specified resource from storage.
      */
-    public function destroy(comment $comment)
+    public function destroy($locale,comment $comment)
     {
         $comment->delete();
         
         return redirect()->route('/admin')->with('success', 'نظر با موفقیت حذف شد');
 
     }
-    public function status(comment $comment){
+    public function status($locale ,comment $comment){
         $comment->status = $comment->status == 1 ? 0 : 1;
         $comment->save();
         return redirect()->route('/admin')->with('success', 'تغییر وضعیت با موفقیت انجام شد');

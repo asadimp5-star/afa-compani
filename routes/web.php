@@ -16,6 +16,8 @@ use Illuminate\Support\Facades\App;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
 
+Route::prefix('{locale}')->where(['locale'=>'fa|en'])->group(function(){
+
 Route::prefix('admin')->middleware(['Admin'])->group(function(){
     Route::get('/',[homeController::class,'index'])->name('/admin');
     Route::post('/status/{comment}',[commentController::class,'status'])->name('admin.comment.status');
@@ -94,7 +96,7 @@ Route::prefix('admin')->middleware(['Admin'])->group(function(){
         Route::get('/edite/{first}',[firstPageController::class,'edit'])->name('admin.content.first-page.edit');
         Route::put('/update/{first}',[firstPageController::class,'update'])->name('admin.content.first-page.update');
         // Route::get('/first-page',[homeController::class,'firstPage'])->name('admin.content.first-page');
-        Route::post('/store',[firstPageController ::class,'store'])->name('admin.content.first-page.store');
+        Route::post('/storee',[firstPageController ::class,'store'])->name('admin.content.first-page.store');
 
 
         Route::get('/gallery',[homeController::class,'gallery'])->name('admin.content.gallery');
@@ -118,18 +120,16 @@ Route::prefix('admin')->middleware(['Admin'])->group(function(){
     Route::prefix('/settings')->group(function(){
         Route::get('/profile',[homeController::class,'show'])->name('admin.settings.show');
     });
+
+    
+
     
 });
 
 
- Route::middleware('Guest')->group(function(){
-    Route::post('/signin',[authenticContriller::class,'getIn'])->name('getIn');
+ 
 
 
-});
-
-
-Route::prefix('{locale}')->where(['locale'=>'fa|en'])->group(function(){
 
     Route::get('/home',[homeController::class,'home'])->name('index.home');
     Route::get('/about-us',[homeController::class,'about'])->name('index.aboutUs');
@@ -140,11 +140,8 @@ Route::prefix('{locale}')->where(['locale'=>'fa|en'])->group(function(){
     Route::get('/post-page/{item}',[homeController::class,'showPost'])->name('index.post');
     Route::middleware('Guest')->group(function(){
         Route::get('/sign-in',[authenticContriller::class,'loging'])->name('index.sign-in');
-
+        Route::post('/signin',[authenticContriller::class,'getIn'])->name('getIn');
 });
-
-
-
 
     Route::prefix('/category')->group(function(){
 

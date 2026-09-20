@@ -70,7 +70,7 @@ class galleryController extends Controller
     /**
      * Show the form for editing the specified resource.
      */
-    public function edit(gallery $item)
+    public function edit($locale,gallery $item)
     {
         return view('admin.site-content.gallery.edit-gallery',compact('item'));
     }
@@ -78,7 +78,7 @@ class galleryController extends Controller
     /**
      * Update the specified resource in storage.
      */
-    public function update(galleryRequest $request, gallery $item)
+    public function update($locale,galleryRequest $request, gallery $item)
     {
         $data = $request->validated();
         $data['images']= $this->handleImgUpload($request,'images',$item->images);
@@ -89,13 +89,13 @@ class galleryController extends Controller
     /**
      * Remove the specified resource from storage.
      */
-    public function destroy(gallery $item)
+    public function destroy($locale,gallery $item)
     {
         $item->delete();
         return back()->with('success','با موفقیت پاک شد');
     }
 
-    public function status(gallery $item)
+    public function status($locale,gallery $item)
     {
         $item->status = $item->status == 1 ? 0 : 1;
         $item->save();
