@@ -46,7 +46,7 @@ class homeController extends Controller
     }
     public function aboutUs()
     {
-        return view('admin.site-content.about-us.edit-aboutus');
+        return view('admin.site-content.about-us.about-us');
     }
     public function contactUs()
     {

@@ -2,11 +2,17 @@
 
 namespace App\Models;
 
+use Astrotomic\Translatable\Translatable;
 use Illuminate\Database\Eloquent\Model;
 
 class gallery extends Model
 {
+     use Translatable; 
+
     protected $table='galleries';
 
-    protected $fillable = ['title','description','images','status'];
+    public $translatedAttributes = ['title','description'];
+
+
+    protected $fillable = ['images','status'];
 }

@@ -16,13 +16,10 @@ return new class extends Migration
             $table->string('Fimg1')->nullable();
             $table->string('Fimg2')->nullable();
             $table->string('Fimg3')->nullable();
-            $table->string('baner')->nullable();
+            
             $table->string('images0')->nullable();
-            $table->string('description')->nullable();
             $table->string('images')->nullable();
-            $table->string('description1')->nullable();
             $table->string('images1')->nullable();
-            $table->string('description2')->nullable();
             $table->rememberToken();
             $table->foreignId('current_team_id')->nullable();
             $table->string('profile_photo_path', 2048)->nullable();

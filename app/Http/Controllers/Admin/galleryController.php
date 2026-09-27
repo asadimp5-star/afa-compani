@@ -54,8 +54,19 @@ class galleryController extends Controller
     public function store(galleryRequest $request)
     {
         $data = $request->validated();
-        $data['images'] = $this->handleImgUpload($request,'images',null);
-        gallery::create($data);
+        $gallery= gallery::create([
+            'images' => $this->handleImgUpload($request,'images',null)
+        ]);
+        foreach(['fa','en'] as $locale){
+            if(! empty($data[$locale]['title'])){
+                $gallery->translateOrNew($locale)->fill($data[$locale]);
+            }
+        }
+        
+        $gallery->save();
+        
+        
+
         return redirect()->route('admin.content.gallery')->with('success','عکس با موفقیت بارکذاری شد');
     }
 
@@ -80,9 +91,22 @@ class galleryController extends Controller
      */
     public function update($locale,galleryRequest $request, gallery $item)
     {
+
+        $gallery = $item;
+        
         $data = $request->validated();
-        $data['images']= $this->handleImgUpload($request,'images',$item->images);
-        $item->update($data);
+
+        $gallery->images= $this->handleImgUpload($request,'images',$gallery->images);
+        $gallery->save();
+
+        foreach(['fa','en'] as $lang){
+            if(! empty($data[$lang]['title'])){
+                $gallery->translateOrNew($lang)->fill($data[$lang]);
+            }
+            
+        }
+        $gallery->save();
+
         return back()->with('success','با موفقیت ویرایش شد');
     }
 

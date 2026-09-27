@@ -13,12 +13,8 @@ return new class extends Migration
     {
         Schema::create('abouts', function (Blueprint $table) {
             $table->id();
-            $table->string('title')->nullable();
             $table->string('images0')->nullable();
-            $table->string('description')->nullable();
             $table->string('images')->nullable();
-            $table->string('description1')->nullable();
-            $table->string('slug')->unique()->nullable();
             $table->rememberToken();
             $table->foreignId('current_team_id')->nullable();
             $table->string('profile_photo_path', 2048)->nullable();

@@ -60,11 +60,20 @@ class aboutsController extends Controller
     public function store(aboutRequest $request)
     {
         $data = $request->validated();
-        $data['images0']= $this->handelUploadImg($request,'images0',null,null);
-        $data['images']= $this->handelUploadImg($request,'images',null,null);
-        $data['slug']= Str::slug($data['title'],'-',null);
+        
+        $abouts = about::create([
+            'images0'=> $this->handelUploadImg($request,'images0',null,null),
+            'images'=> $this->handelUploadImg($request,'images',null,null)
+        ]);
+        foreach(['fa','en'] as $locale){
+            if(! empty($data[$locale]['title'])){
+                $abouts->translateOrNew($locale)->fill($data[$locale]);
+            }
+        }
+        $abouts->save();
+      
 
-        $abouts = about::create($data);
+        
         return redirect()->route('admin.site-content.about-us.about-us',$abouts->id) ->with('success','درباره ما با موفقیت ساخته شد');
     }
 
@@ -90,12 +99,19 @@ class aboutsController extends Controller
      */
     public function update($locale,aboutRequest $request, about $abouts)
     {
+        $item = $abouts;
         
         $data = $request->validated();
-        $data['images0']= $this->handelUploadImg($request,'images0',$abouts->images0,'delete_imge');
-        $data['images']= $this->handelUploadImg($request,'images',$abouts->images,'delete_imge0');
-      
-        $abouts->update($data);
+        $item->images0= $this->handelUploadImg($request,'images0',$abouts->images0,'delete_imge');
+        $item->images= $this->handelUploadImg($request,'images',$abouts->images,'delete_imge0');
+        $item->save();
+        
+        foreach(['fa','en'] as $lang){
+            if(! empty($data[$lang]['title'])){
+                $item->translateOrNew($lang)->fill($data[$lang]);
+            }
+        }
+       $item->save();
         return back()->with('success','صفحه با ما با موفقیت ایجاد شد');
     }
 

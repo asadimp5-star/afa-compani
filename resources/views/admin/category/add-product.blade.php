@@ -68,7 +68,7 @@
 </div>
 <section class="d-flex mt-4">
   <div class="col-md-2 mt-4">
-    <select class="form-select" name="product_type" required aria-label="select example">
+    <select class="form-select" name="product_type"  aria-label="select example">
       <option value="">نوع کالا را انتخاب کنید</option>
       <option value="0" {{ old('product_type')=='0'?'selected':'' }}>شامپو کارواش</option>
       <option value="1" {{ old('product_type')=='1'?'selected':'' }}>واکس تایر</option>
@@ -82,7 +82,7 @@
 
 </section>
 
-  <div class="mb-3 mt-5">
+  <div class="mb-3 mt-5 col-8">
     <label for="fa_description" class="form-label">توضیحات</label>
     <textarea class="form-control" id="fa_description" name="fa[description]" placeholder="توضیحات درباره کالا را اینجا وارد کنید"></textarea>
     @error('fa.description')
@@ -111,7 +111,7 @@
     @enderror
   </div>
 
-  <div class="mb-3">
+  <div class="mb-3 col-8">
     <label for="en_description" class="form-label">توضیحات</label>
     <textarea class="form-control" id="en_description" name="en[description]" placeholder="توضیحات درباره کالا را اینجا وارد کنید"></textarea>
     @error('en.description')

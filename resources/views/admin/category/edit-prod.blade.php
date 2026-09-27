@@ -21,7 +21,7 @@
 <section>
   
 
-<form action="{{ route('admin.category.update',$item) }}" method="post" enctype="multipart/form-data">
+<form action="{{ route('admin.category.update',$item->id) }}" method="post" enctype="multipart/form-data">
   @csrf
   @method('PUT')
 
@@ -62,9 +62,9 @@
   <section class="col-3 justify-content-center">
 
     <div class="card shadow-sm mt-2" > 
-      <img src="{{ asset('storage/catImge/' .$item->images0) }}" class="bd-placeholder-img card-img-top" height="225" role="img" width="100%" alt="{{ $item->translate('fa')?->title??'' }}">
+      <img src="{{ asset('storage/catImge/' .$item->imags) }}" class="bd-placeholder-img card-img-top" height="225" role="img" width="100%" alt="{{ $item->translate('fa')?->title??'' }}">
 
-      @if ($item->images0)
+      @if ($item->imags)
         <div class="form-check form-switch m-2">
           <input type="hidden" name="delete_imge" value="0">  
           <input class="form-check-input" type="checkbox" role="switch" name="delete_imge" value="1" id="delete0">
@@ -74,7 +74,7 @@
       @endif
 
       
-    </div>
+    </div> 
     
     <div class="card-body"> 
       <div class="col-md-10">
@@ -107,9 +107,9 @@
 
 </section>
 
-  <div class="mb-3">
+  <div class="mb-3 col-8">
     <label for="fa_description" class="form-label">توضیحات</label>
-    <textarea class="form-control" id="fa_description" name="fa[description]">{{ $item->translate('fa')?->decoration??'' }}</textarea>
+    <textarea class="form-control" id="fa_description" name="fa[description]">{{ $item->translate('fa')?->description??'' }}</textarea>
     @error('fa.description')
        <div class="alert alert-danger mt-1">{{ $message }}</div>
     @enderror
@@ -136,9 +136,9 @@
     @enderror
   </div>
 
-  <div class="mb-3">
+  <div class="mb-3 col-8">
     <label for="en_description" class="form-label">توضیحات</label>
-    <textarea class="form-control" id="en_description" name="en[description]">{{ $item->translate('en')?->decoration??'' }}</textarea>
+    <textarea class="form-control" id="en_description" name="en[description]">{{ $item->translate('en')?->description??'' }}</textarea>
     @error('en.description')
        <div class="alert alert-danger mt-1">{{ $message }}</div>
     @enderror

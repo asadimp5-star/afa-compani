@@ -23,18 +23,34 @@ class contactRequest extends FormRequest
     public function rules(): array
     {
         return [
-            'co_adress'=>'nullable|string',
+
             'img'=>'nullable|image|mimes:jpg,jpeg,gif,png|max:2024',
-            'factory_adress'=>'nullable|string',
             'img1'=>'nullable|image|mimes:jpg,jpeg,gif,png|max:2024',
-            'description'=>'nullable|string',
-            'phone'=>'nullable|digits:11',
-            'phone1'=>'nullable|digits:11',
-            'email'=>'nullable|email',
             'delete_imge'=>'nullable|boolean',
-            'delete_imge0'=>'nullable|boolean'
+            'delete_imge0'=>'nullable|boolean',
             
             
+
+            'fa' => 'nullable|array',
+
+            'fa.co_adress'=>'nullable|string',
+            'fa.factory_adress'=>'nullable|string',
+            'fa.description'=>'nullable|string',
+            'fa.phone'=>'nullable|digits:11',
+            'fa.phone1'=>'nullable|digits:11',
+            'fa.email'=>'nullable|email',
+            
+            
+            'en' => 'nullable|array',
+
+            'en.co_adress'=>'nullable|string',
+            'en.factory_adress'=>'nullable|string',
+            'en.description'=>'nullable|string',
+            'en.phone'=>'nullable|digits:11',
+            'en.phone1'=>'nullable|digits:11',
+            'en.email'=>'nullable|email',
+           
         ];
+
     }
 }

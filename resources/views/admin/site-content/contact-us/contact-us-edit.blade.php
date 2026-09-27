@@ -22,11 +22,25 @@
 <section class="m-5">
     
     <section>
-    <form class="row g-3 yekan" action="{{ route('admin.content.contact-us.update',$contactUs->id) }}" method="post" enctype="multipart/form-data">
+    <form class="row g-3 yekan" action="{{ route('admin.content.contact-us.update',$contactUs) }}" method="post" enctype="multipart/form-data">
       @csrf
-  <div class="col-md-4">
-    <label for="co_adress" class="form-label">آدرس شرکت</label>
-    <input type="text" class="form-control" id="co_adress" name="co_adress" value="{{ $contactUs->co_adress }}">
+      @method('PUT')
+
+      <ul class="nav nav-tabs mb-3" id="langTab" role="tablist">
+        <li class="nav-item">
+          <a href="#fa" class="nav-link active" data-bs-toggle="tab">فارسی</a>
+        </li>
+        <li class="nav-item">
+          <a href="#en" class="nav-link" data-bs-toggle="tab">English</a>
+        </li>
+       </ul>
+       <div class="tab-content">
+
+       <div class="tab-pane fade show active" id="fa">
+
+        <div class="col-md-4">
+    <label for="fa_co_adress" class="form-label">آدرس شرکت</label>
+    <input type="text" class="form-control" id="fa_co_adress" name="fa[co_adress]" value="{{ $contactUs->translate('fa')?->co_adress??'' }}" >
   </div>
   <div>
     <div class="col-6">
@@ -46,11 +60,10 @@
           <input class="form-control" type="file" id="img" name="img">
         </div>
   </div>
-  
 
   <div class="mb-3 col-md-6">
-    <label for="factory_adress" class="form-label">آدرس کارگاه</label>    
-    <input type="text" class="form-control" id="factory_adress" name="factory_adress" value="{{ $contactUs->factory_adress }}">
+    <label for="fa_factory_adress" class="form-label">آدرس کارگاه</label>    
+    <input type="text" class="form-control" id="fa_factory_adress" name="fa[factory_adress]" value="{{ $contactUs->translate('fa')?->factory_adress??'' }}">
 
   </div>
 
@@ -72,46 +85,84 @@
             <input class="form-control" type="file" id="img1" name="img1">
         </div>
   </div>
-  
 
   <div class="mb-3">
-    <label for="description" class="form-label">توضیحات</label>
-    <textarea class="form-control" id="description" name="description" placeholder="توضیحات را اینجا وارد کنید">{{ $contactUs->description }}</textarea>
+    <label for="fa_description" class="form-label">توضیحات</label>
+    <textarea class="form-control" id="fa_description" name="fa[description]">{{ $contactUs->translate('fa')?->description??'' }}</textarea>
   </div>
 
   <div class="col-md-4">
-    <label for="phone" class="form-label">تلفن</label>
-    <input type="tel" class="form-control" id="phone" name="phone" value="{{ $contactUs->phone }}">
+    <label for="fa_phone" class="form-label">تلفن</label>
+    <input type="tel" class="form-control" id="fa_phone" name="fa[phone]" value="{{ $contactUs->translate('fa')?->phone??'' }}" >
   </div>
 
   <div class="col-md-4">
-    <label for="phone1" class="form-label">1 تلفن</label>
-    <input type="tel" class="form-control" id="phone1" name="phone1" value="{{ $contactUs->phone1 }}">
+    <label for="fa_phone1" class="form-label">1 تلفن</label>
+    <input type="tel" class="form-control" id="fa_phone1" name="fa[phone1]" value="{{ $contactUs->translate('fa')?->phone1??'' }}">
   </div>
 
   <div class="col-md-4">
-    <label for="email" class="form-label">ایمیل</label>
-    <input type="email" class="form-control" id="email" name="email" value="{{ $contactUs->email }}">
+    <label for="fa_email" class="form-label">ایمیل</label>
+    <input type="email" class="form-control" id="fa_email" name="fa[email]" value="{{ $contactUs->translate('fa')?->email??'' }}">
   </div>
 
 
+       </div>
 
+       <div class="tab-pane fade" id="en">
 
-
-
-
+          <div class="col-md-4">
+    <label for="en_co_adress" class="form-label">آدرس شرکت</label>
+    <input type="text" class="form-control" id="en_co_adress" name="en[co_adress]" value="{{ $contactUs->translate('en')?->co_adress??'' }}" >
+  </div>
   
 
+  <div class="mb-3 col-md-6">
+    <label for="en_factory_adress" class="form-label">آدرس کارگاه</label>    
+    <input type="text" class="form-control" id="en_factory_adress" name="en[factory_adress]" value="{{ $contactUs->translate('en')?->factory_adress??'' }}">
 
+  </div>
+
+
+  <div class="mb-3">
+    <label for="en_description" class="form-label">توضیحات</label>
+    <textarea class="form-control" id="en_description" name="en[description]">{{ $contactUs->translate('en')?->description??'' }}</textarea>
+  </div>
+
+  <div class="col-md-4">
+    <label for="en_phone" class="form-label">تلفن</label>
+    <input type="tel" class="form-control" id="en_phone" name="en[phone]" value="{{ $contactUs->translate('en')?->phone??'' }}">
+  </div>
+
+  <div class="col-md-4">
+    <label for="en_phone1" class="form-label">1 تلفن</label>
+    <input type="tel" class="form-control" id="en_phone1" name="en[phone1]" value="{{ $contactUs->translate('en')?->phone1??'' }}">
+  </div>
+
+  <div class="col-md-4">
+    <label for="en_email" class="form-label">ایمیل</label>
+    <input type="email" class="form-control" id="en_email" name="en[email]" value="{{ $contactUs->translate('en')?->email??'' }}">
+  </div>
+
+      
+    
+
+
+
+       </div>
   
   
-  <div class="col-12">
+  
+  
+  
+</form>
+
+ <div class="col-12 mt-4">
     <button class="btn btn-primary" type="submit">ثبت</button>
   </div>
-  <div class="col-12">
+  <div class="col-12 mt-2">
     <a class="btn btn-warning" href="{{ route('admin.content.index') }}">بازگشت</a>
   </div>
-</form>
     </section>
 
 </section>

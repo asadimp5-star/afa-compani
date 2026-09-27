@@ -114,8 +114,9 @@ class postController extends Controller
     /**
      * Update the specified resource in storage.
      */
-    public function update($locale,postRequest $request,post $post)
+    public function update($locale,postRequest $request, $id)
     {
+        $post = post::findOrFail($id);
         
         $data = $request->validated();
 
@@ -125,10 +126,10 @@ class postController extends Controller
         $post->images1 = $this->handleUpload($request,'images1','delete_img1',$post->images1);
         $post->save();
 
-        foreach(['fa','en'] as $locale){
-            if(! empty($data[$locale]['title'])){
-                $post->translateOrNew($locale)->fill($data[$locale]);
-            }
+        foreach(['fa','en'] as $lang){
+            
+                $post->translateOrNew($lang)->fill($data[$lang]);
+            
         }
        $post->save(); 
     

@@ -60,10 +60,19 @@ class contactController extends Controller
     {
         $data= $request->validated();
         
-        $data['img']= $this->ImgUploadHandle($request,'img',null,null);
-        $data['img1']= $this->ImgUploadHandle($request,'img1',null,null);
+        $contactUs = contact::create([
+          'img'=> $this->ImgUploadHandle($request,'img',null,null),
+          'img1'=> $this->ImgUploadHandle($request,'img1',null,null)  
+        ]);
+        foreach(['fa','en'] as $locale){
+            if(! empty($data[$locale]['co_adress'])){
+                $contactUs->translateOrNew($locale)->fill($data[$locale]);
+            }
+        }
+        $contactUs->save();
         
-       $contactUs = contact::create($data);
+        
+       
         return redirect()->route('admin.content.contact-us.contact-us-edit',$contactUs->id)->with('success','ارتباط با ما ایجاد شد');
     }
 
@@ -88,10 +97,21 @@ class contactController extends Controller
      */
     public function update($locale,contactRequest $request, contact $contactUs)
     {
+        $item= $contactUs;
         $data = $request->validated();
-        $data['img'] = $this->ImgUploadHandle($request,'img',$contactUs->img,'delete_imge0');
-        $data['img1'] = $this->ImgUploadHandle($request,'img1',$contactUs->img1,'delete_imge');
-        $contactUs->update($data);
+        
+        $item->img = $this->ImgUploadHandle($request,'img',$contactUs->img,'delete_imge0');
+        $item->img1 = $this->ImgUploadHandle($request,'img1',$contactUs->img1,'delete_imge');
+        $item->save();
+        foreach(['fa','en'] as $lang){
+            if(! empty($data[$lang]['co_adress'])){
+                $contactUs->translateOrNew($lang)->fill($data[$lang]);
+            }
+        }
+        $item->save();
+
+        
+
         return back()->with('success','ارتباط با ما با موفقیت ویرایش شد');
     }
 

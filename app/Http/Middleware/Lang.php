@@ -20,14 +20,19 @@ class Lang
     public function handle(Request $request, Closure $next): Response
     {
 
+       
+        if($request->path()=='/' || empty($request->segment(1)))
+        {
+            return to_route('index.home');
+        }
         
         $locale = $request->segment(1);
         
         if(!array_key_exists($locale ,config('app.locales'))){
            $segment = $request->segments();
-            $path = $request->path();
             
-            $segment[0] = config('app.locale') . '/' . $path;
+            
+            $segment[0] = config('app.locale');
            
             return redirect(implode('/',$segment));   
            

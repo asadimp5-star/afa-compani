@@ -2,13 +2,19 @@
 
 namespace App\Models;
 
+use Astrotomic\Translatable\Translatable;
 use Illuminate\Database\Eloquent\Model;
 
 class about extends Model
 {
-    
+    use Translatable; 
     protected $table='abouts';
 
-    protected $fillable = ['title','images0','description','images','description1','slug'];
+    public $translatedAttributes = ['title' , 'description','description1','slug'];
+
+    protected $fillable = ['images0','images'];
+
+    protected $translationModel = AboutsTranslation::class;
+
     
 }

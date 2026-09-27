@@ -22,11 +22,26 @@ class galleryRequest extends FormRequest
      */
     public function rules(): array
     {
-        return [
-            'title'=> 'required|min:5',
-            'description'=> 'required|string|max:2000',
-            'images'=> 'required|image|mimes:jpg,jpeg,gif,png|max:2024',
-            'delete_img'=> 'nullable|boolean'
+         return [
+
+            'images'=> 'nullable|image|mimes:jpg,jpeg,gif,png|max:2024',
+            
+            
+
+            'fa' => 'nullable|array',
+
+            'fa.title'=> 'nullable|min:5',
+            'fa.description'=> 'nullable|string|max:2000',
+
+                   
+            
+            'en' => 'nullable|array',
+
+            'en.title'=> 'nullable|min:5',
+            'en.description'=> 'nullable|string|max:2000',
+
+           
         ];
+     
     }
 }

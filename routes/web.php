@@ -84,8 +84,8 @@ Route::prefix('admin')->middleware(['Admin'])->group(function(){
         });
         Route::get('/add-product',[categoryController::class,'create'])->name('admin.category.create');
         Route::post('/store',[categoryController::class,'store'])->name('admin.category.store');
-        Route::get('/edit/{item}',[categoryController::class,'edit'])->name('admin.category.edit');
-        Route::put('/update/{item}',[categoryController::class,'update'])->name('admin.category.update');
+        Route::get('/edit/{slug}',[categoryController::class,'edit'])->name('admin.category.edit');
+        Route::put('/update/{id}',[categoryController::class,'update'])->name('admin.category.update');
         Route::post('/status/{item}',[categoryController::class,'status'])->name('admin.category.status');
         Route::delete('/delete/{item}',[categoryController::class,'destroy'])->name('admin.category.delete');
         
@@ -95,7 +95,7 @@ Route::prefix('admin')->middleware(['Admin'])->group(function(){
         Route::get('/index',[homeController::class,'content'])->name('admin.content.index');
         Route::get('/edite/{first}',[firstPageController::class,'edit'])->name('admin.content.first-page.edit');
         Route::put('/update/{first}',[firstPageController::class,'update'])->name('admin.content.first-page.update');
-        // Route::get('/first-page',[homeController::class,'firstPage'])->name('admin.content.first-page');
+        Route::get('/first-page',[homeController::class,'firstPage'])->name('admin.content.first-page');
         Route::post('/storee',[firstPageController ::class,'store'])->name('admin.content.first-page.store');
 
 
@@ -105,9 +105,9 @@ Route::prefix('admin')->middleware(['Admin'])->group(function(){
         Route::post('/statuus/{item}',[galleryController::class,'status'])->name('admin.content.gallery.status');
         Route::delete('/delette/{item}',[galleryController::class,'destroy'])->name('admin.content.gallery.destroy');
         Route::get('/showw/{item}',[galleryController::class,'edit'])->name('admin.content.gallery.edit');
-        Route::post('/g-update/{item}',[galleryController::class,'update'])->name('admin.content.gallery.update');
+        Route::put('/g-update/{item}',[galleryController::class,'update'])->name('admin.content.gallery.update');
 
-        // Route::get('/about-us',[homeController::class,'aboutUs'])->name('admin.content.about-us');
+        Route::get('/about-us',[homeController::class,'aboutUs'])->name('admin.content.about-us');
         Route::post('/store',[aboutsController::class,'store'])->name('admin.content.about-us.store');
         Route::get('/edit/{abouts}',[aboutsController::class,'edit'])->name('admin.content.abouts.edit');
         Route::put('/updat/{abouts}',[aboutsController::class,'update'])->name('admin.content.abouts.updat');
@@ -115,7 +115,7 @@ Route::prefix('admin')->middleware(['Admin'])->group(function(){
         Route::get('/contact-us',[homeController::class,'contactUs'])->name('admin.content.contact-us');
         Route::post('/stor',[contactController::class,'store'])->name('admin.content.contact-us.store');
         Route::get('/editee/{contactUs}',[contactController::class,'edit'])->name('admin.content.contact-us.edit');
-        Route::post('/updatee/{contactUs}',[contactController::class,'update'])->name('admin.content.contact-us.update');
+        Route::put('/updatee/{contactUs}',[contactController::class,'update'])->name('admin.content.contact-us.update');
     });
     Route::prefix('/settings')->group(function(){
         Route::get('/profile',[homeController::class,'show'])->name('admin.settings.show');

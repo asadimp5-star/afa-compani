@@ -4,6 +4,7 @@ namespace App\Http\Requests;
 
 use Illuminate\Contracts\Validation\ValidationRule;
 use Illuminate\Foundation\Http\FormRequest;
+use Illuminate\Validation\Rule;
 
 class first_pageRequest extends FormRequest
 {
@@ -22,17 +23,37 @@ class first_pageRequest extends FormRequest
      */
     public function rules(): array
     {
+
         return [
-            'baner'=>'nullable',
+
             'images0'=>'nullable|image|mimes:jpg,jpeg,gif,png|max:2024',
             'Fimg1'=>'nullable|image|mimes:jpg,jpeg,gif,png|max:2024',
             'Fimg2'=>'nullable|image|mimes:jpg,jpeg,gif,png|max:2024',
             'Fimg3'=>'nullable|image|mimes:jpg,jpeg,gif,png|max:2024',
-            'description'=>'nullable',
             'images'=>'nullable|image|mimes:jpg,jpeg,gif,png|max:2024',
-            'description1'=>'nullable',
             'images1'=>'nullable|image|mimes:jpg,jpeg,gif,png|max:2024',
-            'description2'=>'nullable'
+
+            'delete_imge'=> 'nullable|boolean',
+            
+            
+
+            'fa' => 'nullable|array',
+
+            'fa.baner'=>'nullable',
+            'fa.description'=>'nullable',
+            'fa.description1'=>'nullable',
+            'fa.description2'=>'nullable',
+            'fa.delete_imge'=>'nullable|boolean',
+            
+            
+            'en' => 'nullable|array',
+
+            'en.baner'=>'nullable',
+            'en.description'=>'nullable',
+            'en.description1'=>'nullable',
+            'en.description2'=>'nullable',
+           
         ];
+
     }
 }

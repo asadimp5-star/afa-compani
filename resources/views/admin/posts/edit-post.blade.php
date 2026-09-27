@@ -87,7 +87,7 @@
 
 <div class="mb-3 col-8">
     <label for="fa_description" class="form-label">توضیحات</label>
-    <textarea class="form-control" name="fa_description">{{ $post->translate('fa')?->description??'' }}</textarea>
+    <textarea class="form-control" name="fa[description]">{{ $post->translate('fa')?->description??'' }}</textarea>
     @error('fa.description')
        <div class="alert alert-danger mt-1">{{ $message }}</div>
     @enderror
@@ -123,7 +123,7 @@
 
   <div class="mb-3 col-8">
     <label for="fa_description1" class="form-label">1توضیحات</label>
-    <textarea class="form-control" name="fa_description1">{{ $post->translate('fa')?->description1??'' }}</textarea>
+    <textarea class="form-control" name="fa[description1]">{{ $post->translate('fa')?->description1??'' }}</textarea>
     @error('fa.description1')
        <div class="alert alert-danger mt-1">{{ $message }}</div>
     @enderror
@@ -161,7 +161,7 @@
 
   <div class="mb-3 col-8">
     <label for="fa_description2" class="form-label">توضیحات2</label>
-    <textarea class="form-control" name="fa_description2">{{ $post->translate('fa')?->description2??'' }}</textarea>
+    <textarea class="form-control" name="fa[description2]">{{ $post->translate('fa')?->description2??'' }}</textarea>
     @error('fa.description2')
        <div class="alert alert-danger mt-1">{{ $message }}</div>
     @enderror
@@ -193,7 +193,7 @@
   
   <div class="mb-3 col-8">
     <label for="en_description" class="form-label">description</label>
-    <textarea class="form-control" name="en[description]">{{ $post->translate('en')?->description2??'' }}</textarea>
+    <textarea class="form-control" name="en[description]">{{ $post->translate('en')?->description??'' }}</textarea>
     @error('en.description')
        <div class="alert alert-danger mt-1">{{ $message }}</div>
     @enderror

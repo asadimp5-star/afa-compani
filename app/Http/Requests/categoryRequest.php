@@ -23,14 +23,14 @@ class categoryRequest extends FormRequest
      */
     public function rules(): array
     {
-        $category= $this->route('post') ?? $this->route('id');
+        $category= $this->route('item') ?? $this->route('id');
         $categoryId = is_object($category) ? $category->id : $category;
 
         return [
 
             'imags'=>'nullable|image|mimes:jpg,jpeg,gif,png|max:2024',
             'delete_imge'=> 'nullable|boolean',
-            'product_type'=> 'required|in:0,1,2,3',
+            'product_type'=> 'nullable|in:0,1,2,3',
             'product_code' => 'nullable|max:100',
             
 
@@ -39,7 +39,7 @@ class categoryRequest extends FormRequest
             'fa.title' => 'nullable|min:10|max:100',
             'fa.slug' => [
                 'nullable','string','max:255',
-                Rule::unique('categories_translations','slug')->ignore($categoryId,'categories_id')->where('locale','fa')
+                Rule::unique('category_translations','slug')->ignore($categoryId,'category_id')->where('locale','fa')
             ],
             'fa.description'=>'nullable|string|max:2000',
             'fa.delete_imge'=>'nullable|boolean',
@@ -50,7 +50,7 @@ class categoryRequest extends FormRequest
             'en.title' => 'nullable|min:10|max:100',
             'en.slug' => [
                 'nullable','string','max:255',
-                Rule::unique('categories_translations','slug')->ignore($categoryId,'categories_id')->where('locale','en')
+                Rule::unique('category_translations','slug')->ignore($categoryId,'category_id')->where('locale','en')
             ],
             'en.description'=>'nullable|string|max:2000',
            

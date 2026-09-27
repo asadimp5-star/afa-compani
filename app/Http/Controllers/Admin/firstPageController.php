@@ -51,16 +51,23 @@ class firstPageController extends Controller
     {
         
         $data= $request->validated();
+
+       $firstPage = firstPage::create([
+        'images0'=> $this->handleUpload($request,'images0',null),
+        'images'=> $this->handleUpload($request,'images',null),
+        'images1'=> $this->handleUpload($request,'images1',null),
+        'Fimg1'=> $this->handleUpload($request,'Fimg1',null),
+        'Fimg2'=> $this->handleUpload($request,'Fimg2',null),
+        'Fimg3'=> $this->handleUpload($request,'Fimg3',null)
+        ]);
+        foreach(['fa','en'] as $locale){
+            if(! empty($data[$locale]['baner'])){
+                $firstPage->translateOrNew($locale)->fill($data[$locale]);
+            }
+        }
+        $firstPage->save();
+
        
-        $data['images0']= $this->handleUpload($request,'images0',null);
-        $data['images']= $this->handleUpload($request,'images',null);
-        $data['images1']= $this->handleUpload($request,'images1',null);
-        $data['Fimg1']= $this->handleUpload($request,'Fimg1',null);
-        $data['Fimg2']= $this->handleUpload($request,'Fimg2',null);
-        $data['Fimg3']= $this->handleUpload($request,'Fimg3',null);
-        
-        
-       $firstPage = firstPage::create($data);
     
         return redirect()->route('admin.site-content.first-page.index-update',$firstPage->id)->with('success','صفحه اول با موفقیت ساخته شد');
     }
@@ -90,16 +97,26 @@ class firstPageController extends Controller
      */
     public function update($locale,first_pageRequest $request , firstPage $first)
     {
+
+        $item = $first;
+
         $data = $request->validated();
         
-        $data['images0'] = $this->handleUpload($request,'images0',$first->images0);
-        $data['images'] = $this->handleUpload($request,'images',$first->images);
-        $data['images1'] = $this->handleUpload($request,'images1',$first->images1);
-        $data['Fimg1'] = $this->handleUpload($request,'Fimg1',$first->Fimg1);
-        $data['Fimg2'] = $this->handleUpload($request,'Fimg2',$first->Fimg2);
-        $data['Fimg3'] = $this->handleUpload($request,'Fimg3',$first->Fimg3);
+        $item->images0 = $this->handleUpload($request,'images0',$item->images0);
+        $item->images = $this->handleUpload($request,'images',$item->images);
+        $item->images1 = $this->handleUpload($request,'images1',$item->images1);
+        $item->Fimg1 = $this->handleUpload($request,'Fimg1',$item->Fimg1);
+        $item->Fimg2 = $this->handleUpload($request,'Fimg2',$item->Fimg2);
+        $item->Fimg3 = $this->handleUpload($request,'Fimg3',$item->Fimg3);
+        $item->save();
        
-        $first->update($data);
+        foreach(['fa','en'] as $lang){
+            if(! empty($data[$lang]['baner'])){
+                $item->translateOrNew($lang)->fill($data[$lang]);
+            }
+        }
+       $item->save();
+        
         return back()->with('success','صفحه اول با موفقیت ویرایش شد');
     }
 

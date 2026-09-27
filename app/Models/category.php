@@ -16,16 +16,16 @@ class Category extends Model
 
     protected $fillable = ['product_code','imags','product_type','status'];
 
-    protected $translationModel = CategoriesTranslation::class;
+    protected $translationModel = CategoryTranslation::class;
 
     
 
-
-
-    public function getRouteKeyName()
+public function getRouteKeyName()
     {
         return 'slug';
     }
+
+    
 
     public function comment(){
         return $this->hasMany(comment::class,'cat_Id','id');

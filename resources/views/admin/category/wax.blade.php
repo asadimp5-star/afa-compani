@@ -54,19 +54,19 @@
       <td>
         <section class="d-flex">
 
-                                <form class="mt-1" action="{{ route('admin.category.status',$item->id) }}" method="post">
+                                <form class="mt-1" action="{{ route('admin.category.status',$item->translate('fa')->category->slug) }}" method="post">
                                 @csrf
                                 <button type="submit" class="btn btn-outline-success">تغییر وضعیت</button>
                                 </form>
 
 
-                                <form action="{{ route('admin.category.delete',$item->id) }}" method="post">
+                                <form action="{{ route('admin.category.delete',$item->translate('fa')->category->slug) }}" method="post">
                                  @csrf
                                  @method('DELETE') 
                                 <button type="submit" onclick="return confirm('مطمئنی؟')" class="btn btn-outline-danger m-1">حذف</button>
                                 </form>
                                 
-                                <a href="{{ route('admin.category.edit',$item->id) }}" class="btn btn-outline-primary m-1">مشاهده و ویرایش</a>
+                                <a href="{{ route('admin.category.edit',$item->translate('fa')->category->slug) }}" class="btn btn-outline-primary m-1">مشاهده و ویرایش</a>
                                 
                               </section>
                               

@@ -2,12 +2,21 @@
 
 namespace App\Models;
 
+use Astrotomic\Translatable\Translatable;
 use Illuminate\Database\Eloquent\Model;
 use Override;
 
 class contact extends Model
 {
-    protected $table = 'contact_uc';
+    use Translatable; 
+
+    protected $table = 'contact_us';
+
+    public $translatedAttributes = ['co_adress' ,'factory_adress','description','phone','phone1','email'];
+
     
-    protected $fillable = ['co_adress','img','factory_adress','img1','description','phone','phone1','email'];
+    protected $fillable = ['img','img1'];
+
+    protected $translationModel = ContactUsTranslation::class;
+
 }

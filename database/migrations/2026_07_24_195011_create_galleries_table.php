@@ -13,9 +13,7 @@ return new class extends Migration
     {
         Schema::create('galleries', function (Blueprint $table) {
             $table->id();
-            $table->string('title');
-            $table->string('description');
-            $table->string('images');
+            $table->string('images')->nullable();
             $table->rememberToken();
             $table->tinyInteger('status')->default(0)->comment('inactive=0,avctive=1');
             $table->foreignId('current_team_id')->nullable();

@@ -26,7 +26,19 @@
   @csrf
   @method('PUT')
 
-  <div class="col-10 d-block">
+      <ul class="nav nav-tabs mb-3" id="langTab" role="tablist">
+        <li class="nav-item">
+          <a href="#fa" class="nav-link active" data-bs-toggle="tab">فارسی</a>
+        </li>
+        <li class="nav-item">
+          <a href="#en" class="nav-link" data-bs-toggle="tab">English</a>
+        </li>
+       </ul>
+       <div class="tab-content">
+
+       <div class="tab-pane fade show active" id="fa">
+
+       <div class="col-10 d-block">
     <div class="card col-6 shadow-sm mt-2" > 
       <div class="col-8">
           <img src="{{ asset('storage/first_page/'. $first->Fimg1) }}" class="bd-placeholder-img card-img-top" height="50%" role="img" width="50%%" alt="#">
@@ -82,13 +94,11 @@
     </div>
       
   </div>
-    
-    
 
     <div class="col-md-4">
-    <label for="baner" class="form-label">عنوان بنر سایت</label>
-    <input type="text" class="form-control" name="baner" id="baner" value="{{ $first->baner }}" required>
-    @error('baner')
+    <label for="fa_baner" class="form-label">عنوان بنر سایت</label>
+    <input type="text" class="form-control" name="fa[baner]" id="fa_baner" value="{{ $first->translate('fa')?->baner??'' }}">
+    @error('fa.baner')
        <div class="alert alert-danger mt-1">{{ $message }}</div>
     @enderror
     </div>
@@ -106,17 +116,16 @@
            @enderror
         </div>
     </div>
-    
 
     <div class="mb-3">
-    <label for="description" class="form-label">توضیحات</label>
-    <textarea class="form-control" id="description" name="description" placeholder="توضیحات  را اینجا وارد کنید">{{ $first->description }}</textarea>
-    @error('description')
+    <label for="fa_description" class="form-label">توضیحات</label>
+    <textarea class="form-control" id="fa_description" name="fa[description]" placeholder="توضیحات  را اینجا وارد کنید">{{ $first->translate('fa')?->description??'' }}</textarea>
+    @error('fa.description')
        <div class="alert alert-danger mt-1">{{ $message }}</div>
     @enderror
     </div>
 
-    <div>
+  <div>
         <div class="col-6">
            <img src="{{ asset('storage/first_page/'. $first->images) }}" class="bd-placeholder-img card-img-top" height="100%" role="img" width="100%" alt="#"> 
         </div>
@@ -129,15 +138,15 @@
             @enderror
         </div>
     </div>
-  
 
   <div class="mb-3">
-    <label for="description1" class="form-label">1توضیحات</label>
-    <textarea class="form-control" id="description1" name="description1" placeholder="توضیحات را اینجا وارد کنید">{{ $first->description1 }}</textarea>
-    @error('description1')
+    <label for="fa_description1" class="form-label">1توضیحات</label>
+    <textarea class="form-control" id="fa_description1" name="fa[description1]" placeholder="توضیحات را اینجا وارد کنید">{{ $first->translate('fa')?->description1??'' }}</textarea>
+    @error('fa.description1')
        <div class="alert alert-danger mt-1">{{ $message }}</div>
     @enderror
   </div>
+
 
   <div>
     <div class="col-6">
@@ -153,12 +162,61 @@
         @enderror
     </div>
   </div>
+
+ 
+
+  <div class="mb-3">
+    <label for="fa_description2" class="form-label">توضیحات2</label>
+    <textarea class="form-control" id="fa_description2" name="fa[description2]" placeholder="توضیحات را اینجا وارد کنید">{{ $first->translate('fa')?->description2??'' }}</textarea>
+    @error('fa.description2')
+       <div class="alert alert-danger mt-1">{{ $message }}</div>
+    @enderror
+  </div>
+
+  
+
+
+       </div>
+
+       <div class="tab-pane fade" id="en">
+
+      
+    
+
+    <div class="col-md-4">
+    <label for="en_baner" class="form-label">عنوان بنر سایت</label>
+    <input type="text" class="form-control" name="en[baner]" id="en_baner" value="{{ $first->translate('en')?->baner??'' }}">
+    @error('en.baner')
+       <div class="alert alert-danger mt-1">{{ $message }}</div>
+    @enderror
+    </div>
+
+    
+
+    <div class="mb-3">
+    <label for="en_description" class="form-label">توضیحات</label>
+    <textarea class="form-control" id="en_description" name="en[description]" placeholder="توضیحات  را اینجا وارد کنید">{{ $first->translate('en')?->description??'' }}</textarea>
+    @error('en.description')
+       <div class="alert alert-danger mt-1">{{ $message }}</div>
+    @enderror
+    </div>
+
   
 
   <div class="mb-3">
-    <label for="description2" class="form-label">توضیحات2</label>
-    <textarea class="form-control" id="description2" name="description2" placeholder="توضیحات را اینجا وارد کنید">{{ $first->description2 }}</textarea>
-    @error('description2')
+    <label for="en_description1" class="form-label">1توضیحات</label>
+    <textarea class="form-control" id="en_description1" name="en[description1]" placeholder="توضیحات را اینجا وارد کنید">{{ $first->translate('en')?->description1??'' }}</textarea>
+    @error('en.description1')
+       <div class="alert alert-danger mt-1">{{ $message }}</div>
+    @enderror
+  </div>
+
+  
+
+  <div class="mb-3">
+    <label for="en_description2" class="form-label">توضیحات2</label>
+    <textarea class="form-control" id="en_description2" name="en[description2]" placeholder="توضیحات را اینجا وارد کنید">{{ $first->translate('en')?->description2??'' }}</textarea>
+    @error('en.description2')
        <div class="alert alert-danger mt-1">{{ $message }}</div>
     @enderror
   </div>
@@ -167,8 +225,7 @@
 
 
 
-
-
+       </div>
 
   
 

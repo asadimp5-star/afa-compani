@@ -5,6 +5,8 @@ namespace App\Http\Controllers\Admin;
 use App\Http\Controllers\Controller;
 use App\Http\Requests\categoryRequest;
 use App\Models\category;
+use App\Models\Category as ModelsCategory;
+use App\Models\CategoryTranslation;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Storage;
 use Illuminate\Support\Str;
@@ -58,8 +60,10 @@ class categoryController extends Controller
     public function store(categoryRequest $request)
     {
         $data = $request->validated();
-
+        
         $category = Category::create([
+            'product_type'=>$data['product_type'],
+            'product_code'=>$data['product_code'],
              'imags'=> $this->handleUpload($request,'imags',null,null),
         ]);
          foreach(['fa','en'] as $locale){
@@ -67,6 +71,8 @@ class categoryController extends Controller
                 $category->translateOrNew($locale)->fill($data[$locale]);
             }
         }
+    
+
 
         $category->save();
 
@@ -77,34 +83,40 @@ class categoryController extends Controller
     /**
      * Display the specified resource.
      */
-    public function status($locale,category $item)
-    {   
-        $item->status = $item->status == 1 ? 0 : 1;
-        $item->save();
+    public function status($locale,$slug)
+    {  
+        $translate = CategoryTranslation::where('slug' ,$slug)->firstOrFail();
+        $category=$translate->category;
+
+        $category->status = $category->status == 1 ? 0 : 1;
+        $category->save(); 
+        
         return back()->with('success','تغییر وضعیت با موفقیت انجام شد');        
     }
 
     /**
      * Show the form for editing the specified resource.
      */
-    public function edit($locale,category $item)
+    public function edit($locale,$slug)
     {
+        $translate = CategoryTranslation::where('slug',$slug)->firstOrFail();
+        $item = $translate->category;
         return view('admin.category.edit-prod',compact('item'));
     }
 
     /**
      * Update the specified resource in storage.
      */
-    public function update($locale,categoryRequest $request, category $item)
+    public function update($locale,categoryRequest $request, $id)
     {
-        
+        $item = Category::findOrFail($id);
         $data = $request->validated();
-        $$item->imags = $this->handleUpload($request,'imags','delete_imge',$item->imags);
+        $item->imags = $this->handleUpload($request,'imags','delete_imge',$item->imags);
         $item->save();
 
-        foreach(['fa','en'] as $locale){
-            if(! empty($data[$locale]['title'])){
-                $item->translateOrNew($locale)->fill($data[$locale]);
+        foreach(['fa','en'] as $lang){
+            if(! empty($data[$lang]['title'])){
+                $item->translateOrNew($lang)->fill($data[$lang]);
             }
         }
        $item->save();
@@ -120,10 +132,11 @@ class categoryController extends Controller
         $item->delete();
         return back()->with('success','کالا با موفقیت حذف شد');
     }
-    public function carWash(category $category){
+    public function carWash(Category $category){
 
-        $carWas = category::where('product_type','=', 0)->orderByDesc('created_at')->paginate(3);
-
+        $carWas = Category::where('product_type','=', 0)->orderByDesc('created_at')->paginate(3);
+      
+       
         return view('admin.category.car-wash',compact('carWas'));
     }
     public function wax(category $category){
