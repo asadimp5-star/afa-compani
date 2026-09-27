@@ -17,7 +17,11 @@ class post extends Model
 
     public $fillable = ['images0','images','images1','user_Id'];
 
-    
+     
+    public function resolveRouteBinding($value, $field = null)
+    {
+        return $this->whereTranslation('slug',$value)->firstOrFail();
+    }
 
      public function user(){
        return $this->belongsTo(user::class,'user_Id','id');

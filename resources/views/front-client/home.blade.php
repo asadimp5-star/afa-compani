@@ -11,7 +11,7 @@
 
 
 
-<section class="d-flex rounded-2 justify-content-center mt-5">
+<section class="d-flex justify-content-center mt-5">
   <section class="mt-5 col-12 ">
         <div id="myCarousel" class="carousel slide mb-6" data-bs-ride="carousel">
  <div class="carousel-indicators mt-5">
@@ -22,8 +22,8 @@
 <div class="carousel-inner">
   @if ($item->Fimg1)
     <div class="carousel-item">
-    <div style="width: 100%; height: 50vh;">
-       <img aria-hidden="true"  src="{{ asset('storage/first_page/'. $item->Fimg1) }}" class="d-block h-100 w-100 "  role="img" style="object-fit: cover; position: absolute;"  alt="#"> 
+    <div style="width: 100%; height: 70vh;">
+       <img aria-hidden="true"  src="{{ asset('storage/first_page/'. $item->Fimg1) }}" class="d-block h-100 w-100 rounded-3"  role="img" style="object-fit: cover; position: absolute;"  alt="#"> 
       <!-- <rect width="100%" height="100%" fill="var(--bs-secondary-color)"></rect>   -->
     </div>
    
@@ -39,8 +39,8 @@
   
   @if ($item->Fimg2)
     <div class="carousel-item active"> 
-<div style="width: 100%; height: 50vh;">
-      <img aria-hidden="true" src="{{ asset('storage/first_page/'. $item->Fimg2) }}" class="d-block h-100 w-100"  role="img"   alt="#"> 
+<div style="width: 100%; height: 70vh;">
+      <img aria-hidden="true" src="{{ asset('storage/first_page/'. $item->Fimg2) }}" class="d-block h-100 w-100 rounded-3"  role="img"   alt="#"> 
        
       <!-- <rect width="100%" height="100%" fill="var(--bs-secondary-color)"></rect>   -->
     </div>
@@ -56,8 +56,8 @@
 
   @if ($item->Fimg3)
     <div class="carousel-item">
- <div style="width: 100%; height: 50vh;">
-      <img aria-hidden="true" src="{{ asset('storage/first_page/'. $item->Fimg3) }}" class="d-block h-100 w-100"    role="img"  alt="#"> 
+ <div style="width: 100%; height: 70vh;">
+      <img aria-hidden="true" src="{{ asset('storage/first_page/'. $item->Fimg3) }}" class="d-block h-100 w-100 rounded-3"    role="img"  alt="#"> 
        
       <!-- <rect width="100%" height="100%" fill="var(--bs-secondary-color)"></rect>   -->
     </div> 
@@ -93,7 +93,7 @@
           background-position: center;
           background-repeat: no-repeat;
           background-size: cover;
-          height: 40vh;
+          height: 25vh;
           width: 100%;
   }
   </style>   
@@ -147,7 +147,7 @@
  </div>
  @if ($item->images)
     <div class="col-md-5"> 
-<img aria-hidden="true"  src="{{ asset('storage/first_page/'. $item->images) }}" class="d-block h-100 w-100 "  role="img" style="object-fit: cover;"  alt="#"> 
+<img aria-hidden="true"  src="{{ asset('storage/first_page/'. $item->images) }}" class="d-block h-100 w-100 rounded-2"  role="img" style="object-fit: cover;"  alt="#"> 
  </div>
  @endif
  
@@ -162,7 +162,7 @@
 </div>
 @if ($item->images1)
 <div class="col-md-5 order-md-1"> 
-<img aria-hidden="true"  src="{{ asset('storage/first_page/'. $item->images1) }}" class="d-block h-100 w-100 "  role="img" style="object-fit: cover;"  alt="#">
+<img aria-hidden="true"  src="{{ asset('storage/first_page/'. $item->images1) }}" class="d-block h-100 w-100 rounded-2"  role="img" style="object-fit: cover;"  alt="#">
  </div>
 @endif
  

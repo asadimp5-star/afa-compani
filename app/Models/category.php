@@ -4,6 +4,7 @@ namespace App\Models;
 
 use Astrotomic\Translatable\Translatable;
 use Illuminate\Database\Eloquent\Model;
+use Override;
 
 class Category extends Model
 {
@@ -20,9 +21,10 @@ class Category extends Model
 
     
 
-public function getRouteKeyName()
+    #[Override]
+    public function resolveRouteBinding($value, $field = null)
     {
-        return 'slug';
+        return $this->whereTranslation('slug',$value)->firstOrFail();
     }
 
     
