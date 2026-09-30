@@ -21,6 +21,7 @@ return Application::configure(basePath: dirname(__DIR__))
         'Admin' => App\Http\Middleware\Admin::class,
         'Guest' => App\Http\Middleware\Guest::class,
         'lang'  => App\Http\Middleware\Lang::class,
+        'HTTPSProtocol' => App\Http\Middleware\HTTPSProtocol::class
     ]);
         $middleware->append(App\Http\Middleware\Lang::class);
       
