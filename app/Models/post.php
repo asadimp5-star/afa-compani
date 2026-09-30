@@ -6,7 +6,7 @@ use Astrotomic\Translatable\Translatable;
 use Illuminate\Database\Eloquent\Model;
 use App\Models\User;
 
-class post extends Model
+class Post extends Model
 {
 
     
@@ -24,6 +24,6 @@ class post extends Model
     }
 
      public function user(){
-       return $this->belongsTo(user::class,'user_Id','id');
+       return $this->belongsTo(User::class,'user_Id','id');
     }
 }

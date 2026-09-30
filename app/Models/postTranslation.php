@@ -3,8 +3,9 @@
 namespace App\Models;
 
 use Illuminate\Database\Eloquent\Model;
+use App\Models\Post;
 
-class postTranslation extends Model
+class PostTranslation extends Model
 {
     public $table='post_translations';
     public $timestamps = false;
@@ -13,6 +14,6 @@ class postTranslation extends Model
 
     public function post()
     {
-        return $this->belongsTo(post::class);
+        return $this->belongsTo(Post::class);
     }
 }

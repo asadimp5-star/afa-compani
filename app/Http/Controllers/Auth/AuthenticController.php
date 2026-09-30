@@ -7,7 +7,7 @@ use App\Models\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 
-class authenticContriller extends Controller
+class AuthenticController extends Controller
 {
     public function loging()
     {

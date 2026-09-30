@@ -3,14 +3,14 @@
 namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
-use App\Http\Requests\contactRequest;
-use App\Models\contact;
+use App\Http\Requests\ContactRequest;
+use App\Models\Contact;
 use Illuminate\Http\Request;
 use Illuminate\Http\UploadedFile;
 use Illuminate\Support\Facades\Storage;
 use Illuminate\Support\Str;
 
-class contactController extends Controller
+class ContactController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -56,11 +56,11 @@ class contactController extends Controller
     /**
      * Store a newly created resource in storage.
      */
-    public function store(contactRequest $request)
+    public function store(ContactRequest $request)
     {
         $data= $request->validated();
         
-        $contactUs = contact::create([
+        $contactUs = Contact::create([
           'img'=> $this->ImgUploadHandle($request,'img',null,null),
           'img1'=> $this->ImgUploadHandle($request,'img1',null,null)  
         ]);
@@ -87,7 +87,7 @@ class contactController extends Controller
     /**
      * Show the form for editing the specified resource.
      */
-    public function edit($locale,contact $contactUs)
+    public function edit($locale,Contact $contactUs)
     {
         return view('admin.site-content.contact-us.contact-us-edit',compact('contactUs'));
     }
@@ -95,7 +95,7 @@ class contactController extends Controller
     /**
      * Update the specified resource in storage.
      */
-    public function update($locale,contactRequest $request, contact $contactUs)
+    public function update($locale,ContactRequest $request, Contact $contactUs)
     {
         $item= $contactUs;
         $data = $request->validated();

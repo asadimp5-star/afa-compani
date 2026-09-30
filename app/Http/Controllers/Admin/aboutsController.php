@@ -3,14 +3,14 @@
 namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
-use App\Http\Requests\aboutRequest;
-use App\Models\about;
+use App\Http\Requests\AboutRequest;
+use App\Models\About;
 use Faker\Core\Uuid;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Storage;
 use Illuminate\Support\Str;
 
-class aboutsController extends Controller
+class AboutsController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -57,11 +57,11 @@ class aboutsController extends Controller
     /**
      * Store a newly created resource in storage.
      */
-    public function store(aboutRequest $request)
+    public function store(AboutRequest $request)
     {
         $data = $request->validated();
         
-        $abouts = about::create([
+        $abouts = About::create([
             'images0'=> $this->handelUploadImg($request,'images0',null,null),
             'images'=> $this->handelUploadImg($request,'images',null,null)
         ]);
@@ -88,7 +88,7 @@ class aboutsController extends Controller
     /**
      * Show the form for editing the specified resource.
      */
-    public function edit($locale,about $abouts)
+    public function edit($locale,About $abouts)
     {
 
         return view('admin.site-content.about-us.edit-aboutus',compact('abouts'));
@@ -97,7 +97,7 @@ class aboutsController extends Controller
     /**
      * Update the specified resource in storage.
      */
-    public function update($locale,aboutRequest $request, about $abouts)
+    public function update($locale,AboutRequest $request, About $abouts)
     {
         $item = $abouts;
         

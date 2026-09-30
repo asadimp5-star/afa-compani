@@ -3,14 +3,14 @@
 namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
-use App\Http\Requests\first_pageRequest;
-use App\Models\firstPage;
+use App\Http\Requests\First_pageRequest;
+use App\Models\FirstPage;
 use Illuminate\Http\Request;
 use Illuminate\Http\UploadedFile;
 use Illuminate\Support\Facades\Storage;
 use Illuminate\Support\Str;
 
-class firstPageController extends Controller
+class FirstPageController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -47,12 +47,12 @@ class firstPageController extends Controller
     /**
      * Store a newly created resource in storage.
      */
-    public function store(first_pageRequest $request)
+    public function store(First_pageRequest $request)
     {
         
         $data= $request->validated();
 
-       $firstPage = firstPage::create([
+       $firstPage = FirstPage::create([
         'images0'=> $this->handleUpload($request,'images0',null),
         'images'=> $this->handleUpload($request,'images',null),
         'images1'=> $this->handleUpload($request,'images1',null),
@@ -83,7 +83,7 @@ class firstPageController extends Controller
     /**
      * Show the form for editing the specified resource.
      */
-    public function edit($locale,firstPage $first)
+    public function edit($locale,FirstPage $first)
     {
 
         return view('admin.site-content.first-page.edit-first-page',compact('first'));
@@ -95,7 +95,7 @@ class firstPageController extends Controller
     /**
      * Update the specified resource in storage.
      */
-    public function update($locale,first_pageRequest $request , firstPage $first)
+    public function update($locale,First_pageRequest $request , FirstPage $first)
     {
 
         $item = $first;

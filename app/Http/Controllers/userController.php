@@ -4,14 +4,14 @@ namespace App\Http\Controllers;
 
 use App\Http\Requests\UpdateEmailRequest;
 use App\Http\Requests\UpdatePasswordRequest;
-use App\Http\Requests\userRequest;
-use App\Models\post;
+use App\Http\Requests\UserRequest;
+use App\Models\Post;
 use App\Models\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Hash;
 
-class userController extends Controller
+class UserController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -33,7 +33,7 @@ class userController extends Controller
     /**
      * Store a newly created resource in storage.
      */
-    public function store(userRequest $request)
+    public function store(UserRequest $request)
     {
         
         $data = $request->validated();
@@ -46,7 +46,7 @@ class userController extends Controller
     /**
      * Display the specified resource.
      */
-    public function show($locale,user $user)
+    public function show($locale,User $user)
     {
 
 
@@ -56,7 +56,7 @@ class userController extends Controller
     /**
      * Show the form for editing the specified resource.
      */
-    public function edit($locale,post $pos)
+    public function edit($locale,Post $pos)
     {
         return view('admin.members.observe',compact('pos'));
     }
@@ -72,14 +72,14 @@ class userController extends Controller
     /**
      * Remove the specified resource from storage.
      */
-    public function destroy($locale,user $user)
+    public function destroy($locale,User $user)
     {
         $user->delete();
         return redirect()->route('admin.users.user')->with('success','حذف با موفقیت انجام شد');
         
     }
 
-    public function status($locale,user $user)
+    public function status($locale,User $user)
     {
         $user->status = ($user->status == 1 ? 0 : 1);
         $user->save();
@@ -90,7 +90,7 @@ class userController extends Controller
     {
         if(Auth::check())
         {
-            $posts = post::where('user_Id',Auth::id())->orderByDesc('id')->paginate(3);
+            $posts = Post::where('user_Id',Auth::id())->orderByDesc('id')->paginate(3);
         }
          
         return view('admin.members.single-member.members',compact('posts'));

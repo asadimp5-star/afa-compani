@@ -6,7 +6,7 @@ use Astrotomic\Translatable\Translatable;
 use Illuminate\Database\Eloquent\Model;
 use Override;
 
-class contact extends Model
+class Contact extends Model
 {
     use Translatable; 
 

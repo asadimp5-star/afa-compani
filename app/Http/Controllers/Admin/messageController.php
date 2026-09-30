@@ -3,17 +3,17 @@
 namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
-use App\Models\message;
+use App\Models\Message;
 use Illuminate\Http\Request;
 
-class messageController extends Controller
+class MessageController extends Controller
 {
     /**
      * Display a listing of the resource.
      */
-    public function index($locale,message $item)
+    public function index($locale,Message $item)
     {
-        $messages = message::find($item);
+        $messages = Message::find($item);
         return view('admin.message-show',compact('messages'));
     }
 
@@ -60,7 +60,7 @@ class messageController extends Controller
     /**
      * Remove the specified resource from storage.
      */
-    public function destroy($locale,message $item)
+    public function destroy($locale,Message $item)
     {
         $item->delete();
         

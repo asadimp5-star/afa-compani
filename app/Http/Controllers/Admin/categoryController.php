@@ -3,15 +3,15 @@
 namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
-use App\Http\Requests\categoryRequest;
-use App\Models\category;
+use App\Http\Requests\CategoryRequest;
+use App\Models\Category;
 use App\Models\Category as ModelsCategory;
 use App\Models\CategoryTranslation;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Storage;
 use Illuminate\Support\Str;
 
-class categoryController extends Controller
+class CategoryController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -57,7 +57,7 @@ class categoryController extends Controller
     /** 
      * Store a newly created resource in storage.
      */
-    public function store(categoryRequest $request)
+    public function store(CategoryRequest $request)
     {
         $data = $request->validated();
         
@@ -107,7 +107,7 @@ class categoryController extends Controller
     /**
      * Update the specified resource in storage.
      */
-    public function update($locale,categoryRequest $request, $id)
+    public function update($locale,CategoryRequest $request, $id)
     {
         $item = Category::findOrFail($id);
         $data = $request->validated();
@@ -127,7 +127,7 @@ class categoryController extends Controller
     /**
      * Remove the specified resource from storage.
      */
-    public function destroy($locale,category $item)
+    public function destroy($locale,Category $item)
     {
         $item->delete();
         return back()->with('success','کالا با موفقیت حذف شد');
@@ -139,17 +139,17 @@ class categoryController extends Controller
        
         return view('admin.category.car-wash',compact('carWas'));
     }
-    public function wax(category $category){
-        $waxT = category::where('product_type','=', 1)->orderByDesc('created_at')->paginate(3);
+    public function wax(Category $category){
+        $waxT = Category::where('product_type','=', 1)->orderByDesc('created_at')->paginate(3);
 
         return view('admin.category.wax',compact('waxT'));
     }
-    public function floor(category $category){
-        $floo = category::where('product_type','=',3)->orderByDesc('created_at')->paginate(3);
+    public function floor(Category $category){
+        $floo = Category::where('product_type','=',3)->orderByDesc('created_at')->paginate(3);
         return view('admin.category.floor-wash',compact('floo'));
     }
-    public function Mfloor(category $category){
-        $Mfloo = category::where('product_type','=', 2)->orderByDesc('created_at')->paginate(3);
+    public function Mfloor(Category $category){
+        $Mfloo = Category::where('product_type','=', 2)->orderByDesc('created_at')->paginate(3);
         return view('admin.category.maual-floor',compact('Mfloo'));
     }
 }

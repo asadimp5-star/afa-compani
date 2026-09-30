@@ -5,7 +5,7 @@ namespace App\Models;
 use Astrotomic\Translatable\Translatable;
 use Illuminate\Database\Eloquent\Model;
 
-class about extends Model
+class About extends Model
 {
     use Translatable; 
     protected $table='abouts';

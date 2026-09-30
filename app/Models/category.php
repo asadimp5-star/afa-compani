@@ -30,6 +30,6 @@ class Category extends Model
     
 
     public function comment(){
-        return $this->hasMany(comment::class,'cat_Id','id');
+        return $this->hasMany(Comment::class,'cat_Id','id');
     }
 }

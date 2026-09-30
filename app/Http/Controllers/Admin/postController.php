@@ -3,14 +3,14 @@
 namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
-use App\Http\Requests\postRequest;
-use App\Models\post;
-use App\Models\postTranslation;
+use App\Http\Requests\PostRequest;
+use App\Models\Post;
+use App\Models\PostTranslation;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Storage;
 use  Illuminate\Support\Str;
 
-class postController extends Controller
+class PostController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -18,7 +18,7 @@ class postController extends Controller
     public function index()
     {
         
-        $posts = post::with('translations')->orderBy('id' , 'desc')->paginate(3);
+        $posts = Post::with('translations')->orderBy('id' , 'desc')->paginate(3);
 
         return view('admin.posts.post' , compact('posts'));
     }
@@ -62,13 +62,13 @@ class postController extends Controller
     /**
      * Store a newly created resource in storage.
      */
-    public function store(postRequest $request)
+    public function store(PostRequest $request)
     {
      
         $data =$request->validated();
         
 
-       $post= post::create([
+       $post= Post::create([
         'images0'=>$this->handleUpload($request,'images0',null,null),
         'images'=>$this->handleUpload($request,'images',null,null),
         'images1'=>$this->handleUpload($request,'images1',null,null),
@@ -99,14 +99,14 @@ class postController extends Controller
     /**
      * Show the form for editing the specified resource.
      */
-    public function edit($locale,post $slug)
+    public function edit($locale,Post $slug)
     {
          $post = $slug;
         
 
         return view('admin.posts.edit-post',compact('post'));       
     }
-    public function userEdit($locale,post $Upost){
+    public function userEdit($locale,Post $Upost){
         
         return view('admin.members.single-member.edit-poste',compact('Upost'));       
 
@@ -115,9 +115,9 @@ class postController extends Controller
     /**
      * Update the specified resource in storage.
      */
-    public function update($locale,postRequest $request, $id)
+    public function update($locale,PostRequest $request, $id)
     {
-        $post = post::findOrFail($id);
+        $post = Post::findOrFail($id);
         
         $data = $request->validated();
 
@@ -143,20 +143,20 @@ class postController extends Controller
     /**
      * Remove the specified resource from storage.
      */
-    public function destroy($locale,post $slug)
+    public function destroy($locale,Post $slug)
     {
         
         $slug->delete();
         return redirect()->route('admin.posts.post')->with('success','پست با موفقیت حذف شد');
     }
-     public function Udestroy($locale,post $Upost)
+     public function Udestroy($locale,Post $Upost)
     {
         $Upost->delete();
         return redirect()->route('admin.users.user-dashboard')->with('success','پست با موفقیت حذف شد');
     }
     public function status($locale,$id){
 
-        $item = post::findOrFail($id);
+        $item = Post::findOrFail($id);
        
         $item->status = $item->status == 1 ? 0 : 1;
        

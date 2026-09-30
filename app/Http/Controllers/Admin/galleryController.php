@@ -3,13 +3,13 @@
 namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
-use App\Http\Requests\galleryRequest;
-use App\Models\gallery;
+use App\Http\Requests\GalleryRequest;
+use App\Models\Gallery;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Storage;
 use Illuminate\Support\Str;
 
-class galleryController extends Controller
+class GalleryController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -51,10 +51,10 @@ class galleryController extends Controller
     /**
      * Store a newly created resource in storage.
      */
-    public function store(galleryRequest $request)
+    public function store(GalleryRequest $request)
     {
         $data = $request->validated();
-        $gallery= gallery::create([
+        $gallery= Gallery::create([
             'images' => $this->handleImgUpload($request,'images',null)
         ]);
         foreach(['fa','en'] as $locale){
@@ -81,7 +81,7 @@ class galleryController extends Controller
     /**
      * Show the form for editing the specified resource.
      */
-    public function edit($locale,gallery $item)
+    public function edit($locale,Gallery $item)
     {
         return view('admin.site-content.gallery.edit-gallery',compact('item'));
     }
@@ -89,7 +89,7 @@ class galleryController extends Controller
     /**
      * Update the specified resource in storage.
      */
-    public function update($locale,galleryRequest $request, gallery $item)
+    public function update($locale,GalleryRequest $request, Gallery $item)
     {
 
         $gallery = $item;
@@ -113,13 +113,13 @@ class galleryController extends Controller
     /**
      * Remove the specified resource from storage.
      */
-    public function destroy($locale,gallery $item)
+    public function destroy($locale,Gallery $item)
     {
         $item->delete();
         return back()->with('success','با موفقیت پاک شد');
     }
 
-    public function status($locale,gallery $item)
+    public function status($locale,Gallery $item)
     {
         $item->status = $item->status == 1 ? 0 : 1;
         $item->save();
