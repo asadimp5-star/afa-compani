@@ -58,7 +58,7 @@
       <td>{{ ($user->status== 1 ? 'فعال' : 'غیر فعال')  }}</td>
       <td>
         <section class="d-flex">
-
+                                @if (!$user->role == 1)
                                 <form class="mt-1" action="{{ route('admin.users.satatu',$user->id) }}" method="post">
                                 @csrf
                                 <button type="submit" class="btn btn-outline-success">تغییر وضعیت</button>
@@ -70,6 +70,9 @@
                                  @method('DELETE') 
                                 <button type="submit" onclick="return confirm('مطمئنی؟')" class="btn btn-outline-danger m-1">حذف</button>
                                 </form>
+                                @endif
+
+                                
                                 
                                 <a href="{{ route('admin.users.show',$user->id) }}" class="btn btn-outline-primary m-1">مشاهده</a>
                                 

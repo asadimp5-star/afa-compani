@@ -17,7 +17,7 @@ return new class extends Migration
             $table->string('locale')->index();
             $table->string('title')->nullable();
             $table->string('slug')->nullable();
-            $table->string('description')->nullable();
+            $table->text('description')->nullable();
             $table->unique(['category_id','locale']);
         });
     }

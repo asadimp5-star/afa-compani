@@ -40,8 +40,10 @@
   
   <div class="mt-2">
 
-     <a href="{{ route('admin.users.member-email' , $user->id  ) }}" class="btn btn-info sahel">تغییر آدرس ایمیل</a>
+  @if (!$user->role == 1)
   
+   <a href="{{ route('admin.users.member-email' , $user->id  ) }}" class="btn btn-info sahel">تغییر آدرس ایمیل</a>
+  @endif
 
   </div>
  

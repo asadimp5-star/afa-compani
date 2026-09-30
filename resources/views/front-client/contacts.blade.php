@@ -6,11 +6,11 @@
 @section('contacts','active')
 
 @section('content')
-
+<section class="bg-body">
 
 <section class="d-flex justify-content-center" >
   <section class="mt-5 col-10">
-    <div class="p-md-5 container-fluid rounded text-center  bg-body-secondary"> 
+    <div class="p-md-5 container-fluid rounded text-center  bg-body"> 
   <style>
   .p1{
     background-image: linear-gradient(180deg, rgba(16, 12, 8, 0.4) 0%, rgba(16, 12, 8, 0.4) 100%), url('{{ asset("assets/company-image/content-image/pexels-alex-andrews-821754.jpg") }}');
@@ -68,7 +68,7 @@
 
     <div class="m-5 d-flex justify-content-center">
     <div class="mb-3 col-8">
-    <p class="sahel">{{ $item->description }}</p>
+    <p class="shabnam">{!! nl2br(e($item->description)) !!}</p>
     </div>
     </div>
 
@@ -80,8 +80,8 @@
 
         </div>
     </div>
-    <section class="d-flex row col-5 justify-content-center">
-      <section class="row  d-flex">
+    <section class="d-flex row col-12 mt-2 justify-content-center">
+         <section class="row bg-info rounded-3 col-8 d-flex justify-content-center">
     <div class="m-5 d-flex col-lg-4 col-md-5 col-sm-8   justify-content-center">
         <div class="mb-1">
         <label for="phone">{{ __('content.telephone') }} :</label>
@@ -101,7 +101,9 @@
         </div>
     </div>
 
-  </section> 
+       </section>  
+    </section>
+      
     @endforeach
 
     </section>
@@ -183,6 +185,11 @@
 </form>
     </section>
   </section>
+
+</section>
+
+
+
     
 
 </section>

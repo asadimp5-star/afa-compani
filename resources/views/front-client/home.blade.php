@@ -143,11 +143,11 @@
  <!-- <h2 class="featurette-heading fw-normal lh-1">First featurette heading. -->
  <!-- <span class="text-body-secondary">It’ll blow your mind.</span> -->
 </h2> 
-<p class="lead shabnam">{{ $item->description }}</p>
+<p class="lead fs-5 yekan">{!! nl2br(e($item->description)) !!}</p>
  </div>
  @if ($item->images)
     <div class="col-md-5"> 
-<img aria-hidden="true"  src="{{ asset('storage/first_page/'. $item->images) }}" class="d-block h-100 w-100 rounded-2"  role="img" style="object-fit: cover;"  alt="#"> 
+<img aria-hidden="true"  src="{{ asset('storage/first_page/'. $item->images) }}" class="d-block h-75 w-75 rounded-2"  role="img" style="object-fit: cover;"  alt="#"> 
  </div>
  @endif
  
@@ -158,11 +158,11 @@
 <!-- <h2 class="featurette-heading fw-normal lh-1">Oh yeah, it’s that good.  -->
 <!-- <span class="text-body-secondary">See for yourself.</span> -->
 </h2>
- <p class="lead shabnam">{{ $item->description1 }}</p> 
+ <p class="lead fs-5 yekan">{!! nl2br(e($item->description1)) !!}</p> 
 </div>
 @if ($item->images1)
 <div class="col-md-5 order-md-1"> 
-<img aria-hidden="true"  src="{{ asset('storage/first_page/'. $item->images1) }}" class="d-block h-100 w-100 rounded-2"  role="img" style="object-fit: cover;"  alt="#">
+<img aria-hidden="true"  src="{{ asset('storage/first_page/'. $item->images1) }}" class="d-block h-75 w-75 rounded-2"  role="img" style="object-fit: cover;"  alt="#">
  </div>
 @endif
  
@@ -193,7 +193,7 @@
  <!-- <h2 class="featurette-heading fw-normal lh-1">And lastly, this one.  -->
 <!-- <span class="text-body-secondary">Checkmate.</span> -->
 </h2> 
-<p class="lead shabnam">{{ $item->description2 }}</p>
+<p class="lead fs-5 yekan">{!! nl2br(e($item->description2)) !!}</p>
  </div>
  <div class="col-md-5">
 

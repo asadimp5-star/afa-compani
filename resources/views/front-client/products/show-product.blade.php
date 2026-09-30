@@ -59,13 +59,15 @@
             </section>
             <section class="d-flex p-1 col-lg-7 col-md-8 col-sm-10">
                 <div class="card-body "> 
-                    <h3 class="shabnam fw-bold">{{ $item->title }}</h3> 
-                    <label for="">{{ __('content.product code') }}</label>
+                    <h3 class="shabnam text-muted fw-bold">{{ $item->title }}</h3> 
+                    <hr>
+                    <h5 class="shabnam text-success fw-bold">{{ __('content.product code') }}</h5>
+
                     <h3 class="shabnam fw-bold">{{ $item->product_code }}</h3> 
+                    <hr>
+                    <h5 class="shabnam text-success fw-bold">{{ __('content.Features') }}</h5>
 
-                    <h5>{{ __('content.Features') }}</h5>
-
-                    <p class="card-text">{{ $item->description }}</p> 
+                    <p class="card-text fs-5 yekan">{!! nl2br(e($item->description)) !!}</p> 
                    
                    
                     <a href="{{ route('index.cuntactUs') }}" class="btn btn-outline-info mt-1">{{ __('content.Call to purchase') }}</a>

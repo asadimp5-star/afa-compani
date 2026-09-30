@@ -28,10 +28,11 @@ Route::prefix('admin')->middleware(['Admin'])->group(function(){
     Route::post('/show-message/{item}',[messageController::class,'index'])->name('admin.message.index');
     Route::delete('/delet/{item}',[messageController::class,'destroy'])->name('admin.message.destroy');
 
+
     Route::prefix('/posts')->group(function(){
         Route::get('/post',[postController::class,'index'])->name('admin.posts.post');
         Route::post('/status/{item}',[postController::class,'status'])->name('admin.posts.status');
-        Route::delete('/delete/{item}',[postController::class,'destroy'])->name('admin.posts.delet');
+        Route::delete('/p-delete/{item}',[postController::class,'destroy'])->name('admin.posts.delet');
         Route::get('/create',[postController::class,'create'])->name('admin.posts.create');
         Route::post('/add',[postController::class,'store'])->name('admin.posts.store');
         Route::get('/edit-post/{post}',[postController::class,'edit'])->name('admin.posts.edite');

@@ -29,15 +29,15 @@
     </div>
 </section>
 </section>
-
-<section class="container-fluid mt-4 d-flex justify-content-center">
-    <section class="col-10">
+<section class=" d-flex justify-content-center">
+<section class=" col-md-6 col-lg-10 container-fluid mt-4">
+   
               
-  <div class="col-md-6 mb-4 d-flex justify-content-center">
-    <h1 class="vaziri">{{$item->title}}</h1>
+  <div class="col-md-6 col-lg-11 mb-4 text-center justify-content-center">
+    <h1 class="vaziri ">{{$item->title}}</h1>
     
   </div>
-  <section class="col-10 p-3 d-flex justify-content-center">
+  <section class=" p-3 d-flex justify-content-center">
   @if ($item->images0)
   <div class="card shadow-sm mt-2 " > 
       <img src="{{ asset('storage/postsImg/'. $item->images0) }}" class="bd-placeholder-img card-img-top rounded-3" height="300" role="img" width="100%" alt="#">
@@ -51,10 +51,10 @@
  
   </section>
 
-  <div class="m-3 col-8 p-5">
-    <p class="shabnam">{{ $item->description }}</p>
+  <div class="m-3 p-5">
+    <p class="yekan fs-6">{!! nl2br(e($item->description)) !!}</p>
   </div>
-  <section class="col-10 p-3 d-flex justify-content-center">
+  <section class=" p-3 d-flex justify-content-center">
   @if ($item->images)
   <div class="card shadow-sm mt-2" > 
       <img src="{{ asset('storage/postsImg/'.$item->images ) }}" class="bd-placeholder-img card-img-top rounded-3" height="225" role="img" width="100%" alt="#">
@@ -67,8 +67,8 @@
  
   </section>
 
-  <div class="m-3 p-5 col-8 ">
-    <p class="shabnam">{{ $item->description1 }}</p>
+  <div class="m-3 p-5 ">
+    <p class="yekan">{!! nl2br(e($item->description1)) !!}</p>
   </div>
 
   <section class="col-10 p-3 d-flex justify-content-center">
@@ -81,8 +81,8 @@
 
   </section>
 
-  <div class="m-3 col-8 p-5">
-    <p class="shabnam">{{ $item->description2 }}</p>
+  <div class="m-3 p-5">
+    <p class="shabnam">{!! nl2br(e($item->description2)) !!}</p>
   </div>
   
 
@@ -90,8 +90,10 @@
     <a class="btn btn-warning" href="{{ route('index.postse') }}">{{ __('content.return') }}</a>
   </div>
 
-    </section>
+    
+</section> 
 </section>
+
 
 
 @endsection

@@ -65,13 +65,13 @@
                                 </form>
 
 
-                                <form action="{{ route('admin.posts.delet',$post->id) }}" method="post">
+                                <form action="{{ route('admin.posts.delet',$post->slug) }}" method="post">
                                  @csrf
                                  @method('DELETE') 
                                 <button type="submit" onclick="return confirm('مطمئنی؟')" class="btn btn-outline-danger m-1">حذف</button>
                                 </form>
                                 
-                                <a href="{{ route('admin.posts.edite',$post->id) }}" class="btn btn-outline-primary m-1">مشاهده و ویرایش</a>
+                                <a href="{{ route('admin.posts.edite',$post->slug) }}" class="btn btn-outline-primary m-1">مشاهده و ویرایش</a>
                                 
                               </section>
                               

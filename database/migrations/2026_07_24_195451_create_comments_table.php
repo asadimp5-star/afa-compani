@@ -15,8 +15,8 @@ return new class extends Migration
            $table->id();
             $table->string('name');
             $table->string('title');
-            $table->string('description');
-            $table->string('reply')->nullable();
+            $table->text('description');
+            $table->text('reply')->nullable();
             $table->rememberToken();
             $table->tinyInteger('status')->default(0)->comment('inactive=0,avctive=1');
             $table->foreignId('cat_id')->constrained('categories')->cascadeOnDelete()->cascadeOnUpdate();

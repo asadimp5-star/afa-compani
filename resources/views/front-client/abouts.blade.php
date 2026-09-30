@@ -52,7 +52,7 @@
 
     <div class="m-5 d-flex justify-content-center">
         <div class="mb-3  col-8">
-           <p class="sahel" >{{ $item->description }}</p>
+           <p class="yekan fs-4" >{!! nl2br(e($item->description)) !!}</p>
         </div>
     </div>
     
@@ -66,7 +66,7 @@
   
   <div class="m-5 d-flex justify-content-center">
     <div class="mb-3 col-8">
-    <p class="sahel" >{{ $item->description1 }}</p>
+    <p class="yekan fs-4" >{!! nl2br(e($item->description1)) !!}</p>
   </div>
   </div>
   

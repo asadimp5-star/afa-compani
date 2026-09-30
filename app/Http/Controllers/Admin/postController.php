@@ -5,6 +5,7 @@ namespace App\Http\Controllers\Admin;
 use App\Http\Controllers\Controller;
 use App\Http\Requests\postRequest;
 use App\Models\post;
+use App\Models\postTranslation;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Storage;
 use  Illuminate\Support\Str;
@@ -98,9 +99,9 @@ class postController extends Controller
     /**
      * Show the form for editing the specified resource.
      */
-    public function edit($locale,post $post)
+    public function edit($locale,post $slug)
     {
-        // $show =post::find($post);
+         $post = $slug;
         
 
         return view('admin.posts.edit-post',compact('post'));       
@@ -128,7 +129,9 @@ class postController extends Controller
 
         foreach(['fa','en'] as $lang){
             
+                if(! empty($data[$lang]['title'])){
                 $post->translateOrNew($lang)->fill($data[$lang]);
+            }
             
         }
        $post->save(); 
@@ -140,9 +143,10 @@ class postController extends Controller
     /**
      * Remove the specified resource from storage.
      */
-    public function destroy($locale,post $post)
+    public function destroy($locale,post $slug)
     {
-        $post->delete();
+        
+        $slug->delete();
         return redirect()->route('admin.posts.post')->with('success','پست با موفقیت حذف شد');
     }
      public function Udestroy($locale,post $Upost)
