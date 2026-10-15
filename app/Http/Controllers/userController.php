@@ -46,11 +46,14 @@ class UserController extends Controller
     /**
      * Display the specified resource.
      */
-    public function show($locale,User $user)
+    public function show($locale,User $id)
     {
+        $user = $id;
 
+        $posts = Post::where('user_Id', $user->id)->with('translations')->with('user')->orderBy('id' , 'desc')->paginate(3);
+    
 
-        return view('admin.members.show-member',compact('user'));
+        return view('admin.members.show-member',compact('user','posts'));
     }
 
     /**

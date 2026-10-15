@@ -8,9 +8,9 @@ class Comment extends Model
 {
     protected $table='comments';
 
-    protected $fillable = ['name','title','description','reply','status','cat_Id'];
+    protected $fillable = ['name','title','description','reply','status','cat_id'];
 
     public function category(){
-        return $this->belongsTo(Category::class ,'cat_Id','id');
+        return $this->belongsTo(Category::class ,'cat_id','id');
     }
 }

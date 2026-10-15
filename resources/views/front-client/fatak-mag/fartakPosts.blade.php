@@ -33,7 +33,14 @@
 
 <section class="d-flex justify-content-center mt-3">
     <section class="col-8 ">
-      
+
+      <section class=" mb-5">
+      <form class="form-inline d-flex justify-content-center my-2 my-lg-0 col-lg-4 col-md-8 " action="{{ route('admin.posts.cl-search-post') }}" method="get">
+        @csrf
+      <input class="form-control mr-sm-2" type="search" name="search" placeholder="{{ __('content.Search for articles') }}" aria-label="Search">
+      <button class="btn btn-outline-success my-2 my-sm-0 m-1" type="submit">{{__('content.search')}}</button>
+    </form>
+    </section>
       
         <table class="table caption-top">
   <!-- <caption>List of users</caption> -->

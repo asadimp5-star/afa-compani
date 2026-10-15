@@ -37,6 +37,8 @@ return [
     // start post page
     'post archive' => 'Posts Archive',
     'read more' => 'Read more',
+    'search' => 'search',
+    'Search for articles'=>'Search for articles',
     // end post page
 
     // start contact page

@@ -37,6 +37,8 @@ return [
     // start post page
     'post archive' => 'آرشیو مقالات',
     'read more' => 'بیشتر بخوانید',
+    'search' => 'جستجو',
+    'Search for articles'=>'جستجوی مقالات', 
     // end post page
 
     // start contact page

@@ -21,7 +21,7 @@
 <section class="m-5">
     
     <section>
-    <form class="row g-3 yekan" action="{{ route('admin.posts.update' , $post->id) }}" method="post" enctype="multipart/form-data">
+    <form class="row g-3 yekan" action="{{ route('admin.posts.update' , $post->slug) }}" method="post" enctype="multipart/form-data">
       @csrf
       @method('PUT')
 

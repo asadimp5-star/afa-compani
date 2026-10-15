@@ -5,7 +5,7 @@ namespace App\Http\Controllers\Admin;
 use App\Http\Controllers\Controller;
 use App\Http\Requests\PostRequest;
 use App\Models\Post;
-use App\Models\PostTranslation;
+use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Storage;
 use  Illuminate\Support\Str;
@@ -18,9 +18,20 @@ class PostController extends Controller
     public function index()
     {
         
-        $posts = Post::with('translations')->orderBy('id' , 'desc')->paginate(3);
+        $posts = Post::with('translations')->with('user')->orderBy('id' , 'desc')->paginate(3);
 
         return view('admin.posts.post' , compact('posts'));
+    }
+
+    public function searchPost(Request $request)
+    {
+        $search = $request->search;
+        $posts = Post::with('translations')->whereHas('translations',function($q) use ($search) {
+            $q->where('title','LIKE', "%{$search}%");
+        })->paginate(3);
+        
+        return view('admin.posts.post' , compact('posts'));
+
     }
 
     /**

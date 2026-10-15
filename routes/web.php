@@ -31,11 +31,12 @@ Route::prefix('admin')->middleware(['Admin'])->group(function(){
 
     Route::prefix('/posts')->group(function(){
         Route::get('/post',[PostController::class,'index'])->name('admin.posts.post');
+        Route::get('/search-post',[PostController::class,'searchPost'])->name('admin.posts.search-post');
         Route::post('/status/{item}',[PostController::class,'status'])->name('admin.posts.status');
         Route::delete('/p-delete/{item}',[PostController::class,'destroy'])->name('admin.posts.delet');
         Route::get('/create',[PostController::class,'create'])->name('admin.posts.create');
         Route::post('/add',[PostController::class,'store'])->name('admin.posts.store');
-        Route::get('/edit-post/{post}',[PostController::class,'edit'])->name('admin.posts.edite');
+        Route::get('/edit-post/{slug}',[PostController::class,'edit'])->name('admin.posts.edite');
         Route::get('/edit-Upost/{Upost}',[PostController::class,'userEdit'])->name('admin.posts.userEdit');
         Route::delete('/deletee/{Upost}',[PostController::class,'Udestroy'])->name('admin.posts.deletee');
 
@@ -48,7 +49,7 @@ Route::prefix('admin')->middleware(['Admin'])->group(function(){
         Route::delete('/delete/{user}',[UserController::class,'destroy'])->name('admin.users.delete');
         Route::get('/create',[UserController::class,'create'])->name('admin.users.create');
         Route::post('/add',[UserController::class,'store'])->name('admin.users.store');
-        Route::get('/show/{user}',[UserController::class,'show'])->name('admin.users.show');
+        Route::get('/show/{id}',[UserController::class,'show'])->name('admin.users.show');
         Route::get('/observe/{pos}',[UserController::class,'edit'])->name('admin.users.edit');
         Route::get('/user-dashboard',[UserController::class,'showUser'])->name('admin.users.user-dashboard');
         Route::post('loging-out',[AuthenticController::class,'logOute'])->name('logOute');
@@ -138,6 +139,7 @@ Route::prefix('admin')->middleware(['Admin'])->group(function(){
     Route::post('/contact-us1',[HomeController::class,'contact1'])->name('index.cuntactUs1');
     Route::get('/gallary',[HomeController::class,'galarey'])->name('index.galarey');
     Route::get('/posts',[HomeController::class,'postse'])->name('index.postse');
+    Route::get('/cl-search-post',[HomeController::class,'searchPost'])->name('admin.posts.cl-search-post');
     Route::get('/post-page/{item}',[HomeController::class,'showPost'])->name('index.post');
     Route::middleware('Guest')->group(function(){
         Route::get('/sign-in',[AuthenticController::class,'loging'])->name('index.sign-in');

@@ -63,7 +63,7 @@
     </tr>
   </thead>
   <tbody>
-    @forelse($user->post as $pos)
+    @forelse($posts as $pos)
     <tr>
       <td>{{ $loop->iteration }}</td>
       <td>{{substr($pos->title,0,10).'...'}}</td>
@@ -82,6 +82,8 @@
     @endforelse
   </tbody>
 </table>
+<div class="col-3 pe-5">{{ $posts->links() }}</div>
+
 </section>
 
  <div class="col-12">

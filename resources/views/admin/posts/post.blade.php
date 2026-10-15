@@ -17,6 +17,15 @@
 @section('content')
 
 <section class="mt-5" style="margin:1rem;">
+    
+    <section class=" mb-5">
+      <form class="form-inline d-flex justify-content-center my-2 my-lg-0 col-lg-4 col-md-8 " action="{{ route('admin.posts.search-post') }}" method="get">
+        @csrf
+      <input class="form-control mr-sm-2" type="search" name="search" placeholder="جستجوی مقالات" aria-label="Search">
+      <button class="btn btn-outline-success my-2 my-sm-0" type="submit">جستجو</button>
+    </form>
+    </section>
+
     <section >
       <div class="container-fluid col-lg-2 col-md-12  float-end bg-success rounded-3 text-center "style="margin-right:1rem;">
             <div>
@@ -35,6 +44,7 @@
     </section>
     
     
+    
     <table class="table table-striped table-hover">
   <thead>
     <tr class="shabnam fs-6">
@@ -51,8 +61,8 @@
     @forelse($posts as $post)
     <tr>
       <td>{{ $loop->iteration }}</td>
-      <td>{{substr($post->translate('fa')->title,0,10).'...'}}</td>
-      <td>{{ substr($post->translate('fa')->description,0,20).'...' }}</td>
+      <td>{{ substr($post->translations->where('locale','fa')->first()?->title?? 'بدون عنوان',0,15)}}</td>
+      <td>{{ substr($post->translations->where('locale','fa')->first()->description??'',0,20).'...' }}</td>
       <td>{{ $post->user->Last_name }}</td>
       <td>{{ $post->created_at }}</td>
       <td>{{ ($post->status== 1 ? 'فعال' : 'غیر فعال')  }}</td>

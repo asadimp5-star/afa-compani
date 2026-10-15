@@ -48,10 +48,11 @@
                             <td>{{ $loop->iteration }}</td>
                             <td>{{ $comment->name }}</td>
                             <td>{{ $comment->title }}</td>
-                            <td>{{ substr($comment->description,0,15).'...' }}</td>
-                            <td>{{substr($comment->reply,0 ,15).'...' }}</td>
+                            <td>{{ Str::of($comment->description)->limit(20).'...' }}</td>
+                            <td>{{ Str::of($comment->reply)->limit(20).'...' }}</td>
                             <td>{{ ($comment->status == 1) ? 'فعال': 'غیرفعال' }}</td>
                             <td>{{ $comment->created_at }}</td>
+                            <td>{{ $comment->category->title }}</td>
                            
                             
                             <td>

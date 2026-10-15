@@ -22,10 +22,10 @@ class HomeController extends Controller
     public function index()
     {
       
-       $comments = Comment::orderByDesc('id')->paginate(3); // 10 records per page
+       $comments = Comment::orderByDesc('id')->with('category')->paginate(3); // 10 records per page
        $show = Message::orderBy('id' , 'desc')->paginate(3);
 
-       return view('Admin.dashboard',compact('comments','show'));
+       return view('admin.dashboard',compact('comments','show'));
     
     }
     public function content()
@@ -82,7 +82,7 @@ class HomeController extends Controller
     }
     public function postse()
     {
-        $poste = Post::orderByDesc('id')->paginate(5);
+        $poste = Post::orderByDesc('id')->with('user')->paginate(5);
         return view('front-client.fatak-mag.fartakPosts',compact('poste'));
     }
     public function showPost($locale, Post $item)
@@ -138,13 +138,25 @@ class HomeController extends Controller
     }
     public function commentt(CommentRequest $request)
     {
-        
         $data = $request->validated();
         $data['status']= 0 ;
 
          Comment::create($data);
        
         return back()->with('success','نظر با موفقیت ثبت شد.پس از تایید مدیر به نمایش در می آید');
+
+    }
+
+     public function searchPost(Request $request)
+    {
+
+        $search = $request->search;
+        $poste = Post::with('translations')->whereHas('translations',function($q) use ($search) {
+            $q->where('title','LIKE', "%{$search}%");
+        })->paginate(3);
+        
+        return view('front-client.fatak-mag.fartakPosts',compact('poste'));
+
 
     }
 
