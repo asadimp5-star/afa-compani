@@ -24,8 +24,7 @@ class PostRequest extends FormRequest
     public function rules(): array
     {
         
-        $post= $this->route('post') ?? $this->route('id');
-        $postId = is_object($post) ? $post->id : $post;
+        
     
 
         return [
@@ -42,7 +41,6 @@ class PostRequest extends FormRequest
             'fa.title' => 'nullable|min:10|max:100',
             'fa.slug' => [
                 'nullable','string','max:255',
-                Rule::unique('post_translations','slug')->ignore($postId,'post_id')->where('locale','fa')
             ],
             'fa.description'=>'nullable|string|max:2000',
             'fa.description1'=>'nullable|string|max:2000',
@@ -56,7 +54,6 @@ class PostRequest extends FormRequest
             'en.title' => 'nullable|min:10|max:100',
             'en.slug' => [
                 'nullable','string','max:255',
-                Rule::unique('post_translations','slug')->ignore($postId,'post_id')->where('locale','en')
             ],
             'en.description'=>'nullable|string|max:2000',
             'en.description1'=>'nullable|string|max:2000',

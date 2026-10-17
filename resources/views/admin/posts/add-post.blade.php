@@ -63,7 +63,7 @@
 
 <div class="mb-3 col-8">
     <label for="fa_description" class="form-label">توضیحات</label>
-    <textarea class="form-control" name="fa_description" placeholder="توضیحات درباره عضو را اینجا وارد کنید"></textarea>
+    <textarea class="form-control" name="fa[description]" placeholder="توضیحات درباره عضو را اینجا وارد کنید"></textarea>
     @error('fa.description')
        <div class="alert alert-danger mt-1">{{ $message }}</div>
     @enderror
@@ -79,7 +79,7 @@
 
   <div class="mb-3 col-8">
     <label for="fa_description1" class="form-label">1توضیحات</label>
-    <textarea class="form-control" name="fa_description1" placeholder="توضیحات درباره عضو را اینجا وارد کنید"></textarea>
+    <textarea class="form-control" name="fa[description1]" placeholder="توضیحات درباره عضو را اینجا وارد کنید"></textarea>
     @error('fa.description1')
        <div class="alert alert-danger mt-1">{{ $message }}</div>
     @enderror
@@ -95,7 +95,7 @@
 
   <div class="mb-3 col-8">
     <label for="fa_description2" class="form-label">توضیحات2</label>
-    <textarea class="form-control" name="fa_description2" placeholder="توضیحات درباره عضو را اینجا وارد کنید"></textarea>
+    <textarea class="form-control" name="fa[description2]" placeholder="توضیحات درباره عضو را اینجا وارد کنید"></textarea>
     @error('fa.description2')
        <div class="alert alert-danger mt-1">{{ $message }}</div>
     @enderror

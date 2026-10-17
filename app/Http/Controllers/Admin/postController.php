@@ -5,6 +5,7 @@ namespace App\Http\Controllers\Admin;
 use App\Http\Controllers\Controller;
 use App\Http\Requests\PostRequest;
 use App\Models\Post;
+use App\Models\PostTranslation;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Storage;
@@ -126,26 +127,41 @@ class PostController extends Controller
     /**
      * Update the specified resource in storage.
      */
-    public function update($locale,PostRequest $request, $id)
+    public function update($locale,PostRequest $request,string $post)
     {
-        $post = Post::findOrFail($id);
-        
+       
+        $postId = PostTranslation::where('slug',$post)->value('post_id');
+        $poste = Post::findOrFail($postId);
         $data = $request->validated();
+        
 
+        foreach(['fa' , 'en'] as $lang){
+            $newSlug = $request->input($lang.'slug');        
+            $oldSlug = $poste->translate($lang)->slug ?? null;
 
-        $post->images0 = $this->handleUpload($request,'images0','delete_img0',$post->images0);
-        $post->images = $this->handleUpload($request,'images','delete_img',$post->images);
-        $post->images1 = $this->handleUpload($request,'images1','delete_img1',$post->images1);
-        $post->save();
+            if($newSlug && $newSlug !== $oldSlug){
+                $exists = PostTranslation::where('slug' , $newSlug)->where('locale', $lang)
+                ->where('post_id' ,'!=', $poste->id)->exists();
+                if($exists){
+                    return back();
+                }
+            }
+        
+        }
+
+        $poste->images0 = $this->handleUpload($request,'images0','delete_img0',$poste->images0);
+        $poste->images = $this->handleUpload($request,'images','delete_img',$poste->images);
+        $poste->images1 = $this->handleUpload($request,'images1','delete_img1',$poste->images1);
+        $poste->save();
 
         foreach(['fa','en'] as $lang){
             
                 if(! empty($data[$lang]['title'])){
-                $post->translateOrNew($lang)->fill($data[$lang]);
+                $poste->translateOrNew($lang)->fill($data[$lang]);
             }
             
         }
-       $post->save(); 
+       $poste->save(); 
     
 
        return back()->with('success','مقاله با موفقیت ویرایش شد');
@@ -154,10 +170,11 @@ class PostController extends Controller
     /**
      * Remove the specified resource from storage.
      */
-    public function destroy($locale,Post $slug)
+    public function destroy($locale,string $slug)
     {
-        
-        $slug->delete();
+        $postId = PostTranslation::where('slug',$slug)->value('post_id');
+        $poste = Post::findOrFail($postId);
+        $poste->delete();
         return redirect()->route('admin.posts.post')->with('success','پست با موفقیت حذف شد');
     }
      public function Udestroy($locale,Post $Upost)

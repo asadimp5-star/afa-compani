@@ -33,14 +33,14 @@ Route::prefix('admin')->middleware(['Admin'])->group(function(){
         Route::get('/post',[PostController::class,'index'])->name('admin.posts.post');
         Route::get('/search-post',[PostController::class,'searchPost'])->name('admin.posts.search-post');
         Route::post('/status/{item}',[PostController::class,'status'])->name('admin.posts.status');
-        Route::delete('/p-delete/{item}',[PostController::class,'destroy'])->name('admin.posts.delet');
+        Route::delete('/p-delete/{slug}',[PostController::class,'destroy'])->name('admin.posts.delet');
         Route::get('/create',[PostController::class,'create'])->name('admin.posts.create');
         Route::post('/add',[PostController::class,'store'])->name('admin.posts.store');
         Route::get('/edit-post/{slug}',[PostController::class,'edit'])->name('admin.posts.edite');
         Route::get('/edit-Upost/{Upost}',[PostController::class,'userEdit'])->name('admin.posts.userEdit');
         Route::delete('/deletee/{Upost}',[PostController::class,'Udestroy'])->name('admin.posts.deletee');
 
-        Route::put('/update/{post}',[PostController::class,'update'])->name('admin.posts.update');
+        Route::put('/a-update/{slug}',[PostController::class,'update'])->name('admin.posts.update');
         
     });
     Route::prefix('users')->group(function(){
