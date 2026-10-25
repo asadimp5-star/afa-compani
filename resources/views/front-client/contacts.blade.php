@@ -49,6 +49,26 @@
     <h4 class="shabnam fw-bold">{{ $item->co_adress }}</h4>
     </div>
   </div>
+  
+  <section class="d-flex justify-content-center ">
+
+  <div class="w-full rounded overflow-hidden shadow-lg border col-lg-5 col-md-9 col-sm-10">
+
+    <iframe src="https://www.google.com/maps/embed?pb=!1m14!1m12!1m3!1d808.8988914265135!2d50.90204765284327!3d35.80986086094877!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!5e0!3m2!1sen!2s!4v1792859759951!5m2!1sen!2s" 
+      width="650" 
+      height="450" 
+      style="border:0;" 
+      allowfullscreen="" 
+      loading="lazy" 
+      referrerpolicy="strict-origin-when-cross-origin">
+    </iframe>
+
+
+  </div>
+  </section>
+  
+
+
   <div class="m-5 text-center d-flex justify-content-center">
         <div class="mb-3  col-8">
         <label for="factory_adress">{{ __('content.factory address') }} :</label>
