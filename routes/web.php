@@ -10,6 +10,7 @@ use App\Http\Controllers\Admin\HomeController;
 use App\Http\Controllers\Admin\MessageController;
 use App\Http\Controllers\Admin\PostController;
 use App\Http\Controllers\Auth\AuthenticController;
+use App\Http\Controllers\Auth\ForgetEmailController;
 use App\Http\Controllers\UserController;
 use App\Http\Middleware\Admin;
 use Illuminate\Support\Facades\App;
@@ -144,6 +145,10 @@ Route::prefix('admin')->middleware(['Admin'])->group(function(){
     Route::middleware('Guest')->group(function(){
         Route::get('/sign-in',[AuthenticController::class,'loging'])->name('index.sign-in');
         Route::post('/signin',[AuthenticController::class,'getIn'])->name('getIn');
+        Route::get('/confirm-email',[ForgetEmailController::class,'emailConfirm'])->name('emailConfirm');
+        Route::post('/send-email',[ForgetEmailController::class,'emailSend'])->name('emailSend');
+        Route::get('/password-set/{token}',[ForgetEmailController::class,'passwordSet'])->name('passwordSet');
+        Route::post('/password-reset/{token}',[ForgetEmailController::class,'passwordReset'])->name('passwordReset');
 });
 
     Route::prefix('/category')->group(function(){

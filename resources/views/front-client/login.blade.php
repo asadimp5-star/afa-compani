@@ -13,7 +13,14 @@
     
 <main class="form-signin w-100 m-auto d-flex mt-5 justify-content-center"> 
 
+<section class="justify-content-center">
+        <x-manual.alert>
 
+        </x-manual.alert>
+
+
+    </section>
+    
 <form class="col-lg-3 col-md-8 col-sm-6 mt-5" action="{{ route('getIn') }}" method="post">
     @csrf
  <img class="mb-4 img-thumbnail" src="{{ asset('assets/company-image/photo_2017-08-08_18-19-421.jpg') }}" alt="" width="72" height="57">
@@ -33,8 +40,9 @@
         @enderror
  </div> 
 <button class="btn btn-primary w-100 py-2 sahel" type="submit">ورود</button>
-<div>
+<div class="d-flex justify-content-between mt-2">
   <a href="{{ route('index.home') }}" class="btn btn-info sahel">خانه</a>
+  <a href="{{ route('emailConfirm') }}" class="link-info link-underline-light shabnam">رمز خود را فراموش کردم</a>
 </div>
  <p class="mt-5 mb-3 text-body-secondary">© 2017–2025</p> 
 </form>
